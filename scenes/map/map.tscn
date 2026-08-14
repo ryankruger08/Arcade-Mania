@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cxu302g6k6a2x"]
+
+[ext_resource type="PackedScene" uid="uid://djviw8xtrs4ki" path="res://Models/Map/game-map.blend" id="1_sxf4j"]
+[ext_resource type="PackedScene" uid="uid://cggles3hks74w" path="res://scenes/player/player.tscn" id="2_tqkkf"]
+
+[node name="Map" type="Node3D" unique_id=1988102609]
+
+[node name="game-map" parent="." unique_id=1247707253 instance=ExtResource("1_sxf4j")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
+
+[node name="CharacterBody3D" parent="." unique_id=902792464 instance=ExtResource("2_tqkkf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7395017, 1.1359997, -0.41794968)
+
+[node name="world controller" type="Node3D" parent="." unique_id=206224952]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=855013455]
+transform = Transform3D(1, 0, 0, 0, -0.06925565, 0.99759895, 0, -0.99759895, -0.06925565, 0, 28.930676, 0)
+shadow_enabled = true
