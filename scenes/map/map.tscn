@@ -2,6 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://djviw8xtrs4ki" path="res://Models/Map/game-map.blend" id="1_sxf4j"]
 [ext_resource type="PackedScene" uid="uid://cggles3hks74w" path="res://scenes/player/player.tscn" id="2_tqkkf"]
+[ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_ph54e"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sqgf4"]
+panorama = ExtResource("3_ph54e")
+
+[sub_resource type="Sky" id="Sky_if6sb"]
+sky_material = SubResource("PanoramaSkyMaterial_sqgf4")
+
+[sub_resource type="Environment" id="Environment_17rms"]
+background_mode = 2
+sky = SubResource("Sky_if6sb")
+volumetric_fog_density = 0.0
 
 [node name="Map" type="Node3D" unique_id=1988102609]
 
@@ -12,6 +24,9 @@ transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7395017, 1.1359997, -0.41794968)
 
 [node name="world controller" type="Node3D" parent="." unique_id=206224952]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="world controller" unique_id=206058323]
+environment = SubResource("Environment_17rms")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=855013455]
 transform = Transform3D(1, 0, 0, 0, -0.06925565, 0.99759895, 0, -0.99759895, -0.06925565, 0, 28.930676, 0)
