@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://djviw8xtrs4ki" path="res://Models/Map/game-map.blend" id="1_sxf4j"]
 [ext_resource type="PackedScene" uid="uid://cggles3hks74w" path="res://scenes/player/player.tscn" id="2_tqkkf"]
 [ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_ph54e"]
+[ext_resource type="PackedScene" uid="uid://drk0w8e0smc7w" path="res://scenes/games/pong_arcade.tscn" id="4_ph54e"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sqgf4"]
 panorama = ExtResource("3_ph54e")
@@ -31,3 +32,6 @@ environment = SubResource("Environment_17rms")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=855013455]
 transform = Transform3D(1, 0, 0, 0, -0.06925565, 0.99759895, 0, -0.99759895, -0.06925565, 0, 28.930676, 0)
 shadow_enabled = true
+
+[node name="Pong Arcade" parent="." unique_id=424789420 instance=ExtResource("4_ph54e")]
+transform = Transform3D(0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 1.18, 0.69818926, -12.15)

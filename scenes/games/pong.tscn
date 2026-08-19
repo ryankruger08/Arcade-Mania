@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://dqv8aefmtai2n"]
+
+[ext_resource type="Script" uid="uid://qih0uujk8pbp" path="res://scenes/games/pongcontroller.gd" id="1_yf680"]
+[ext_resource type="Script" uid="uid://4pn4qs1kb34h" path="res://scenes/games/game_manager.gd" id="2_36maa"]
+[ext_resource type="Script" uid="uid://buadrhi3u2lc" path="res://scenes/games/ball.gd" id="2_ohq1h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
+font_size = 87
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
+size = Vector2(37, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6sb"]
+size = Vector2(1938, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wttu"]
+size = Vector2(20, 1045)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17rms"]
+radius = 20.0
+
+[node name="Node2D" type="Node2D" unique_id=1777230661]
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1062082698]
+gui_embed_subwindows = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewport" unique_id=991879317]
+
+[node name="Control" type="Control" parent="SubViewport/Camera2D" unique_id=740748599]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Label" type="Label" parent="SubViewport/Camera2D/Control" unique_id=1649534862]
+layout_mode = 0
+offset_left = 798.0
+offset_top = 505.0
+offset_right = 1051.0
+offset_bottom = 624.0
+text = "PONG"
+label_settings = SubResource("LabelSettings_17rms")
+
+[node name="Control" type="Control" parent="." unique_id=1609006891]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="divider" type="ColorRect" parent="Control" unique_id=1118108290]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.20752
+offset_top = -635.0
+offset_right = 9.20752
+offset_bottom = 635.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="players" type="Node2D" parent="Control" unique_id=1401337820]
+
+[node name="player2" type="CharacterBody2D" parent="Control/players" unique_id=2144075537]
+position = Vector2(1866.255, 487)
+script = ExtResource("1_yf680")
+player = 2
+
+[node name="player2" type="ColorRect" parent="Control/players/player2" unique_id=2120966189]
+offset_right = 37.0
+offset_bottom = 106.000244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/players/player2" unique_id=419522652]
+position = Vector2(18.5, 53)
+shape = SubResource("RectangleShape2D_17rms")
+
+[node name="player1" type="CharacterBody2D" parent="Control/players" unique_id=115064029]
+position = Vector2(17.1, 487)
+script = ExtResource("1_yf680")
+
+[node name="player1" type="ColorRect" parent="Control/players/player1" unique_id=263784574]
+offset_right = 37.0
+offset_bottom = 106.000244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/players/player1" unique_id=938257721]
+position = Vector2(18.5, 53)
+shape = SubResource("RectangleShape2D_17rms")
+
+[node name="colliders-nodetect" type="Node2D" parent="Control" unique_id=1676497118]
+
+[node name="top_border" type="Node2D" parent="Control/colliders-nodetect" unique_id=1067256435]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Control/colliders-nodetect/top_border" unique_id=1563835889]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/colliders-nodetect/top_border/StaticBody2D" unique_id=201168493]
+position = Vector2(959, 0)
+shape = SubResource("RectangleShape2D_if6sb")
+
+[node name="bottom_border" type="Node2D" parent="Control/colliders-nodetect" unique_id=399044782]
+position = Vector2(0, 1080)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Control/colliders-nodetect/bottom_border" unique_id=1286982895]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/colliders-nodetect/bottom_border/StaticBody2D" unique_id=1721662479]
+position = Vector2(959, 0)
+shape = SubResource("RectangleShape2D_if6sb")
+
+[node name="colliders-detect" type="Node2D" parent="Control" unique_id=888891097]
+
+[node name="player2_detector" type="Node2D" parent="Control/colliders-detect" unique_id=357385867]
+position = Vector2(1920, 0)
+
+[node name="Area2D2" type="Area2D" parent="Control/colliders-detect/player2_detector" unique_id=518193102]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/colliders-detect/player2_detector/Area2D2" unique_id=865945630]
+position = Vector2(0, 539.5)
+shape = SubResource("RectangleShape2D_7wttu")
+
+[node name="player1_detector" type="Node2D" parent="Control/colliders-detect" unique_id=1705970892]
+
+[node name="Area2D" type="Area2D" parent="Control/colliders-detect/player1_detector" unique_id=843289861]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/colliders-detect/player1_detector/Area2D" unique_id=40517472]
+position = Vector2(0, 539.5)
+shape = SubResource("RectangleShape2D_7wttu")
+
+[node name="ball" type="CharacterBody2D" parent="Control" unique_id=1414630960]
+position = Vector2(960, 540)
+script = ExtResource("2_ohq1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/ball" unique_id=1698826902]
+shape = SubResource("CircleShape2D_17rms")
+
+[node name="ColorRect" type="ColorRect" parent="Control/ball" unique_id=927167679]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[node name="Node" type="Node" parent="Control" unique_id=1587970259]
+script = ExtResource("2_36maa")
+
+[node name="Timer" type="Timer" parent="Control/Node" unique_id=1515292437]
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="Control/colliders-detect/player2_detector/Area2D2" to="Control/Node" method="_on_area_2d_2_body_entered"]
+[connection signal="body_entered" from="Control/colliders-detect/player1_detector/Area2D" to="Control/Node" method="_on_area_2d_body_entered"]
