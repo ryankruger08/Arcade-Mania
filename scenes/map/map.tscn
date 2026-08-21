@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cggles3hks74w" path="res://scenes/player/player.tscn" id="2_tqkkf"]
 [ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_ph54e"]
 [ext_resource type="PackedScene" uid="uid://drk0w8e0smc7w" path="res://scenes/games/pong_arcade.tscn" id="4_ph54e"]
+[ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/gamemanagerpong.gd" id="5_fcby6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
+font_size = 54
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sqgf4"]
 panorama = ExtResource("3_ph54e")
@@ -16,13 +20,60 @@ background_mode = 2
 sky = SubResource("Sky_if6sb")
 volumetric_fog_density = 0.0
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_fcby6"]
+viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jcaow"]
+viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04w0f"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_fcby6")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_jcaow")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sqgf4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_04w0f")
+size = Vector2(1.63, 1.08)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17rms"]
+size = Vector3(2.5117188, 3.2030945, 3.239685)
+
 [node name="Map" type="Node3D" unique_id=1988102609]
 
 [node name="game-map" parent="." unique_id=1247707253 instance=ExtResource("1_sxf4j")]
 transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
 
 [node name="CharacterBody3D" parent="." unique_id=902792464 instance=ExtResource("2_tqkkf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7395017, 1.1359997, -0.41794968)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16710877, 1.5118589, -9.305925)
+
+[node name="Control" type="Control" parent="CharacterBody3D" unique_id=278856349]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CharacterBody3D/Control" unique_id=464296566]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 95.099976
+offset_right = 138.0
+offset_bottom = 169.10022
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Game"
+label_settings = SubResource("LabelSettings_17rms")
 
 [node name="world controller" type="Node3D" parent="." unique_id=206224952]
 
@@ -34,4 +85,30 @@ transform = Transform3D(1, 0, 0, 0, -0.06925565, 0.99759895, 0, -0.99759895, -0.
 shadow_enabled = true
 
 [node name="Pong Arcade" parent="." unique_id=424789420 instance=ExtResource("4_ph54e")]
-transform = Transform3D(0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 1.18, 0.69818926, -12.15)
+transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 1.18, 0.69818926, -12.15)
+
+[node name="MeshInstance3D" parent="Pong Arcade/arcade-machine" parent_id_path=PackedInt32Array(424789420, 440034849) index="1" unique_id=2041155398]
+mesh = SubResource("PlaneMesh_sqgf4")
+
+[node name="pongcamera" type="Camera3D" parent="Pong Arcade" unique_id=2066195908]
+transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
+
+[node name="Area3D" type="Area3D" parent="Pong Arcade" unique_id=187457536 node_paths=PackedStringArray("player", "camera", "label", "gamemanager")]
+collision_layer = 65
+collision_mask = 65
+script = ExtResource("5_fcby6")
+machine = "Pong"
+player = NodePath("../../CharacterBody3D")
+camera = NodePath("../pongcamera")
+label = NodePath("../../CharacterBody3D/Control/Label")
+gamemanager = NodePath("../arcade-machine/Node2D/SubViewport/Camera2D/Control2/Node")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pong Arcade/Area3D" unique_id=459807213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08593702, 3.4725494, 0.0284729)
+shape = SubResource("BoxShape3D_17rms")
+
+[connection signal="body_entered" from="Pong Arcade/Area3D" to="Pong Arcade/Area3D" method="_on_body_entered"]
+[connection signal="body_exited" from="Pong Arcade/Area3D" to="Pong Arcade/Area3D" method="_on_body_exited"]
+
+[editable path="Pong Arcade"]
+[editable path="Pong Arcade/arcade-machine/Node2D"]

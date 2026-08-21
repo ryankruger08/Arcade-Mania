@@ -6,6 +6,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.003
 @export var min_pitch: float = deg_to_rad(-85)
 @export var max_pitch: float = deg_to_rad(85)
+var playing = false
 
 
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")

@@ -17,3 +17,8 @@ shape = SubResource("CapsuleShape3D_if6sb")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1439772051]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67585313, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1145557938]
+target_position = Vector3(0, 0, -3.2)
+collision_mask = 65
+collide_with_areas = true

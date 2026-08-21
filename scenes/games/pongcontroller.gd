@@ -4,9 +4,10 @@ extends CharacterBody2D
 const SPEED = 300.0
 @export var player = 1
 @export var CPU = false
+var playing = false
 
 func _physics_process(delta: float) -> void:
-	if player == 1:
+	if player == 1 and playing == true:
 		var direction := Input.get_axis("move_forward", "move_back")
 		if direction:
 			velocity.y = direction * SPEED
@@ -14,7 +15,7 @@ func _physics_process(delta: float) -> void:
 			velocity.y = move_toward(velocity.x, 0, SPEED)
 
 #NOT IN USE IF CPU MODE IS ACTIVE
-	elif player == 2 and CPU == false:
+	elif player == 2 and CPU == false and playing == true:
 		var direction := Input.get_axis("ui_up", "ui_down")
 		if direction:
 			velocity.y = direction * SPEED
