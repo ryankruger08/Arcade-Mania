@@ -1,8 +1,6 @@
 [gd_scene format=4 uid="uid://drk0w8e0smc7w"]
 
-[ext_resource type="PackedScene" uid="uid://dqv8aefmtai2n" path="res://scenes/games/pong/pong.tscn" id="1_7wugm"]
-[ext_resource type="AudioStream" uid="uid://df67ya4an3bcj" path="res://scenes/games/pong/pong.wav" id="2_ce62i"]
-[ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/games/machinemanager.gd" id="3_tpqtk"]
+[ext_resource type="PackedScene" uid="uid://dqv8aefmtai2n" path="res://scenes/games/pong.tscn" id="1_7wugm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nmv3v"]
 resource_name = "Material"
@@ -62,9 +60,6 @@ material = SubResource("StandardMaterial3D_7wugm")
 size = Vector2(1.63, 1.08)
 orientation = 2
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_oao0a"]
-size = Vector3(2.5117188, 3.2030945, 3.239685)
-
 [node name="Pong Arcade" type="Node3D" unique_id=424789420]
 
 [node name="arcade-machine" type="Node3D" parent="." unique_id=440034849]
@@ -78,28 +73,32 @@ mesh = SubResource("PlaneMesh_17rms")
 
 [node name="Node2D" parent="arcade-machine" unique_id=1777230661 instance=ExtResource("1_7wugm")]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1473635079]
-stream = ExtResource("2_ce62i")
-autoplay = true
-max_distance = 38.28
+[node name="Control2" parent="arcade-machine/Node2D/SubViewport/Camera2D" parent_id_path=PackedInt32Array(1777230661, 991879317) index="0" unique_id=1609006891]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="pongcamera" type="Camera3D" parent="." unique_id=32909185]
-transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
+[node name="blackscreen" parent="arcade-machine/Node2D/SubViewport/Camera2D/Control2" index="6" unique_id=1530465545]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1088.5
+offset_top = -786.5
+offset_right = 1088.5
+offset_bottom = 786.5
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1310359103]
-collision_layer = 65
-collision_mask = 65
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=517737803]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08593702, 3.4725494, 0.0284729)
-shape = SubResource("BoxShape3D_oao0a")
-
-[node name="Node3D" type="Node3D" parent="." unique_id=1446157770 node_paths=PackedStringArray("player", "camera", "label", "gamemanager")]
-script = ExtResource("3_tpqtk")
-machine = "Pong"
-player = NodePath("")
-camera = NodePath("")
-label = NodePath("")
-gamemanager = NodePath("")
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1736183423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.6755903, 2.8092828)
 
 [editable path="arcade-machine/Node2D"]

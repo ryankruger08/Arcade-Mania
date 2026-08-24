@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dqv8aefmtai2n"]
 
-[ext_resource type="Script" uid="uid://qih0uujk8pbp" path="res://scenes/games/pong/paddle.gd" id="1_t2h4a"]
-[ext_resource type="Script" uid="uid://buadrhi3u2lc" path="res://scenes/games/pong/ball.gd" id="2_t2h4a"]
-[ext_resource type="Script" uid="uid://4pn4qs1kb34h" path="res://scenes/games/pong/game_manager.gd" id="3_pdx3f"]
-[ext_resource type="Shader" uid="uid://b8n18lxwbqeia" path="res://scenes/games/CRT.gdshader" id="4_ljjxu"]
+[ext_resource type="Script" uid="uid://qih0uujk8pbp" path="res://scenes/games/pongcontroller.gd" id="1_yf680"]
+[ext_resource type="Script" uid="uid://4pn4qs1kb34h" path="res://scenes/games/game_manager.gd" id="2_36maa"]
+[ext_resource type="Script" uid="uid://buadrhi3u2lc" path="res://scenes/games/ball.gd" id="2_ohq1h"]
+[ext_resource type="Shader" uid="uid://b8n18lxwbqeia" path="res://scenes/games/CRT.gdshader" id="4_jcom0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
 size = Vector2(37, 106)
@@ -26,25 +26,25 @@ font_size = 186
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17rms"]
-shader = ExtResource("4_ljjxu")
-shader_parameter/brightness = 1.02000004845
+shader = ExtResource("4_jcom0")
+shader_parameter/brightness = 1.02
 shader_parameter/contrast = 1.08
 shader_parameter/saturation = 1.1
 shader_parameter/gamma = 1.05
-shader_parameter/curvature = 0.078000003705
+shader_parameter/curvature = 0.14
 shader_parameter/corner_soften = 0.06
 shader_parameter/vignette = 0.38
-shader_parameter/scanline_strength = 0.4230000200925
-shader_parameter/scanline_density = 0.958000021755
+shader_parameter/scanline_strength = 0.95
+shader_parameter/scanline_density = 1.15
 shader_parameter/interlace_strength = 0.2
-shader_parameter/mask_strength = 0.17600000836
-shader_parameter/mask_scale = 0.846000016435
+shader_parameter/mask_strength = 0.22
+shader_parameter/mask_scale = 1.0
 shader_parameter/chroma_offset_px = 1.6
 shader_parameter/luma_smear_px = 2.2
 shader_parameter/jitter_px = 1.8
 shader_parameter/wobble_px = 0.8410000399475001
 shader_parameter/tape_noise = 0.13200000627
-shader_parameter/tape_lines = 0.2510000119225
+shader_parameter/tape_lines = 0.35
 shader_parameter/roll_speed = 0.1
 shader_parameter/roll_strength = 0.0510000024225
 shader_parameter/glow_strength = 0.25
@@ -84,11 +84,10 @@ color = Color(1, 1, 1, 0.40392157)
 
 [node name="players" type="Node2D" parent="SubViewport/Camera2D/Control2" unique_id=1401337820]
 
-[node name="player2" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=2144075537 node_paths=PackedStringArray("ball")]
+[node name="player2" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=2144075537]
 position = Vector2(1866.255, 487)
-script = ExtResource("1_t2h4a")
+script = ExtResource("1_yf680")
 player = 2
-ball = NodePath("../../ball")
 
 [node name="player2" type="ColorRect" parent="SubViewport/Camera2D/Control2/players/player2" unique_id=2120966189]
 offset_right = 37.0
@@ -99,10 +98,9 @@ mouse_filter = 2
 position = Vector2(18.5, 53)
 shape = SubResource("RectangleShape2D_17rms")
 
-[node name="player1" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=115064029 node_paths=PackedStringArray("ball")]
+[node name="player1" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=115064029]
 position = Vector2(17.1, 487)
-script = ExtResource("1_t2h4a")
-ball = NodePath("../../ball")
+script = ExtResource("1_yf680")
 
 [node name="player1" type="ColorRect" parent="SubViewport/Camera2D/Control2/players/player1" unique_id=263784574]
 offset_right = 37.0
@@ -153,7 +151,7 @@ shape = SubResource("RectangleShape2D_7wttu")
 
 [node name="ball" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2" unique_id=1414630960 node_paths=PackedStringArray("label", "rect")]
 position = Vector2(960, 540)
-script = ExtResource("2_t2h4a")
+script = ExtResource("2_ohq1h")
 label = NodePath("../timer")
 rect = NodePath("../blackscreen")
 
@@ -175,13 +173,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "score_label", "player1", "player2", "menu_label")]
-script = ExtResource("3_pdx3f")
+[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "score_label", "player1", "player2")]
+script = ExtResource("2_36maa")
 ball = NodePath("../ball")
 score_label = NodePath("../scores")
 player1 = NodePath("../players/player1")
 player2 = NodePath("../players/player2")
-menu_label = NodePath("../Menu")
 
 [node name="Timer" type="Timer" parent="SubViewport/Camera2D/Control2/Node" unique_id=1515292437]
 one_shot = true
@@ -229,22 +226,6 @@ layout_mode = 0
 offset_right = 1918.0
 offset_bottom = 1079.0
 mouse_filter = 2
-
-[node name="Menu" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=1961329860]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -133.0
-offset_top = -66.0
-offset_right = 133.0
-offset_bottom = 66.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "Menu"
-label_settings = SubResource("LabelSettings_if6sb")
 
 [connection signal="body_entered" from="SubViewport/Camera2D/Control2/colliders-detect/player2_detector/Area2D2" to="SubViewport/Camera2D/Control2/Node" method="_on_area_2d_2_body_entered"]
 [connection signal="body_entered" from="SubViewport/Camera2D/Control2/colliders-detect/player1_detector/Area2D" to="SubViewport/Camera2D/Control2/Node" method="_on_area_2d_body_entered"]
