@@ -6,11 +6,9 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.003
 @export var min_pitch: float = deg_to_rad(-85)
 @export var max_pitch: float = deg_to_rad(85)
+
 var playing = false
-
-
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
-
 
 @onready var camera: Camera3D = $Camera3D
 
@@ -18,13 +16,16 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
+	if playing:
+		return # frozen while inside a machine - the machine script handles ui_cancel/exit instead
+
 	if event is InputEventMouseMotion:
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		
+
 		camera.rotate_x(-event.relative.y * mouse_sensitivity)
-		
+
 		camera.rotation.x = clamp(camera.rotation.x, min_pitch, max_pitch)
-		
+
 	if event.is_action_pressed("ui_cancel"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -32,6 +33,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
+	if playing:
+		velocity = Vector3.ZERO
+		return # frozen while inside a machine
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
@@ -39,9 +44,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y = jump_velocity
 
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	
+
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	
+
 	if direction:
 		velocity.x = direction.x * speed
 		velocity.z = direction.z * speed
