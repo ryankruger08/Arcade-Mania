@@ -6,10 +6,10 @@ extends Node
 @export var player2: CharacterBody2D
 
 @export_group("Arcade UI")
-@export var score_label: Label         
-@export var insert_coin_label: Label   
-@export var countdown_label: Label     
-@export var countdown_rect: ColorRect   
+@export var score_label: Label
+@export var insert_coin_label: Label
+@export var countdown_label: Label
+@export var countdown_rect: ColorRect
 
 var playing = false
 var score1 = 0
@@ -17,10 +17,6 @@ var score2 = 0
 var attract = true
 var is_counting_down = false
 var high_score: int = 0
-
-# Player Selection Variables
-var is_selecting_players = false
-var chosen_player_count = 1 # Default to 1 Player mode
 
 var ui_flash_timer: Timer
 const SAVE_PATH = "user://arcade_highscore.cfg"
@@ -41,7 +37,6 @@ func setup_attract_mode() -> void:
 	attract = true
 	playing = false
 	is_counting_down = false
-	is_selecting_players = false
 	
 	if score_label: score_label.visible = false
 	if countdown_label: countdown_label.visible = false
@@ -60,59 +55,23 @@ func setup_attract_mode() -> void:
 	if ball:
 		ball.serve_ball()
 
-# Called by the Machine Manager when the player presses 'F'
 func start_match() -> void:
-	# Stop attract mode and open the selection menu
 	attract = false
 	playing = false
 	ui_flash_timer.stop()
 	
 	if insert_coin_label: insert_coin_label.visible = false
-	if score_label: score_label.visible = false
+	if ball: ball.playing = false
 	
-	# Open player selection using the countdown UI assets
-	is_selecting_players = true
-	chosen_player_count = 1 # Reset default selection to 1 Player
-	if countdown_rect: countdown_rect.visible = true
-	if countdown_label: countdown_label.visible = true
-	_update_selection_ui()
-
-func _unhandled_input(event: InputEvent) -> void:
-	# Only listen to menu controls if we are on the player select screen
-	if not is_selecting_players:
-		return
-		
-	# Toggle option using built-in UI actions (or map custom up/down keys)
-	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down"):
-		if chosen_player_count == 1:
-			chosen_player_count = 2
-		else:
-			chosen_player_count = 1
-		_update_selection_ui()
-		
-	# Confirm selection and start the countdown when they press 'play' (F key)
-	if event.is_action_pressed("play"):
-		get_viewport().set_input_as_handled() # Prevent this input from triggering other scripts
-		_confirm_player_selection()
-
-func _update_selection_ui() -> void:
-	if not countdown_label: return
-	
-	# Visual formatting showing an arrow pointing at the active selection
-	if chosen_player_count == 1:
-		countdown_label.text = "SELECT MODE\n\n> 1 PLAYER <\n  2 PLAYERS"
-	else:
-		countdown_label.text = "SELECT MODE\n\n  1 PLAYER\n> 2 PLAYERS <"
-
-func _confirm_player_selection() -> void:
-	is_selecting_players = false
 	score1 = 0
 	score2 = 0
-	
-	if score_label: score_label.visible = true
+	if score_label:
+		score_label.visible = true
 	update_scores()
 	
-	# Run the standard 3-2-1 kickoff countdown
+	if player1: player1.CPU = false
+	if player2: player2.CPU = false
+	
 	await run_game_countdown()
 	playing = true
 	
@@ -139,17 +98,10 @@ func run_game_countdown() -> void:
 	if countdown_rect: countdown_rect.visible = false
 	is_counting_down = false
 
-	# Configure the paddles based on the choice locked into the menu
 	if not attract:
 		if player1:
-			player1.CPU = false 
 			player1.playing = true
-			
 		if player2:
-			if chosen_player_count == 1:
-				player2.CPU = true  # 1-Player Mode: AI takes over right paddle
-			else:
-				player2.CPU = false # 2-Player Mode: Human controls right paddle
 			player2.playing = true
 
 func _flash_countdown_step(number_text: String) -> void:
@@ -163,6 +115,7 @@ func _flash_countdown_step(number_text: String) -> void:
 
 func end_match() -> void:
 	check_for_new_highscore(score1)
+	check_for_new_highscore(score2)
 	setup_attract_mode()
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
@@ -179,10 +132,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not attract and playing and not is_counting_down:
 		score2 += 1
 		update_scores()
-		# For 2-Player mode, check if player 2 also set a new high score record!
-		if chosen_player_count == 2:
-			check_for_new_highscore(score2)
-			
+		check_for_new_highscore(score2)
 		await run_game_countdown()
 		if ball and playing: ball.serve_ball()
 	elif attract:
@@ -200,6 +150,7 @@ func check_for_new_highscore(final_score: int) -> void:
 	if final_score > high_score:
 		high_score = final_score
 		save_high_score()
+		Wallet.add_coins(1)
 
 func save_high_score() -> void:
 	var config = ConfigFile.new()

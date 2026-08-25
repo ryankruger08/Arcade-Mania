@@ -88,6 +88,7 @@ color = Color(1, 1, 1, 0.40392157)
 position = Vector2(1866.255, 487)
 script = ExtResource("1_yf680")
 player = 2
+CPU = true
 ball = NodePath("../../ball")
 
 [node name="player2" type="ColorRect" parent="SubViewport/Camera2D/Control2/players/player2" unique_id=2120966189]
@@ -223,6 +224,22 @@ offset_bottom = 262.00018
 grow_horizontal = 2
 grow_vertical = 2
 text = "INSERT COIN"
+label_settings = SubResource("LabelSettings_if6sb")
+
+[node name="creditlabel" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=352746970]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = 91.31
+offset_right = 296.0
+offset_bottom = 223.31018
+grow_horizontal = 2
+grow_vertical = 2
+text = "credits"
 label_settings = SubResource("LabelSettings_if6sb")
 
 [node name="timer" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=1432012590]
