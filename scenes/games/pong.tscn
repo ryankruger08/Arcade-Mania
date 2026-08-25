@@ -84,10 +84,11 @@ color = Color(1, 1, 1, 0.40392157)
 
 [node name="players" type="Node2D" parent="SubViewport/Camera2D/Control2" unique_id=1401337820]
 
-[node name="player2" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=2144075537]
+[node name="player2" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=2144075537 node_paths=PackedStringArray("ball")]
 position = Vector2(1866.255, 487)
 script = ExtResource("1_yf680")
 player = 2
+ball = NodePath("../../ball")
 
 [node name="player2" type="ColorRect" parent="SubViewport/Camera2D/Control2/players/player2" unique_id=2120966189]
 offset_right = 37.0
@@ -98,9 +99,10 @@ mouse_filter = 2
 position = Vector2(18.5, 53)
 shape = SubResource("RectangleShape2D_17rms")
 
-[node name="player1" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=115064029]
+[node name="player1" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2/players" unique_id=115064029 node_paths=PackedStringArray("ball")]
 position = Vector2(17.1, 487)
 script = ExtResource("1_yf680")
+ball = NodePath("../../ball")
 
 [node name="player1" type="ColorRect" parent="SubViewport/Camera2D/Control2/players/player1" unique_id=263784574]
 offset_right = 37.0
@@ -149,11 +151,9 @@ shape = SubResource("RectangleShape2D_7wttu")
 position = Vector2(0, 539.5)
 shape = SubResource("RectangleShape2D_7wttu")
 
-[node name="ball" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2" unique_id=1414630960 node_paths=PackedStringArray("label", "rect")]
+[node name="ball" type="CharacterBody2D" parent="SubViewport/Camera2D/Control2" unique_id=1414630960]
 position = Vector2(960, 540)
 script = ExtResource("2_ohq1h")
-label = NodePath("../timer")
-rect = NodePath("../blackscreen")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewport/Camera2D/Control2/ball" unique_id=1698826902]
 shape = SubResource("CircleShape2D_17rms")
@@ -173,12 +173,15 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "score_label", "player1", "player2")]
+[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "player1", "player2", "score_label", "insert_coin_label", "countdown_label", "countdown_rect")]
 script = ExtResource("2_36maa")
 ball = NodePath("../ball")
-score_label = NodePath("../scores")
 player1 = NodePath("../players/player1")
 player2 = NodePath("../players/player2")
+score_label = NodePath("../scores")
+insert_coin_label = NodePath("../InsertCoinLabel")
+countdown_label = NodePath("../timer")
+countdown_rect = NodePath("../blackscreen")
 
 [node name="Timer" type="Timer" parent="SubViewport/Camera2D/Control2/Node" unique_id=1515292437]
 one_shot = true
@@ -204,6 +207,22 @@ offset_right = 95.50049
 offset_bottom = 157.15002
 grow_horizontal = 2
 text = "0 - 0"
+label_settings = SubResource("LabelSettings_if6sb")
+
+[node name="InsertCoinLabel" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=1392458435]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -296.0
+offset_top = 130.0
+offset_right = 296.0
+offset_bottom = 262.00018
+grow_horizontal = 2
+grow_vertical = 2
+text = "INSERT COIN"
 label_settings = SubResource("LabelSettings_if6sb")
 
 [node name="timer" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=1432012590]
