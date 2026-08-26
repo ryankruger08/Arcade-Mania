@@ -1,8 +1,9 @@
 extends Node
-var coins: int = 5
+var coins: int = 0
 const SAVE_PATH = "user://wallet.cfg"
 func _ready() -> void:
 	load_coins()
+	add_coins(5)
 func add_coins(amount: int) -> void:
 	coins += amount
 	save_coins()

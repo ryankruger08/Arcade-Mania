@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_ph54e"]
 [ext_resource type="PackedScene" uid="uid://drk0w8e0smc7w" path="res://scenes/games/pong_arcade.tscn" id="4_ph54e"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
-font_size = 54
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sqgf4"]
 panorama = ExtResource("3_ph54e")
 
@@ -45,31 +42,8 @@ transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
 [node name="CharacterBody3D" parent="." unique_id=902792464 instance=ExtResource("2_tqkkf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16710877, 1.5118589, -9.305925)
 
-[node name="Control" type="Control" parent="CharacterBody3D" unique_id=278856349]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="Label" type="Label" parent="CharacterBody3D/Control" unique_id=464296566]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -138.0
-offset_top = 95.099976
-offset_right = 138.0
-offset_bottom = 169.10022
-grow_horizontal = 2
-grow_vertical = 2
-text = "Play Game"
-label_settings = SubResource("LabelSettings_17rms")
+[node name="Label" parent="CharacterBody3D/Camera3D/Control" parent_id_path=PackedInt32Array(902792464, 1425920539) index="0" unique_id=925956764]
+horizontal_alignment = 1
 
 [node name="world controller" type="Node3D" parent="." unique_id=206224952]
 
@@ -89,5 +63,10 @@ mesh = SubResource("PlaneMesh_04w0f")
 [node name="ball" parent="Pong Arcade/arcade-machine/Node2D/SubViewport/Camera2D/Control2" parent_id_path=PackedInt32Array(424789420, 1777230661, 1609006891) index="4" unique_id=1414630960]
 paddle_half_height = 53.0
 
+[node name="coinslot" parent="Pong Arcade" index="2" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
+player = NodePath("../../CharacterBody3D")
+label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
+
+[editable path="CharacterBody3D"]
 [editable path="Pong Arcade"]
 [editable path="Pong Arcade/arcade-machine/Node2D"]

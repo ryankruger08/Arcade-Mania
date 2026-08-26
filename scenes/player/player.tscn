@@ -1,10 +1,29 @@
 [gd_scene format=3 uid="uid://cggles3hks74w"]
 
 [ext_resource type="Script" uid="uid://cdjsa38shkwah" path="res://scripts/player/controller/player_controller.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://64cjeui4ncty" path="res://scenes/player/ui_manager.gd" id="2_gmlin"]
+[ext_resource type="FontFile" uid="uid://dil6v3bygo78h" path="res://Resources/PixelatedEleganceRegular-ovawB.ttf" id="3_lvxji"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_17rms"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_if6sb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_17rms"]
+size = Vector3(0.495, 0.495, 1.5572447)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p47bc"]
+font = ExtResource("3_lvxji")
+font_size = 32
+font_color = Color(0, 1, 0, 1)
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
+font = ExtResource("3_lvxji")
+font_size = 27
+font_color = Color(0, 1, 0, 1)
+outline_size = 18
+outline_color = Color(0, 0, 0, 1)
 
 [node name="CharacterBody3D" type="CharacterBody3D" unique_id=902792464]
 script = ExtResource("1_8afob")
@@ -18,7 +37,48 @@ shape = SubResource("CapsuleShape3D_if6sb")
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1439772051]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.67585313, 0)
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1145557938]
-target_position = Vector3(0, 0, -3.2)
-collision_mask = 65
-collide_with_areas = true
+[node name="Area3D" type="Area3D" parent="Camera3D" unique_id=372407453]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Area3D" unique_id=1337211703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0811605)
+shape = SubResource("BoxShape3D_17rms")
+
+[node name="Control" type="Control" parent="Camera3D" unique_id=1425920539]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_gmlin")
+
+[node name="Label" type="Label" parent="Camera3D/Control" unique_id=925956764]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -138.0
+offset_top = 95.099976
+offset_right = 138.0
+offset_bottom = 169.10022
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Game"
+label_settings = SubResource("LabelSettings_p47bc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credit_label" type="Label" parent="Camera3D/Control" unique_id=1787043343]
+layout_mode = 1
+offset_left = 17.87
+offset_top = 17.87
+offset_right = 282.87
+offset_bottom = 54.870003
+text = "Credits: 5"
+label_settings = SubResource("LabelSettings_17rms")
+horizontal_alignment = 1

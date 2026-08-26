@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://qih0uujk8pbp" path="res://scenes/games/pongcontroller.gd" id="1_yf680"]
 [ext_resource type="Script" uid="uid://4pn4qs1kb34h" path="res://scenes/games/game_manager.gd" id="2_36maa"]
 [ext_resource type="Script" uid="uid://buadrhi3u2lc" path="res://scenes/games/ball.gd" id="2_ohq1h"]
+[ext_resource type="FontFile" uid="uid://dil6v3bygo78h" path="res://Resources/PixelatedEleganceRegular-ovawB.ttf" id="4_5y872"]
 [ext_resource type="Shader" uid="uid://b8n18lxwbqeia" path="res://scenes/games/CRT.gdshader" id="4_jcom0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
@@ -18,10 +19,12 @@ size = Vector2(20, 1045)
 radius = 20.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_if6sb"]
+font = ExtResource("4_5y872")
 font_size = 96
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ohq1h"]
+font = ExtResource("4_5y872")
 font_size = 186
 font_color = Color(0, 1, 0, 1)
 
@@ -174,13 +177,12 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "player1", "player2", "score_label", "insert_coin_label", "countdown_label", "countdown_rect")]
+[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "player1", "player2", "score_label", "countdown_label", "countdown_rect")]
 script = ExtResource("2_36maa")
 ball = NodePath("../ball")
 player1 = NodePath("../players/player1")
 player2 = NodePath("../players/player2")
 score_label = NodePath("../scores")
-insert_coin_label = NodePath("../InsertCoinLabel")
 countdown_label = NodePath("../timer")
 countdown_rect = NodePath("../blackscreen")
 
@@ -225,22 +227,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "INSERT COIN"
 label_settings = SubResource("LabelSettings_if6sb")
-
-[node name="creditlabel" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=352746970]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -296.0
-offset_top = 91.31
-offset_right = 296.0
-offset_bottom = 223.31018
-grow_horizontal = 2
-grow_vertical = 2
-text = "credits"
-label_settings = SubResource("LabelSettings_if6sb")
+horizontal_alignment = 1
 
 [node name="timer" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=1432012590]
 layout_mode = 1

@@ -23,7 +23,10 @@ size = Vector2(1.63, 1.08)
 orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6mdw"]
-size = Vector3(2.5117188, 3.2030945, 3.239685)
+size = Vector3(0.2782898, 0.35394096, 0.35832548)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
+size = Vector3(1.806633, 0.25509548, 0.8300599)
 
 [node name="Pong Arcade" type="Node3D" unique_id=424789420]
 
@@ -65,20 +68,30 @@ grow_vertical = 2
 [node name="pongcamera" type="Camera3D" parent="." unique_id=653099797]
 transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
 
-[node name="Area3D" type="Area3D" parent="." unique_id=1510952970 node_paths=PackedStringArray("camera", "credit_label", "gamemanager")]
-collision_layer = 65
-collision_mask = 65
+[node name="coinslot" type="Area3D" parent="." unique_id=1510952970 node_paths=PackedStringArray("camera", "credit_label", "gamemanager")]
+collision_layer = 64
+collision_mask = 64
 script = ExtResource("3_umwyn")
 machine_name = "Pong"
 camera = NodePath("../pongcamera")
-credit_label = NodePath("../arcade-machine/Node2D/SubViewport/Camera2D/Control2/creditlabel")
+credit_label = NodePath("../arcade-machine/Node2D/SubViewport/Camera2D/Control2/InsertCoinLabel")
 gamemanager = NodePath("../arcade-machine/Node2D/SubViewport/Camera2D/Control2/Node")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=922392250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08593702, 3.4725494, 0.0284729)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="coinslot" unique_id=922392250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42855787, 1.5347078, 1.1487615)
 shape = SubResource("BoxShape3D_g6mdw")
 
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
-[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_body_exited"]
+[node name="startbutton" type="Area3D" parent="." unique_id=1835900166]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="startbutton" unique_id=459335488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013187885, 2.6067834, 0.8411606)
+shape = SubResource("BoxShape3D_umwyn")
+
+[connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
+[connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]
+[connection signal="area_entered" from="startbutton" to="coinslot" method="_on_start_button_body_entered"]
+[connection signal="area_exited" from="startbutton" to="coinslot" method="_on_start_button_body_exited"]
 
 [editable path="arcade-machine/Node2D"]

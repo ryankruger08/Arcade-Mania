@@ -7,7 +7,6 @@ extends Node
 
 @export_group("Arcade UI")
 @export var score_label: Label
-@export var insert_coin_label: Label
 @export var countdown_label: Label
 @export var countdown_rect: ColorRect
 
@@ -18,20 +17,12 @@ var attract = true
 var is_counting_down = false
 var high_score: int = 0
 
-var ui_flash_timer: Timer
 const SAVE_PATH = "user://arcade_highscore.cfg"
 
 func _ready() -> void:
 	load_high_score()
-	setup_flash_timer()
 	await get_tree().process_frame
 	setup_attract_mode()
-
-func setup_flash_timer() -> void:
-	ui_flash_timer = Timer.new()
-	ui_flash_timer.wait_time = 0.5
-	ui_flash_timer.timeout.connect(_on_flash_timer_timeout)
-	add_child(ui_flash_timer)
 
 func setup_attract_mode() -> void:
 	attract = true
@@ -41,9 +32,6 @@ func setup_attract_mode() -> void:
 	if score_label: score_label.visible = false
 	if countdown_label: countdown_label.visible = false
 	if countdown_rect: countdown_rect.visible = false
-	if insert_coin_label: insert_coin_label.visible = true
-	
-	ui_flash_timer.start()
 	
 	if player1:
 		player1.CPU = true
@@ -58,9 +46,7 @@ func setup_attract_mode() -> void:
 func start_match() -> void:
 	attract = false
 	playing = false
-	ui_flash_timer.stop()
 	
-	if insert_coin_label: insert_coin_label.visible = false
 	if ball: ball.playing = false
 	
 	score1 = 0
@@ -70,7 +56,7 @@ func start_match() -> void:
 	update_scores()
 	
 	if player1: player1.CPU = false
-	if player2: player2.CPU = false
+	if player2: player2.CPU = true
 	
 	await run_game_countdown()
 	playing = true
@@ -141,10 +127,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func update_scores() -> void:
 	if score_label and not attract:
 		score_label.text = str(score1, " - ", score2)
-
-func _on_flash_timer_timeout() -> void:
-	if attract and insert_coin_label:
-		insert_coin_label.visible = !insert_coin_label.visible
 
 func check_for_new_highscore(final_score: int) -> void:
 	if final_score > high_score:
