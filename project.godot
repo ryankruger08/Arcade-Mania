@@ -8,6 +8,12 @@
 
 config_version=5
 
+[ambientcg]
+
+extract_path="res://AmbientCG/Extracted"
+material_file_directory="res://AmbientCG/Materials"
+environment_file_directory="res://AmbientCG/Environments"
+
 [application]
 
 config/name="Arcade Mania"
@@ -18,6 +24,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 Wallet="*uid://ckv6iwvwf5lrp"
+AmbientAPI="*uid://cmbh88h6yljhy"
+AmbientParser="*uid://dcdrqnwmpgvk4"
+AmbientFileHandler="*uid://dnh8sqjyu74hs"
+AmbientMaterialMaker="*uid://nig0lamfd3mv"
 
 [display]
 
@@ -29,7 +39,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
+enabled=PackedStringArray("res://addons/EZ-Tree-Godot-Port/plugin.cfg", "res://addons/ambientcg/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg")
 
 [input]
 

@@ -16,21 +16,21 @@ background_mode = 2
 sky = SubResource("Sky_if6sb")
 volumetric_fog_density = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ph54e"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sqgf4"]
 viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fcby6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vvrx0"]
 viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcaow"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f17u5"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_ph54e")
+albedo_texture = SubResource("ViewportTexture_sqgf4")
 emission_enabled = true
-emission_texture = SubResource("ViewportTexture_fcby6")
+emission_texture = SubResource("ViewportTexture_vvrx0")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_04w0f"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_b56te"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jcaow")
+material = SubResource("StandardMaterial3D_f17u5")
 size = Vector2(1.63, 1.08)
 orientation = 2
 
@@ -41,9 +41,6 @@ transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
 
 [node name="CharacterBody3D" parent="." unique_id=902792464 instance=ExtResource("2_tqkkf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16710877, 1.5118589, -9.305925)
-
-[node name="Label" parent="CharacterBody3D/Camera3D/Control" parent_id_path=PackedInt32Array(902792464, 1425920539) index="0" unique_id=925956764]
-horizontal_alignment = 1
 
 [node name="world controller" type="Node3D" parent="." unique_id=206224952]
 
@@ -58,7 +55,7 @@ shadow_enabled = true
 transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 1.18, 0.69818926, -12.15)
 
 [node name="MeshInstance3D" parent="Pong Arcade/arcade-machine" parent_id_path=PackedInt32Array(424789420, 440034849) index="0" unique_id=2041155398]
-mesh = SubResource("PlaneMesh_04w0f")
+mesh = SubResource("PlaneMesh_b56te")
 
 [node name="ball" parent="Pong Arcade/arcade-machine/Node2D/SubViewport/Camera2D/Control2" parent_id_path=PackedInt32Array(424789420, 1777230661, 1609006891) index="4" unique_id=1414630960]
 paddle_half_height = 53.0
