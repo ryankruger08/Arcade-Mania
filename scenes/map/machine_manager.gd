@@ -11,20 +11,28 @@ var start_ready = false
 var playing = false
 var credits: int = 0
 var credit_flash_timer: Timer
+
+
 func _ready() -> void:
 	_setup_credit_flash_timer()
 	_update_credit_label()
+
+
 func _setup_credit_flash_timer() -> void:
 	credit_flash_timer = Timer.new()
 	credit_flash_timer.wait_time = 0.5
 	credit_flash_timer.timeout.connect(_on_credit_flash_timeout)
 	add_child(credit_flash_timer)
 	credit_flash_timer.start()
+
+
 func _on_credit_flash_timeout() -> void:
 	if playing or not credit_label:
 		return
 	if credits <= 0:
 		credit_label.visible = !credit_label.visible
+
+
 func _update_credit_label() -> void:
 	if not credit_label:
 		return
@@ -37,6 +45,8 @@ func _update_credit_label() -> void:
 	else:
 		credit_label.visible = true
 		credit_label.text = "CREDIT " + str(credits)
+
+
 func _refresh_label() -> void:
 	if not label:
 		return
@@ -51,6 +61,8 @@ func _refresh_label() -> void:
 		label.text = "Press Insert Coin"
 	else:
 		label.visible = false
+
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("insert_coin") and coin_ready and not playing:
 		if Wallet.spend_coin():
@@ -84,21 +96,33 @@ func _unhandled_input(event: InputEvent) -> void:
 			_update_credit_label()
 			_refresh_label()
 			get_viewport().set_input_as_handled()
+
+
 func _on_body_entered(body: Node3D) -> void:
 		playready = true
 		_refresh_label()
+
+
 func _on_body_exited(body: Node3D) -> void:
 		playready = false
 		_refresh_label()
+
+
 func _on_coin_slot_body_entered(body: Node3D) -> void:
 		coin_ready = true
 		_refresh_label()
+
+
 func _on_coin_slot_body_exited(body: Node3D) -> void:
 		coin_ready = false
 		_refresh_label()
+
+
 func _on_start_button_body_entered(body: Node3D) -> void:
 		start_ready = true
 		_refresh_label()
+
+
 func _on_start_button_body_exited(body: Node3D) -> void:
 		start_ready = false
 		_refresh_label()
