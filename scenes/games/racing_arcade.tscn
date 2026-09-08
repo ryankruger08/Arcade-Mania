@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://b3rcslmh1duw4"]
+
+[ext_resource type="PackedScene" uid="uid://hmr0574i2jy4" path="res://Models/Map/arcade-machine.blend" id="2_kt78r"]
+[ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/machine_manager.gd" id="3_5norq"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_umwyn"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jcom0"]
+viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wugm"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_umwyn")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_jcom0")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_17rms"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_7wugm")
+size = Vector2(1.63, 1.08)
+orientation = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6mdw"]
+size = Vector3(0.2782898, 0.35394096, 0.35832548)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
+size = Vector3(1.806633, 0.25509548, 0.8300599)
+
+[node name="racing Arcade" type="Node3D" unique_id=424789420]
+
+[node name="arcade-machine" type="Node3D" parent="." unique_id=440034849]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="arcade-machine" unique_id=2041155398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3237743, 0.36217296)
+mesh = SubResource("PlaneMesh_17rms")
+
+[node name="arcade-machine" parent="arcade-machine" unique_id=332788749 instance=ExtResource("2_kt78r")]
+
+[node name="pongcamera" type="Camera3D" parent="." unique_id=653099797]
+transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
+
+[node name="coinslot" type="Area3D" parent="." unique_id=1510952970 node_paths=PackedStringArray("camera", "credit_label", "gamemanager")]
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("3_5norq")
+machine_name = "Pong"
+camera = NodePath("../pongcamera")
+credit_label = NodePath("")
+gamemanager = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="coinslot" unique_id=922392250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42855787, 1.5347078, 1.1487615)
+shape = SubResource("BoxShape3D_g6mdw")
+
+[node name="startbutton" type="Area3D" parent="." unique_id=1835900166]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="startbutton" unique_id=459335488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013187885, 2.6067834, 0.8411606)
+shape = SubResource("BoxShape3D_umwyn")
+
+[connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
+[connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]
+[connection signal="area_entered" from="startbutton" to="coinslot" method="_on_start_button_body_entered"]
+[connection signal="area_exited" from="startbutton" to="coinslot" method="_on_start_button_body_exited"]

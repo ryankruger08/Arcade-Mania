@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://cklqr52ulvssq"]
+
+[ext_resource type="FontFile" uid="uid://dil6v3bygo78h" path="res://Resources/PixelatedEleganceRegular-ovawB.ttf" id="1_5p3jj"]
+[ext_resource type="PackedScene" uid="uid://dtws0386s2pmh" path="res://Models/Racing Game/track_1.blend" id="2_18cws"]
+[ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_pstbb"]
+[ext_resource type="PackedScene" uid="uid://f47vnd5nmak4" path="res://scenes/games/racing game/vehicle.tscn" id="4_18cws"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
+font = ExtResource("1_5p3jj")
+font_size = 50
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s80wa"]
+panorama = ExtResource("3_pstbb")
+
+[sub_resource type="Sky" id="Sky_7wttu"]
+sky_material = SubResource("PanoramaSkyMaterial_s80wa")
+
+[sub_resource type="Environment" id="Environment_if6sb"]
+background_mode = 2
+sky = SubResource("Sky_7wttu")
+
+[node name="racing" type="Node3D" unique_id=2108779458]
+
+[node name="headsupdisplay" type="Control" parent="." unique_id=380074704]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="headsupdisplay" unique_id=1615295780]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Speed: 0"
+label_settings = SubResource("LabelSettings_17rms")
+
+[node name="track_1" parent="." unique_id=2030895848 instance=ExtResource("2_18cws")]
+
+[node name="worldmanager" type="Node3D" parent="." unique_id=1515033167]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="worldmanager" unique_id=1978892924]
+transform = Transform3D(1, 0, 0, 0, 0.39609188, 0.91821086, 0, -0.91821086, 0.39609188, 0, 69.1019, -28.385117)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="worldmanager" unique_id=651521749]
+environment = SubResource("Environment_if6sb")
+
+[node name="RigidBody3D" parent="." unique_id=1949459313 instance=ExtResource("4_18cws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.399395, 0.64334387, 11.227323)
