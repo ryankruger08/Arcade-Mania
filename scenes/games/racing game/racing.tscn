@@ -53,5 +53,25 @@ transform = Transform3D(1, 0, 0, 0, 0.39609188, 0.91821086, 0, -0.91821086, 0.39
 [node name="WorldEnvironment" type="WorldEnvironment" parent="worldmanager" unique_id=651521749]
 environment = SubResource("Environment_if6sb")
 
-[node name="RigidBody3D" parent="." unique_id=1949459313 instance=ExtResource("4_18cws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.399395, 0.64334387, 11.227323)
+[node name="vehicle" parent="." unique_id=1949459313 instance=ExtResource("4_18cws")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.399395, 2.0443218, 11.227323)
+engine_force = 100.0
+steering = 1.2217305
+engine_power = 155.635
+
+[node name="front-left" parent="vehicle" index="3" unique_id=499807065]
+engine_force = 1024.0
+suspension_stiffness = 8.63
+
+[node name="front-right" parent="vehicle" index="4" unique_id=2019046731]
+engine_force = 1024.0
+suspension_stiffness = 8.63
+
+[node name="rear-left" parent="vehicle" index="5" unique_id=562340332]
+suspension_stiffness = 8.63
+
+[node name="rear-right" parent="vehicle" index="6" unique_id=41753233]
+suspension_stiffness = 8.63
+
+[editable path="track_1"]
+[editable path="vehicle"]
