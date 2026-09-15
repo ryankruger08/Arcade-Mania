@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cyjhwa5w0s0vr"]
+
+[ext_resource type="Texture2D" uid="uid://c4th82i3ax71a" path="res://Resources/space game/spritesheet.png" id="1_22cc1"]
+[ext_resource type="Script" uid="uid://g305b6y6k1xf" path="res://scenes/games/space invaders/alien.gd" id="1_ed4od"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ed4od"]
+atlas = ExtResource("1_22cc1")
+region = Rect2(1024, 1024, 1024, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yr3f6"]
+size = Vector2(50, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bw06f"]
+size = Vector2(50, 50)
+
+[node name="alien" type="CharacterBody2D" unique_id=568486332]
+scale = Vector2(1.6, 1.6)
+script = ExtResource("1_ed4od")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=135856286]
+scale = Vector2(0.11, 0.11)
+texture = SubResource("AtlasTexture_ed4od")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802353450]
+shape = SubResource("RectangleShape2D_yr3f6")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1066026547]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=80138574]
+shape = SubResource("RectangleShape2D_bw06f")

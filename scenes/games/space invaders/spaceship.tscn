@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bhrw2eusa1joy"]
+
+[ext_resource type="Script" uid="uid://b242fbifhp20r" path="res://scripts/space game/spaceship.gd" id="1_vb5g1"]
+[ext_resource type="Texture2D" uid="uid://c4th82i3ax71a" path="res://Resources/space game/spritesheet.png" id="2_dgsn6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17rms"]
+atlas = ExtResource("2_dgsn6")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
+size = Vector2(90, 90)
+
+[node name="spaceship" type="CharacterBody2D" unique_id=1879831827]
+script = ExtResource("1_vb5g1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=135856286]
+scale = Vector2(0.11, 0.11)
+texture = SubResource("AtlasTexture_17rms")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1802353450]
+shape = SubResource("RectangleShape2D_17rms")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1066026547]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=80138574]
+shape = SubResource("RectangleShape2D_17rms")

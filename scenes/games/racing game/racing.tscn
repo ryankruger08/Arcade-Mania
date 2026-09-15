@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://dtws0386s2pmh" path="res://Models/Racing Game/track_1.blend" id="2_18cws"]
 [ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_pstbb"]
 [ext_resource type="PackedScene" uid="uid://f47vnd5nmak4" path="res://scenes/games/racing game/vehicle.tscn" id="4_18cws"]
+[ext_resource type="Script" uid="uid://it2jtrbdsxci" path="res://scenes/games/racing game/kart_ai.gd" id="5_pstbb"]
+[ext_resource type="PackedScene" uid="uid://uuixxka63kvi" path="res://scenes/games/racing game/car_ai.tscn" id="6_ai1ar"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_17rms"]
 font = ExtResource("1_5p3jj")
@@ -18,6 +20,14 @@ sky_material = SubResource("PanoramaSkyMaterial_s80wa")
 [sub_resource type="Environment" id="Environment_if6sb"]
 background_mode = 2
 sky = SubResource("Sky_7wttu")
+
+[sub_resource type="Curve3D" id="Curve3D_25o8u"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.80093384, 0, 0, 0, 0, 0, 0, 0, 0, 2.7565308, 0, 40.606598, 0, 0, 0, 0, 0, 0, 28.55632, 0.5201335, 69.098495, 0, 0, 0, 0, 0, 0, 64.89288, -0.4972477, 62.58612, 0, 0, 0, 0, 0, 0, 82.2, 0, 21.365, 0, 0, 0, 0, 0, 0, 77.92, 0, -28.105, 0, 0, 0, 0, 0, 0, 55.085, 0, -57.285, 0, 0, 0, 0, 0, 0, 20.645, 0, -57.475, 0, 0, 0, 0, 0, 0, 0, 0, -25.28),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
 
 [node name="racing" type="Node3D" unique_id=2108779458]
 
@@ -54,24 +64,21 @@ transform = Transform3D(1, 0, 0, 0, 0.39609188, 0.91821086, 0, -0.91821086, 0.39
 environment = SubResource("Environment_if6sb")
 
 [node name="vehicle" parent="." unique_id=1949459313 instance=ExtResource("4_18cws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.399395, 2.0443218, 11.227323)
-engine_force = 100.0
-steering = 1.2217305
-engine_power = 155.635
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.76498, 0.6465714, -7.0759764)
 
-[node name="front-left" parent="vehicle" index="3" unique_id=499807065]
-engine_force = 1024.0
-suspension_stiffness = 8.63
+[node name="RigidBody3D" parent="." unique_id=492716589 instance=ExtResource("6_ai1ar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.192116, 0.92759514, 13.303371)
+ai_controlled = true
 
-[node name="front-right" parent="vehicle" index="4" unique_id=2019046731]
-engine_force = 1024.0
-suspension_stiffness = 8.63
+[node name="KartAI" type="Node" parent="RigidBody3D" unique_id=1500137657 node_paths=PackedStringArray("kart", "waypoints_path")]
+script = ExtResource("5_pstbb")
+kart = NodePath("..")
+waypoints_path = NodePath("Path3D")
+waypoints_from_path_count = 9
 
-[node name="rear-left" parent="vehicle" index="5" unique_id=562340332]
-suspension_stiffness = 8.63
-
-[node name="rear-right" parent="vehicle" index="6" unique_id=41753233]
-suspension_stiffness = 8.63
+[node name="Path3D" type="Path3D" parent="RigidBody3D/KartAI" unique_id=781232177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.061344, 0, 10.632906)
+curve = SubResource("Curve3D_25o8u")
 
 [editable path="track_1"]
-[editable path="vehicle"]
+[editable path="RigidBody3D"]

@@ -1,12 +1,9 @@
-[gd_scene format=4 uid="uid://f47vnd5nmak4"]
+[gd_scene format=4 uid="uid://uuixxka63kvi"]
 
-[ext_resource type="Script" uid="uid://b23wtmpjk7a41" path="res://scripts/racing game/car controller.gd" id="1_w4y7v"]
+[ext_resource type="Script" uid="uid://b23wtmpjk7a41" path="res://scripts/racing game/car controller.gd" id="1_vxa5l"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7wttu"]
 size = Vector3(1, 0.3951416, 1.7470703)
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_doybu"]
-auto_exposure_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_khsgo"]
 resource_name = "silver"
@@ -344,7 +341,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_wwqvb")
 
 [node name="RigidBody3D" type="CharacterBody3D" unique_id=492716589 node_paths=PackedStringArray("wheel_fl", "wheel_fr", "wheel_rl", "wheel_rr", "visual_root", "wheel_fl_mesh", "wheel_fr_mesh", "wheel_rl_mesh", "wheel_rr_mesh")]
-script = ExtResource("1_w4y7v")
+script = ExtResource("1_vxa5l")
 wheel_fl = NodePath("kart/WheelFL")
 wheel_fr = NodePath("kart/WheelFR")
 wheel_rl = NodePath("kart/WheelRL")
@@ -360,11 +357,6 @@ max_wheel_steer_angle_deg = -25.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=717368828]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07635498, 0.019042969)
 shape = SubResource("BoxShape3D_7wttu")
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=65564903]
-transform = Transform3D(1, 0, 0, 0, 0.9929083, 0.11888303, 0, -0.11888303, 0.9929083, 0, 0.9783139, 0.5451671)
-attributes = SubResource("CameraAttributesPractical_doybu")
-current = true
 
 [node name="kart" type="Node3D" parent="." unique_id=1977422956]
 

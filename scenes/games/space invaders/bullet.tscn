@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b8nx4u0gd1sw1"]
+
+[ext_resource type="Script" uid="uid://b8r2vqcu55wbo" path="res://scripts/space game/bullet.gd" id="1_ooclk"]
+[ext_resource type="Texture2D" uid="uid://c4th82i3ax71a" path="res://Resources/space game/spritesheet.png" id="2_r1fug"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la3k5"]
+atlas = ExtResource("2_r1fug")
+region = Rect2(0, 1024, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox3rx"]
+atlas = ExtResource("2_r1fug")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oymg"]
+size = Vector2(14, 42)
+
+[node name="bullet" type="Area2D" unique_id=1883931094]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_ooclk")
+
+[node name="alien" type="Sprite2D" parent="." unique_id=2129818785]
+scale = Vector2(0.11, 0.11)
+texture = SubResource("AtlasTexture_la3k5")
+
+[node name="player" type="Sprite2D" parent="." unique_id=289513832]
+scale = Vector2(0.11, 0.11)
+texture = SubResource("AtlasTexture_ox3rx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=707834159]
+shape = SubResource("RectangleShape2D_8oymg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

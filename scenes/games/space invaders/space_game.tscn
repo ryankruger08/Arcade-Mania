@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://daldhtmev87ta"]
+
+[ext_resource type="Texture2D" uid="uid://bugtff33quoo6" path="res://Resources/space game/background.png" id="1_6dp20"]
+[ext_resource type="Script" uid="uid://xls1xkwag6lx" path="res://scripts/space game/alien_manager.gd" id="1_yjoq3"]
+[ext_resource type="PackedScene" uid="uid://cyjhwa5w0s0vr" path="res://scenes/games/space invaders/alien.tscn" id="2_q8512"]
+[ext_resource type="PackedScene" uid="uid://bhrw2eusa1joy" path="res://scenes/games/space invaders/spaceship.tscn" id="3_6dp20"]
+
+[node name="space_game" type="Node2D" unique_id=958513414]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053263670]
+position = Vector2(953, 500.99994)
+scale = Vector2(0.514, 0.44)
+texture = ExtResource("1_6dp20")
+
+[node name="enemygrid" type="Node2D" parent="." unique_id=866054321]
+position = Vector2(960, 0)
+scale = Vector2(0.485, 0.485)
+script = ExtResource("1_yjoq3")
+alien_scene = ExtResource("2_q8512")
+columns = 19
+spacing = 117.015
+
+[node name="ShootTimer" type="Timer" parent="enemygrid" unique_id=2038384200]
+wait_time = 1.5
+autostart = true
+
+[node name="spaceship" parent="." unique_id=1879831827 instance=ExtResource("3_6dp20")]
+position = Vector2(960, 959)
