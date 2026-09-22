@@ -7,10 +7,6 @@
 atlas = ExtResource("2_r1fug")
 region = Rect2(0, 1024, 1024, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ox3rx"]
-atlas = ExtResource("2_r1fug")
-region = Rect2(1024, 0, 1024, 1024)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oymg"]
 size = Vector2(14, 42)
 
@@ -23,11 +19,12 @@ script = ExtResource("1_ooclk")
 scale = Vector2(0.11, 0.11)
 texture = SubResource("AtlasTexture_la3k5")
 
-[node name="player" type="Sprite2D" parent="." unique_id=289513832]
-scale = Vector2(0.11, 0.11)
-texture = SubResource("AtlasTexture_ox3rx")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=707834159]
 shape = SubResource("RectangleShape2D_8oymg")
 
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[node name="Timer" type="Timer" parent="." unique_id=674053933]
+wait_time = 5.111000000000001
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="timer_finish"]

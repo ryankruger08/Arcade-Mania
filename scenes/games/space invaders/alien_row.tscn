@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bmon2oyoi1boq"]
+
+[ext_resource type="Script" uid="uid://bvh4idrlm4l2q" path="res://scenes/games/space invaders/alien_row.gd" id="1_eu4ad"]
+
+[node name="alien_row" type="Node2D" unique_id=232319089]
+script = ExtResource("1_eu4ad")
+
+[node name="aliens" type="Node2D" parent="." unique_id=973340430]
+position = Vector2(0, 273)

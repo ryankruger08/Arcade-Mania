@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bpovqs0a42axb"]
+
+[ext_resource type="Script" uid="uid://clmvhi6sohtgp" path="res://scripts/space game/formation.gd" id="1_lpqpr"]
+[ext_resource type="PackedScene" uid="uid://bmon2oyoi1boq" path="res://scenes/games/space invaders/alien_row.tscn" id="2_lgvnv"]
+[ext_resource type="PackedScene" uid="uid://cyjhwa5w0s0vr" path="res://scenes/games/space invaders/alien.tscn" id="3_0vis7"]
+[ext_resource type="PackedScene" uid="uid://b8nx4u0gd1sw1" path="res://scenes/games/space invaders/bullet.tscn" id="4_lgvnv"]
+
+[node name="formation" type="Node2D" unique_id=95225960]
+script = ExtResource("1_lpqpr")
+alien_row_scene = ExtResource("2_lgvnv")
+alien_scene = ExtResource("3_0vis7")
+bullet_scene = ExtResource("4_lgvnv")
+columns = 13
+column_spacing = 90.0
+row_spacing = 90.0
+step_down_amount = 90.0

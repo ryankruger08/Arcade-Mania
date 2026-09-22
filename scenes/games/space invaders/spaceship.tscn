@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bhrw2eusa1joy"]
 
 [ext_resource type="Script" uid="uid://b242fbifhp20r" path="res://scripts/space game/spaceship.gd" id="1_vb5g1"]
+[ext_resource type="PackedScene" uid="uid://b8nx4u0gd1sw1" path="res://scenes/games/space invaders/bullet.tscn" id="2_1exfg"]
 [ext_resource type="Texture2D" uid="uid://c4th82i3ax71a" path="res://Resources/space game/spritesheet.png" id="2_dgsn6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_17rms"]
@@ -11,7 +12,9 @@ region = Rect2(0, 0, 1024, 1024)
 size = Vector2(90, 90)
 
 [node name="spaceship" type="CharacterBody2D" unique_id=1879831827]
+collision_layer = 9
 script = ExtResource("1_vb5g1")
+bullet = ExtResource("2_1exfg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=135856286]
 scale = Vector2(0.11, 0.11)

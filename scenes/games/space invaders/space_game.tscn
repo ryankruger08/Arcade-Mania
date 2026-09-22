@@ -1,28 +1,251 @@
 [gd_scene format=3 uid="uid://daldhtmev87ta"]
 
+[ext_resource type="Script" uid="uid://catim1hsk438c" path="res://scenes/games/space invaders/space_game.gd" id="1_2fcm0"]
 [ext_resource type="Texture2D" uid="uid://bugtff33quoo6" path="res://Resources/space game/background.png" id="1_6dp20"]
-[ext_resource type="Script" uid="uid://xls1xkwag6lx" path="res://scripts/space game/alien_manager.gd" id="1_yjoq3"]
-[ext_resource type="PackedScene" uid="uid://cyjhwa5w0s0vr" path="res://scenes/games/space invaders/alien.tscn" id="2_q8512"]
+[ext_resource type="PackedScene" uid="uid://bpovqs0a42axb" path="res://scenes/games/space invaders/formation.tscn" id="2_2fcm0"]
 [ext_resource type="PackedScene" uid="uid://bhrw2eusa1joy" path="res://scenes/games/space invaders/spaceship.tscn" id="3_6dp20"]
+[ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="5_tcyn2"]
+
+[sub_resource type="Animation" id="Animation_2fcm0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_anim/Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tcyn2"]
+resource_name = "background"
+length = 5.0009999999999994
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("background_anim/Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 5.001),
+"transitions": PackedFloat32Array(1, 1, 187.4028),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1961.835, 1689.645), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ct6yv"]
+_data = {
+&"RESET": SubResource("Animation_2fcm0"),
+&"background": SubResource("Animation_tcyn2")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 123
+
+[sub_resource type="LabelSettings" id="LabelSettings_2fcm0"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 44
+
+[sub_resource type="LabelSettings" id="LabelSettings_tcyn2"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 172
+
+[sub_resource type="LabelSettings" id="LabelSettings_hp53i"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxfro"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 54
+
+[sub_resource type="LabelSettings" id="LabelSettings_7j61p"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 113
 
 [node name="space_game" type="Node2D" unique_id=958513414]
+script = ExtResource("1_2fcm0")
+formation_scene = ExtResource("2_2fcm0")
+spawn_interval = 5.0
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2053263670]
+[node name="background_anim" type="Node2D" parent="." unique_id=1726206816]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="background_anim" unique_id=968139248]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_ct6yv")
+
+[node name="Node2D" type="Node2D" parent="background_anim" unique_id=1613733917]
+
+[node name="background" type="Sprite2D" parent="background_anim/Node2D" unique_id=2053263670]
 position = Vector2(953, 500.99994)
 scale = Vector2(0.514, 0.44)
 texture = ExtResource("1_6dp20")
 
-[node name="enemygrid" type="Node2D" parent="." unique_id=866054321]
-position = Vector2(960, 0)
-scale = Vector2(0.485, 0.485)
-script = ExtResource("1_yjoq3")
-alien_scene = ExtResource("2_q8512")
-columns = 19
-spacing = 117.015
+[node name="background2" type="Sprite2D" parent="background_anim/Node2D" unique_id=1117234696]
+position = Vector2(-1008, 501)
+scale = Vector2(0.514, 0.44)
+texture = ExtResource("1_6dp20")
 
-[node name="ShootTimer" type="Timer" parent="enemygrid" unique_id=2038384200]
-wait_time = 1.5
-autostart = true
+[node name="background3" type="Sprite2D" parent="background_anim/Node2D" unique_id=574447105]
+position = Vector2(-1008, -1187)
+scale = Vector2(0.514, 0.44)
+texture = ExtResource("1_6dp20")
+
+[node name="background4" type="Sprite2D" parent="background_anim/Node2D" unique_id=1460408812]
+position = Vector2(965, -1187)
+scale = Vector2(0.514, 0.44)
+texture = ExtResource("1_6dp20")
 
 [node name="spaceship" parent="." unique_id=1879831827 instance=ExtResource("3_6dp20")]
 position = Vector2(960, 959)
+
+[node name="in_game_ui" type="Control" parent="." unique_id=833412413]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="RichTextLabel" type="Label" parent="in_game_ui" unique_id=2144077568]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.5
+offset_right = 34.5
+offset_bottom = 124.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_17rms")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RichTextLabel2" type="Label" parent="in_game_ui" unique_id=62075685]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_top = 144.0
+offset_right = 30.0
+offset_bottom = 170.0
+grow_horizontal = 2
+text = "Lives"
+label_settings = SubResource("LabelSettings_2fcm0")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="RichTextLabel3" type="Label" parent="in_game_ui" unique_id=1912537427]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.5
+offset_top = -86.0
+offset_right = 521.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_tcyn2")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="attract_ui" type="Control" parent="." unique_id=2100748966]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="insert_credit" type="Label" parent="attract_ui" unique_id=1451562089]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.557
+offset_top = -303.635
+offset_right = 128.55798
+offset_bottom = -248.73999
+grow_horizontal = 2
+grow_vertical = 0
+text = "Insert Credit"
+label_settings = SubResource("LabelSettings_hp53i")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="credit_count" type="Label" parent="attract_ui" unique_id=2050577518]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.557
+offset_top = 236.13202
+offset_right = 128.55798
+offset_bottom = 291.02692
+grow_horizontal = 2
+grow_vertical = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_hp53i")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="highscore_text" type="Label" parent="attract_ui" unique_id=417707461]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.557
+offset_top = -396.298
+offset_right = 128.55798
+offset_bottom = -341.40298
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Score"
+label_settings = SubResource("LabelSettings_bxfro")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="highscore_text2" type="Label" parent="attract_ui" unique_id=622442942]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -327.615
+offset_right = 140.0
+offset_bottom = -213.61499
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_7j61p")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="aliens" type="Node2D" parent="." unique_id=923555427]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=827862047]
+position = Vector2(960, 542)
+
+[node name="SubViewport" type="SubViewport" parent="Camera2D" unique_id=939401215]

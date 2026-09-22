@@ -1,19 +1,10 @@
 extends CharacterBody2D
 
-signal enemy_shot(bullet_instance, global_spawn_position)
+signal died()
 
-@export var points: int = 10
-@export var bullet: PackedScene
-
-func spawn_bullet() -> void:
-	if not bullet:
-		return
-		
-	var bullety = bullet.instantiate()
-	
-	bullety.global_position = global_position
-	
-	get_tree().current_scene.add_child(bullety)
+func _ready() -> void:
+	add_to_group("alien")
 
 func take_damage() -> void:
+	died.emit()
 	queue_free()
