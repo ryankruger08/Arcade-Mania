@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dvhc0umu87dqm"]
+
+[ext_resource type="Script" uid="uid://66ifssglgclw" path="res://scripts/space game/UFO.gd" id="1_mowup"]
+[ext_resource type="Texture2D" uid="uid://4iv8jmhgmxjs" path="res://Resources/space game/ufo.png" id="2_5hrue"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17rms"]
+radius = 489.0041
+
+[node name="UFO" type="Area2D" unique_id=383567292]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_mowup")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1839285159]
+texture = ExtResource("2_5hrue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2001979765]
+shape = SubResource("CircleShape2D_17rms")

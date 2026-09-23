@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://bugtff33quoo6" path="res://Resources/space game/background.png" id="1_6dp20"]
 [ext_resource type="PackedScene" uid="uid://bpovqs0a42axb" path="res://scenes/games/space invaders/formation.tscn" id="2_2fcm0"]
 [ext_resource type="PackedScene" uid="uid://bhrw2eusa1joy" path="res://scenes/games/space invaders/spaceship.tscn" id="3_6dp20"]
+[ext_resource type="PackedScene" uid="uid://dvhc0umu87dqm" path="res://scenes/games/space invaders/ufo.tscn" id="3_ct6yv"]
 [ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="5_tcyn2"]
+[ext_resource type="PackedScene" uid="uid://c5lnmelt4mv6" path="res://scenes/games/space invaders/shield.tscn" id="7_hp53i"]
 
 [sub_resource type="Animation" id="Animation_2fcm0"]
 length = 0.001
@@ -49,6 +51,11 @@ line_spacing = 3.045
 font = ExtResource("5_tcyn2")
 font_size = 123
 
+[sub_resource type="LabelSettings" id="LabelSettings_ct6yv"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 56
+
 [sub_resource type="LabelSettings" id="LabelSettings_2fcm0"]
 line_spacing = 3.045
 font = ExtResource("5_tcyn2")
@@ -62,21 +69,35 @@ font_size = 172
 [sub_resource type="LabelSettings" id="LabelSettings_hp53i"]
 line_spacing = 3.045
 font = ExtResource("5_tcyn2")
-font_size = 41
-
-[sub_resource type="LabelSettings" id="LabelSettings_bxfro"]
-line_spacing = 3.045
-font = ExtResource("5_tcyn2")
-font_size = 54
+font_size = 73
 
 [sub_resource type="LabelSettings" id="LabelSettings_7j61p"]
 line_spacing = 3.045
 font = ExtResource("5_tcyn2")
 font_size = 113
 
-[node name="space_game" type="Node2D" unique_id=958513414]
+[sub_resource type="LabelSettings" id="LabelSettings_bxfro"]
+line_spacing = 3.045
+font = ExtResource("5_tcyn2")
+font_size = 54
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
+size = Vector2(1937, 66)
+
+[node name="space_game" type="Node2D" unique_id=958513414 node_paths=PackedStringArray("scoretext", "livestext", "gameovertext", "highscoretext", "player", "aliens_container", "bullet_container", "ufo_container", "background_anim", "game_over_zone")]
 script = ExtResource("1_2fcm0")
+scoretext = NodePath("in_game_ui/ScoreText")
+livestext = NodePath("in_game_ui/LivesText2")
+gameovertext = NodePath("in_game_ui/Game Over")
+highscoretext = NodePath("attract_ui/highscore_number")
+player = NodePath("spaceship")
 formation_scene = ExtResource("2_2fcm0")
+aliens_container = NodePath("aliens")
+bullet_container = NodePath("BulletContainer")
+ufo_container = NodePath("UFOCONTAINER")
+ufo_scene = ExtResource("3_ct6yv")
+background_anim = NodePath("background_anim/AnimationPlayer")
+game_over_zone = NodePath("Area2D")
 spawn_interval = 5.0
 
 [node name="background_anim" type="Node2D" parent="." unique_id=1726206816]
@@ -116,36 +137,52 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="RichTextLabel" type="Label" parent="in_game_ui" unique_id=2144077568]
+[node name="ScoreText" type="Label" parent="in_game_ui" unique_id=2144077568]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -34.5
-offset_right = 34.5
-offset_bottom = 124.0
+offset_left = -34.0
+offset_top = 70.0
+offset_right = 35.0
+offset_bottom = 194.0
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_17rms")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="RichTextLabel2" type="Label" parent="in_game_ui" unique_id=62075685]
+[node name="LivesText2" type="Label" parent="in_game_ui" unique_id=1146942209]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -34.0
-offset_top = 144.0
-offset_right = 30.0
-offset_bottom = 170.0
+offset_left = 835.0
+offset_top = 70.0
+offset_right = 948.0
+offset_bottom = 114.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ct6yv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LivesText" type="Label" parent="in_game_ui/LivesText2" unique_id=62075685]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_top = -61.0
+offset_right = 56.5
+offset_bottom = -17.0
 grow_horizontal = 2
 text = "Lives"
 label_settings = SubResource("LabelSettings_2fcm0")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="RichTextLabel3" type="Label" parent="in_game_ui" unique_id=1912537427]
+[node name="Game Over" type="Label" parent="in_game_ui" unique_id=1912537427]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -165,7 +202,6 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="attract_ui" type="Control" parent="." unique_id=2100748966]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -189,43 +225,7 @@ label_settings = SubResource("LabelSettings_hp53i")
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="credit_count" type="Label" parent="attract_ui" unique_id=2050577518]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.557
-offset_top = 236.13202
-offset_right = 128.55798
-offset_bottom = 291.02692
-grow_horizontal = 2
-grow_vertical = 2
-text = "Credits"
-label_settings = SubResource("LabelSettings_hp53i")
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="highscore_text" type="Label" parent="attract_ui" unique_id=417707461]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.557
-offset_top = -396.298
-offset_right = 128.55798
-offset_bottom = -341.40298
-grow_horizontal = 2
-grow_vertical = 2
-text = "High Score"
-label_settings = SubResource("LabelSettings_bxfro")
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="highscore_text2" type="Label" parent="attract_ui" unique_id=622442942]
+[node name="highscore_number" type="Label" parent="attract_ui" unique_id=622442942]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -233,9 +233,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -140.0
-offset_top = -327.615
+offset_top = -470.0
 offset_right = 140.0
-offset_bottom = -213.61499
+offset_bottom = -356.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "0"
@@ -243,9 +243,43 @@ label_settings = SubResource("LabelSettings_7j61p")
 horizontal_alignment = 1
 vertical_alignment = 2
 
+[node name="highscore_text" type="Label" parent="attract_ui/highscore_number" unique_id=417707461]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -118.0
+offset_right = 140.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "High Score"
+label_settings = SubResource("LabelSettings_bxfro")
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="aliens" type="Node2D" parent="." unique_id=923555427]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=827862047]
-position = Vector2(960, 542)
+[node name="Area2D" type="Area2D" parent="." unique_id=2089912573]
+position = Vector2(0, 731)
+collision_layer = 64
+collision_mask = 64
 
-[node name="SubViewport" type="SubViewport" parent="Camera2D" unique_id=939401215]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=591849572]
+position = Vector2(958.5, 23)
+shape = SubResource("RectangleShape2D_17rms")
+
+[node name="BulletContainer" type="Node2D" parent="." unique_id=897041894]
+
+[node name="UFOCONTAINER" type="Node2D" parent="." unique_id=1582930819]
+
+[node name="Shield" parent="." unique_id=384424711 instance=ExtResource("7_hp53i")]
+position = Vector2(205.725, 780.745)
+scale = Vector2(0.24, 0.095)
+
+[node name="Shield2" parent="." unique_id=1335221360 instance=ExtResource("7_hp53i")]
+position = Vector2(1697.84, 780.745)
+scale = Vector2(0.24, 0.095)

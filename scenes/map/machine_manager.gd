@@ -77,13 +77,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("play"):
 		if not playing and start_ready and credits > 0:
 			credits -= 1
-			_update_credit_label()
 			if camera: camera.current = true
 			playing = true
 			if player:
 				player.set_physics_process(false)
 				player.set_process_unhandled_input(false)
 			if gamemanager: gamemanager.start_match()
+			_update_credit_label()
 			_refresh_label()
 			get_viewport().set_input_as_handled()
 		elif playing:
@@ -126,3 +126,30 @@ func _on_start_button_body_entered(body: Node3D) -> void:
 func _on_start_button_body_exited(body: Node3D) -> void:
 		start_ready = false
 		_refresh_label()
+
+
+func spend_credit() -> bool:
+	if credits <= 0:
+		return false
+	credits -= 1
+	_update_credit_label()
+	return true
+
+
+func add_credits(amount: int) -> void:
+	if amount <= 0:
+		return
+	credits += amount
+	_update_credit_label()
+
+
+func exit_play_mode() -> void:
+	if not playing:
+		return
+	playing = false
+	if camera: camera.current = false
+	if player:
+		player.set_physics_process(true)
+		player.set_process_unhandled_input(true)
+	_update_credit_label()
+	_refresh_label()

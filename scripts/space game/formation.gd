@@ -1,28 +1,29 @@
 extends Node2D
-signal alien_killed()
+signal alien_killed(points)
 signal cleared()
-signal reached_bottom()
 
 @export var alien_row_scene: PackedScene
 @export var alien_scene: PackedScene
 @export var bullet_scene: PackedScene
-@export var columns: int = 8
+@export var bullet_container: Node2D
+@export var columns: int = 6
 @export var column_spacing: float = 64.0
-@export var row_spacing: float = 48.0
+@export var row_spacing: float = 56.0
 @export var base_speed: float = 120.0
 @export var speed_per_kill: float = 4.0
-@export var step_down_amount: float = 24.0
+@export var step_down_amount: float = 20.0
 @export var edge_margin: float = 32.0
 @export var shoot_interval: float = 1.5
-@export var game_over_y: float = 500.0
+@export var row_point_values: Array[int] = [3, 2, 2, 1, 1, 1]
 
 var direction: int = 1
 var rows_alive: int = 0
 var total_aliens: int = 0
 var alive_aliens: int = 0
-var _triggered_game_over: bool = false
 
 func build(row_count: int) -> void:
+	if not alien_row_scene or not alien_scene:
+		return
 	for child in get_children():
 		child.queue_free()
 	rows_alive = row_count
@@ -38,7 +39,8 @@ func build(row_count: int) -> void:
 		row.alien_killed.connect(_on_alien_killed)
 		row.cleared.connect(_on_row_cleared)
 		add_child(row)
-		row.build(columns, alien_scene, column_spacing)
+		var points = row_point_values[r] if r < row_point_values.size() else 1
+		row.build(columns, alien_scene, column_spacing, points)
 	var timer = Timer.new()
 	timer.wait_time = shoot_interval
 	timer.one_shot = false
@@ -59,13 +61,10 @@ func _physics_process(delta: float) -> void:
 	elif direction == -1 and position.x <= edge_margin:
 		direction = 1
 		position.y += step_down_amount
-	if not _triggered_game_over and position.y >= game_over_y:
-		_triggered_game_over = true
-		reached_bottom.emit()
 
-func _on_alien_killed() -> void:
+func _on_alien_killed(points) -> void:
 	alive_aliens -= 1
-	alien_killed.emit()
+	alien_killed.emit(points)
 
 func _on_row_cleared() -> void:
 	rows_alive -= 1
@@ -89,4 +88,7 @@ func _on_shoot_timer() -> void:
 	var bullety = bullet_scene.instantiate()
 	bullety.global_position = shooter.global_position + Vector2(0, 20)
 	bullety.alienbullet = true
-	get_tree().current_scene.add_child(bullety)
+	if bullet_container:
+		bullet_container.add_child(bullety)
+	else:
+		get_tree().current_scene.add_child(bullety)

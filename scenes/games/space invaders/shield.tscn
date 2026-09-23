@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c5lnmelt4mv6"]
+
+[ext_resource type="Script" uid="uid://c5knt3p6c7x5" path="res://scripts/space game/shield.gd" id="1_irihk"]
+[ext_resource type="Texture2D" uid="uid://c4th82i3ax71a" path="res://Resources/space game/spritesheet.png" id="2_8bmde"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6sb"]
+size = Vector2(886, 513)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17rms"]
+atlas = ExtResource("2_8bmde")
+region = Rect2(0, 2048, 1024, 1024)
+
+[node name="Shield" type="StaticBody2D" unique_id=384424711]
+scale = Vector2(0.285, 0.165)
+script = ExtResource("1_irihk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1983599439]
+position = Vector2(3, 0.5)
+shape = SubResource("RectangleShape2D_if6sb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=838544809]
+texture = SubResource("AtlasTexture_17rms")

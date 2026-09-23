@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://djviw8xtrs4ki" path="res://Models/Map/game-map.blend" id="1_sxf4j"]
 [ext_resource type="PackedScene" uid="uid://cggles3hks74w" path="res://scenes/player/player.tscn" id="2_tqkkf"]
+[ext_resource type="PackedScene" uid="uid://bb7r61pckv0go" path="res://scenes/games/space invaders/space_arcade.tscn" id="3_fcby6"]
 [ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_ph54e"]
 [ext_resource type="PackedScene" uid="uid://drk0w8e0smc7w" path="res://scenes/games/pong_arcade.tscn" id="4_ph54e"]
 
@@ -25,21 +26,39 @@ ssil_enabled = true
 sdfgi_use_occlusion = true
 volumetric_fog_density = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ph54e"]
-viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_fcby6"]
 viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jcaow"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_ph54e")
-emission_enabled = true
-emission_texture = SubResource("ViewportTexture_fcby6")
+[sub_resource type="ViewportTexture" id="ViewportTexture_jcaow"]
+viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_04w0f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04w0f"]
 resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_jcaow")
+albedo_texture = SubResource("ViewportTexture_fcby6")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_jcaow")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sqgf4"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_04w0f")
+size = Vector2(1.63, 1.08)
+orientation = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_vvrx0"]
+viewport_path = NodePath("arcade-machine/MeshInstance3D/SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f17u5"]
+viewport_path = NodePath("arcade-machine/MeshInstance3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b56te"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_vvrx0")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_f17u5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x2kg6"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_b56te")
 size = Vector2(1.63, 1.08)
 orientation = 2
 
@@ -66,19 +85,30 @@ environment = SubResource("Environment_17rms")
 transform = Transform3D(1, 0, 0, 0, -0.06925565, 0.99759895, 0, -0.99759895, -0.06925565, 0, 28.930676, 0)
 shadow_enabled = true
 
-[node name="Pong Arcade" parent="." unique_id=424789420 instance=ExtResource("4_ph54e")]
+[node name="Pong Arcade" parent="." unique_id=202857943 instance=ExtResource("4_ph54e")]
 transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 1.18, 0.69818926, -12.15)
 
-[node name="MeshInstance3D" parent="Pong Arcade/arcade-machine" parent_id_path=PackedInt32Array(424789420, 440034849) index="0" unique_id=2041155398]
-mesh = SubResource("PlaneMesh_04w0f")
+[node name="MeshInstance3D" parent="Pong Arcade/arcade-machine" parent_id_path=PackedInt32Array(202857943, 440034849) index="0" unique_id=2041155398]
+mesh = SubResource("PlaneMesh_sqgf4")
 
-[node name="ball" parent="Pong Arcade/arcade-machine/Node2D/SubViewport/Camera2D/Control2" parent_id_path=PackedInt32Array(424789420, 1777230661, 1609006891) index="4" unique_id=1414630960]
+[node name="ball" parent="Pong Arcade/arcade-machine/Node2D/SubViewport/Camera2D/Control2" parent_id_path=PackedInt32Array(202857943, 1777230661, 1609006891) index="4" unique_id=1414630960]
 paddle_half_height = 53.0
 
 [node name="coinslot" parent="Pong Arcade" index="2" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
 player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
+[node name="Space Arcade" parent="." unique_id=424789420 instance=ExtResource("3_fcby6")]
+transform = Transform3D(0.41, 0, 0, 0, 0.41, 0, 0, 0, 0.41, -2.8817062, 0.6770183, -12.331551)
+
+[node name="MeshInstance3D" parent="Space Arcade/arcade-machine" parent_id_path=PackedInt32Array(424789420, 440034849) index="0" unique_id=2041155398]
+mesh = SubResource("PlaneMesh_x2kg6")
+
+[node name="coinslot" parent="Space Arcade" index="2" unique_id=1510952970 node_paths=PackedStringArray("player")]
+player = NodePath("../../CharacterBody3D")
+
 [editable path="CharacterBody3D"]
 [editable path="Pong Arcade"]
 [editable path="Pong Arcade/arcade-machine/Node2D"]
+[editable path="Space Arcade"]
+[editable path="Space Arcade/arcade-machine/MeshInstance3D/SubViewport/space_game"]
