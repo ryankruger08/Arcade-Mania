@@ -12,6 +12,8 @@ region = Rect2(0, 2048, 1024, 1024)
 
 [node name="Shield" type="StaticBody2D" unique_id=384424711]
 scale = Vector2(0.285, 0.165)
+collision_layer = 72
+collision_mask = 72
 script = ExtResource("1_irihk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1983599439]

@@ -13,6 +13,7 @@ var demo_mode: bool = false
 var demo_direction: int = 1
 var demo_shoot_timer: Timer
 var invulnerable: bool = false
+var _dead: bool = false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -60,13 +61,16 @@ func _fire_bullet() -> void:
 		get_tree().current_scene.add_child(bullety)
 
 func take_damage() -> void:
-	if demo_mode or invulnerable:
+	if demo_mode or invulnerable or _dead:
 		return
 	lives -= 1
 	if lives <= 0:
+		_dead = true
 		died.emit()
 		visible = false
 		set_physics_process(false)
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
 		return
 	_start_invulnerability()
 
@@ -86,7 +90,10 @@ func reset(start_lives: int) -> void:
 	lives = start_lives
 	visible = true
 	invulnerable = false
+	_dead = false
 	modulate.a = 1.0
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
 	set_physics_process(true)
 
 func set_demo_mode(enabled: bool) -> void:

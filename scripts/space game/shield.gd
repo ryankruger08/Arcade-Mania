@@ -23,3 +23,9 @@ func _update_visual() -> void:
 	modulate.a = float(health) / float(max_health)
 	if health <= 0:
 		visible = false
+		set_collision_layer_value(1, false)
+		set_collision_mask_value(1, false)
+	else:
+		visible = true
+		set_collision_layer_value(1, true)
+		set_collision_mask_value(1, true)

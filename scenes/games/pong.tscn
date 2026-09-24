@@ -25,7 +25,7 @@ font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ohq1h"]
 font = ExtResource("4_5y872")
-font_size = 186
+font_size = 111
 font_color = Color(0, 1, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_17rms"]
@@ -177,7 +177,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 1, 0, 1)
 
-[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "player1", "player2", "score_label", "countdown_label", "countdown_rect")]
+[node name="Node" type="Node" parent="SubViewport/Camera2D/Control2" unique_id=1587970259 node_paths=PackedStringArray("ball", "player1", "player2", "score_label", "countdown_label", "countdown_rect", "gameover_label")]
 script = ExtResource("2_36maa")
 ball = NodePath("../ball")
 player1 = NodePath("../players/player1")
@@ -185,6 +185,7 @@ player2 = NodePath("../players/player2")
 score_label = NodePath("../scores")
 countdown_label = NodePath("../timer")
 countdown_rect = NodePath("../blackscreen")
+gameover_label = NodePath("../win_lose")
 
 [node name="Timer" type="Timer" parent="SubViewport/Camera2D/Control2/Node" unique_id=1515292437]
 one_shot = true
@@ -240,6 +241,20 @@ offset_right = 95.50049
 offset_bottom = 420.1552
 grow_horizontal = 2
 text = "3"
+label_settings = SubResource("LabelSettings_ohq1h")
+horizontal_alignment = 1
+
+[node name="win_lose" type="Label" parent="SubViewport/Camera2D/Control2" unique_id=1000871137]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.49951
+offset_top = 166.155
+offset_right = 95.50049
+offset_bottom = 420.1552
+grow_horizontal = 2
+text = "You Win!"
 label_settings = SubResource("LabelSettings_ohq1h")
 horizontal_alignment = 1
 

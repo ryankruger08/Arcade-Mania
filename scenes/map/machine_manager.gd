@@ -143,6 +143,12 @@ func add_credits(amount: int) -> void:
 	_update_credit_label()
 
 
+func add_wallet_bonus(amount: int) -> void:
+	if amount <= 0:
+		return
+	Wallet.add_coins(amount)
+
+
 func exit_play_mode() -> void:
 	if not playing:
 		return

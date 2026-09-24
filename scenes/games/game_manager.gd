@@ -9,29 +9,46 @@ extends Node
 @export var score_label: Label
 @export var countdown_label: Label
 @export var countdown_rect: ColorRect
+@export var gameover_label: Label
 
-var playing = false
+@export_group("Machine")
+@export var machine_manager: Node
+@export var win_score: int = 5
+@export var game_over_delay: float = 3.0
+
+var mode: String = "attract"
 var score1 = 0
 var score2 = 0
-var attract = true
 var is_counting_down = false
 var high_score: int = 0
+var game_over_timer: Timer
 
 const SAVE_PATH = "user://arcade_highscore.cfg"
 
 func _ready() -> void:
+	if not machine_manager:
+		push_warning("machine_manager export is not assigned, exit_play_mode will never be called")
 	load_high_score()
+	game_over_timer = Timer.new()
+	game_over_timer.one_shot = true
+	game_over_timer.wait_time = game_over_delay
+	game_over_timer.timeout.connect(_on_game_over_timeout)
+	add_child(game_over_timer)
+	print("game_over_timer wait_time set to: ", game_over_timer.wait_time)
 	await get_tree().process_frame
-	setup_attract_mode()
+	start_attract()
 
-func setup_attract_mode() -> void:
-	attract = true
-	playing = false
+func start_attract() -> void:
+	print("start_attract called")
+	mode = "attract"
 	is_counting_down = false
+	score1 = 0
+	score2 = 0
 	
 	if score_label: score_label.visible = false
 	if countdown_label: countdown_label.visible = false
 	if countdown_rect: countdown_rect.visible = false
+	if gameover_label: gameover_label.visible = false
 	
 	if player1:
 		player1.CPU = true
@@ -44,8 +61,8 @@ func setup_attract_mode() -> void:
 		ball.serve_ball()
 
 func start_match() -> void:
-	attract = false
-	playing = false
+	print("start_match called")
+	mode = "playing"
 	
 	if ball: ball.playing = false
 	
@@ -53,15 +70,15 @@ func start_match() -> void:
 	score2 = 0
 	if score_label:
 		score_label.visible = true
+	if gameover_label: gameover_label.visible = false
 	update_scores()
 	
 	if player1: player1.CPU = false
 	if player2: player2.CPU = true
 	
 	await run_game_countdown()
-	playing = true
 	
-	if ball:
+	if mode == "playing" and ball:
 		ball.serve_ball()
 
 func run_game_countdown() -> void:
@@ -84,7 +101,7 @@ func run_game_countdown() -> void:
 	if countdown_rect: countdown_rect.visible = false
 	is_counting_down = false
 
-	if not attract:
+	if mode == "playing":
 		if player1:
 			player1.playing = true
 		if player2:
@@ -100,39 +117,72 @@ func _flash_countdown_step(number_text: String) -> void:
 	await get_tree().create_timer(0.5).timeout
 
 func end_match() -> void:
-	check_for_new_highscore(score1)
-	check_for_new_highscore(score2)
-	setup_attract_mode()
+	print("end_match called")
+	game_over_timer.stop()
+	if machine_manager:
+		machine_manager.exit_play_mode()
+	start_attract()
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	if not attract and playing and not is_counting_down:
+	if mode == "playing" and not is_counting_down:
 		score1 += 1
 		update_scores()
-		check_for_new_highscore(score1)
+		if score1 >= win_score:
+			_on_match_won(1, score1)
+			return
 		await run_game_countdown()
-		if ball and playing: ball.serve_ball()
-	elif attract:
+		if mode == "playing": ball.serve_ball()
+	elif mode == "attract":
 		if ball: ball.serve_ball()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if not attract and playing and not is_counting_down:
+	if mode == "playing" and not is_counting_down:
 		score2 += 1
 		update_scores()
-		check_for_new_highscore(score2)
+		if score2 >= win_score:
+			_on_match_won(2, score2)
+			return
 		await run_game_countdown()
-		if ball and playing: ball.serve_ball()
-	elif attract:
+		if mode == "playing": ball.serve_ball()
+	elif mode == "attract":
 		if ball: ball.serve_ball()
 	
 func update_scores() -> void:
-	if score_label and not attract:
+	if score_label and mode == "playing":
 		score_label.text = str(score1, " - ", score2)
+
+func _on_match_won(winner: int, winning_score: int) -> void:
+	print("match won by player ", winner, " score: ", winning_score, " mode was: ", mode)
+	mode = "game_over"
+	if ball: ball.playing = false
+	if player1: player1.playing = false
+	if player2: player2.playing = false
+	check_for_new_highscore(winning_score)
+	if gameover_label:
+		if winner == 1:
+			gameover_label.text = "YOU WIN!"
+		else:
+			gameover_label.text = "YOU LOSE"
+		gameover_label.visible = true
+		print("gameover_label set visible, text: ", gameover_label.text)
+	else:
+		print("gameover_label is null, cannot show text")
+	Wallet.add_coins(1)
+	game_over_timer.start()
+	print("game_over_timer started, wait_time: ", game_over_timer.wait_time)
+
+func _on_game_over_timeout() -> void:
+	print("game_over_timeout fired, calling exit_play_mode and start_attract")
+	if machine_manager:
+		machine_manager.exit_play_mode()
+	else:
+		print("machine_manager is null, exit_play_mode was skipped")
+	start_attract()
 
 func check_for_new_highscore(final_score: int) -> void:
 	if final_score > high_score:
 		high_score = final_score
 		save_high_score()
-		Wallet.add_coins(1)
 
 func save_high_score() -> void:
 	var config = ConfigFile.new()

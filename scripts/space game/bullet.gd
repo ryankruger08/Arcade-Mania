@@ -39,10 +39,22 @@ func _on_body_entered(body: Node2D) -> void:
 		if not body.is_in_group("player"):
 			return
 	else:
-		if not (body.is_in_group("alien") or body.is_in_group("ufo")):
+		if not body.is_in_group("alien"):
 			return
 	
 	if body.has_method("take_damage"):
 		_has_collided = true
 		body.take_damage()
+		queue_free()
+
+func _on_area_entered(area: Area2D) -> void:
+	if _has_collided:
+		return
+	if alienbullet:
+		return
+	if not area.is_in_group("ufo"):
+		return
+	if area.has_method("take_damage"):
+		_has_collided = true
+		area.take_damage()
 		queue_free()

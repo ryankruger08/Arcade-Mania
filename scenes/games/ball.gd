@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var speed_multiplier: float = 1.05
 @export var max_speed: float = 1200.0
 @export var min_y_component: float = 0.2
+@export var min_x_component: float = 0.3
 @export var paddle_spin_strength: float = 0.6
 @export var paddle_half_height: float = 60.0
 var current_speed: float
@@ -27,10 +28,14 @@ func _physics_process(delta: float) -> void:
 				var offset = (global_position.y - collider.global_position.y) / paddle_half_height
 				offset = clamp(offset, -1.0, 1.0)
 				velocity.y += offset * paddle_spin_strength
-		if abs(velocity.y) < min_y_component:
-			velocity.y = min_y_component if velocity.y >= 0 else -min_y_component
-		velocity = velocity.normalized()
-		current_speed = min(current_speed * speed_multiplier, max_speed)
+			if abs(velocity.y) < min_y_component:
+				velocity.y = min_y_component if velocity.y >= 0 else -min_y_component
+			velocity = velocity.normalized()
+			current_speed = min(current_speed * speed_multiplier, max_speed)
+		else:
+			if abs(velocity.x) < min_x_component:
+				velocity.x = min_x_component if velocity.x >= 0 else -min_x_component
+			velocity = velocity.normalized()
 		motion = velocity * collision_info.get_remainder().length()
 func serve_ball() -> void:
 	position = Vector2(815, 540)

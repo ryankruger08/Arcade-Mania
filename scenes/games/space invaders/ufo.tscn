@@ -8,6 +8,8 @@ radius = 489.0041
 
 [node name="UFO" type="Area2D" unique_id=383567292]
 scale = Vector2(0.1, 0.1)
+collision_layer = 72
+collision_mask = 8
 script = ExtResource("1_mowup")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1839285159]

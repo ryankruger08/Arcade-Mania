@@ -19,7 +19,8 @@ extends Node2D
 @export var max_concurrent_formations: int = 1
 @export var starting_lives: int = 3
 @export var game_over_delay: float = 4.0
-@export var high_score_bonus_multiplier: float = 1.0
+@export var high_score_bonus_multiplier: float = 0.05
+@export var max_bonus_credits: int = 3
 @export var base_formation_speed: float = 120.0
 @export var speed_per_score: float = 0.05
 @export var base_shoot_interval: float = 1.5
@@ -34,6 +35,7 @@ var mode: String = "attract"
 var wave_number: int = 0
 var current_rows: int = 1
 var zone_triggered: bool = false
+var pending_continue: bool = false
 var spawn_timer: Timer
 var game_over_timer: Timer
 var ufo_timer: Timer
@@ -143,22 +145,20 @@ func _on_game_over_zone_entered(body: Node2D) -> void:
 func _on_game_over() -> void:
 	if mode == "game_over":
 		return
-	var was_playing = mode == "playing"
+	pending_continue = mode == "playing"
 	mode = "game_over"
-	if was_playing and score > high_score:
+	if pending_continue and score > high_score:
 		var amount_over = score - high_score
 		high_score = score
 		_save_high_score()
 		if machine_manager:
-			var bonus_credits = int(amount_over * high_score_bonus_multiplier)
+			var bonus_credits = min(int(amount_over * high_score_bonus_multiplier), max_bonus_credits)
 			if bonus_credits > 0:
-				machine_manager.add_credits(bonus_credits)
+				machine_manager.add_wallet_bonus(bonus_credits)
 	if aliens_container:
 		for child in aliens_container.get_children():
 			child.queue_free()
-	if was_playing and machine_manager and machine_manager.spend_credit():
-		_continue_match()
-		return
+	_clear_bullets()
 	if highscoretext:
 		highscoretext.text = str(high_score)
 	if gameovertext:
@@ -168,14 +168,15 @@ func _on_game_over() -> void:
 		player.set_demo_mode(false)
 		player.global_position = player_start_position
 		player.visible = true
-	if was_playing and machine_manager:
-		machine_manager.exit_play_mode()
 	spawn_timer.stop()
 	game_over_timer.start()
 
 func _continue_match() -> void:
 	mode = "playing"
 	current_rows = 1
+	if gameovertext:
+		gameovertext.visible = false
+	_clear_bullets()
 	if player:
 		player.global_position = player_start_position
 		player.reset(starting_lives)
@@ -185,6 +186,11 @@ func _continue_match() -> void:
 	spawn_wave()
 
 func _on_game_over_timeout() -> void:
+	if pending_continue and machine_manager and machine_manager.spend_credit():
+		_continue_match()
+		return
+	if machine_manager:
+		machine_manager.exit_play_mode()
 	start_attract()
 
 func start_attract() -> void:
@@ -205,6 +211,7 @@ func start_attract() -> void:
 	if aliens_container:
 		for child in aliens_container.get_children():
 			child.queue_free()
+	_clear_bullets()
 	if player:
 		player.global_position = player_start_position
 		player.reset(starting_lives)
@@ -231,6 +238,7 @@ func start_match() -> void:
 	if aliens_container:
 		for child in aliens_container.get_children():
 			child.queue_free()
+	_clear_bullets()
 	if player:
 		player.global_position = player_start_position
 		player.reset(starting_lives)
@@ -244,6 +252,11 @@ func start_match() -> void:
 func end_match() -> void:
 	game_over_timer.stop()
 	start_attract()
+
+func _clear_bullets() -> void:
+	if bullet_container:
+		for child in bullet_container.get_children():
+			child.queue_free()
 
 func _schedule_ufo() -> void:
 	ufo_timer.wait_time = randf_range(ufo_min_interval, ufo_max_interval)
