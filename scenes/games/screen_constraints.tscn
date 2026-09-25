@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://l4kkhuu5nbhr"]
+
+[node name="screen constraints" type="Node2D" unique_id=1388318164]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1942460990]
+offset_left = 252.835
+offset_right = 332.83496
+offset_bottom = 1080.0
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1931870876]
+offset_left = 1550.385
+offset_right = 1629.385
+offset_bottom = 1080.0

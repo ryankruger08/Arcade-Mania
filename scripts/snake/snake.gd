@@ -2,10 +2,12 @@ extends Node2D
 signal ate_food()
 signal died()
 
-@export var cell_size: int = 32
-@export var grid_width: int = 20
-@export var grid_height: int = 15
+@export var cell_size: int = 60
+@export var grid_width: int = 32
+@export var grid_height: int = 18
 @export var move_interval: float = 0.15
+@export var min_move_interval: float = 0.06
+@export var speed_step: float = 0.005
 @export var start_length: int = 3
 
 var segments: Array = []
@@ -16,6 +18,7 @@ var demo_mode: bool = false
 var food_position: Vector2i = Vector2i.ZERO
 var move_timer: Timer
 var pending_growth: int = 0
+var current_interval: float
 
 func _ready() -> void:
 	move_timer = Timer.new()
@@ -25,20 +28,22 @@ func _ready() -> void:
 	add_child(move_timer)
 
 func reset() -> void:
-	segments.clear()
 	var start_x = grid_width / 2
 	var start_y = grid_height / 2
+	segments.clear()
 	for i in start_length:
 		segments.append(Vector2i(start_x - i, start_y))
 	direction = Vector2i.RIGHT
 	next_direction = Vector2i.RIGHT
 	pending_growth = 0
+	current_interval = move_interval
 	queue_redraw()
 
 func start(is_demo: bool) -> void:
 	demo_mode = is_demo
 	playing = true
-	move_timer.wait_time = move_interval
+	current_interval = move_interval
+	move_timer.wait_time = current_interval
 	move_timer.start()
 
 func stop() -> void:
@@ -50,16 +55,16 @@ func set_direction(dir: Vector2i) -> void:
 		return
 	next_direction = dir
 
-func _unhandled_input(event: InputEvent) -> void:
+func _process(delta: float) -> void:
 	if not playing or demo_mode:
 		return
-	if event.is_action_pressed("ui_up"):
+	if Input.is_action_just_pressed("ui_up"):
 		set_direction(Vector2i.UP)
-	elif event.is_action_pressed("ui_down"):
+	elif Input.is_action_just_pressed("ui_down"):
 		set_direction(Vector2i.DOWN)
-	elif event.is_action_pressed("ui_left"):
+	elif Input.is_action_just_pressed("ui_left"):
 		set_direction(Vector2i.LEFT)
-	elif event.is_action_pressed("ui_right"):
+	elif Input.is_action_just_pressed("ui_right"):
 		set_direction(Vector2i.RIGHT)
 
 func _on_move_tick() -> void:
@@ -79,11 +84,16 @@ func _on_move_tick() -> void:
 	if new_head == food_position:
 		pending_growth += 1
 		ate_food.emit()
+		_speed_up()
 	if pending_growth > 0:
 		pending_growth -= 1
 	else:
 		segments.pop_back()
 	queue_redraw()
+
+func _speed_up() -> void:
+	current_interval = max(min_move_interval, current_interval - speed_step)
+	move_timer.wait_time = current_interval
 
 func _die() -> void:
 	playing = false

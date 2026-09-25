@@ -1,84 +1,36 @@
 [gd_scene format=3 uid="uid://drk0w8e0smc7w"]
 
 [ext_resource type="PackedScene" uid="uid://dqv8aefmtai2n" path="res://scenes/games/pong.tscn" id="1_7wugm"]
-[ext_resource type="PackedScene" uid="uid://hmr0574i2jy4" path="res://Models/Map/arcade-machine.blend" id="2_2hck1"]
+[ext_resource type="PackedScene" uid="uid://bwbrsdx8omhhf" path="res://Models/Map/arcade-machine1.blend" id="2_umwyn"]
 [ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/machine_manager.gd" id="3_umwyn"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_umwyn"]
-viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jcom0"]
-viewport_path = NodePath("arcade-machine/Node2D/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wugm"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_umwyn")
-emission_enabled = true
-emission_texture = SubResource("ViewportTexture_jcom0")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_17rms"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_7wugm")
-size = Vector2(1.63, 1.08)
-orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6mdw"]
 size = Vector3(0.2782898, 0.35394096, 0.35832548)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
-size = Vector3(1.806633, 0.25509548, 0.8300599)
+size = Vector3(2.0219688, 0.25509548, 0.8300599)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_umwyn"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6mdw"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_umwyn")
 
 [node name="Pong Arcade" type="Node3D" unique_id=424789420]
-
-[node name="arcade-machine" type="Node3D" parent="." unique_id=440034849]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="arcade-machine" unique_id=2041155398]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3237743, 0.36217296)
-mesh = SubResource("PlaneMesh_17rms")
-
-[node name="Node2D" parent="arcade-machine" unique_id=1777230661 instance=ExtResource("1_7wugm")]
-
-[node name="Control2" parent="arcade-machine/Node2D/SubViewport/Camera2D" parent_id_path=PackedInt32Array(1777230661, 991879317) index="0" unique_id=1609006891]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Node" parent="arcade-machine/Node2D/SubViewport/Camera2D/Control2" index="5" unique_id=1587970259 node_paths=PackedStringArray("machine_manager")]
-machine_manager = NodePath("../../../../../../coinslot")
-
-[node name="blackscreen" parent="arcade-machine/Node2D/SubViewport/Camera2D/Control2" index="6" unique_id=1530465545]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1088.5
-offset_top = -786.5
-offset_right = 1088.5
-offset_bottom = 786.5
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="arcade-machine" parent="arcade-machine" unique_id=332788749 instance=ExtResource("2_2hck1")]
 
 [node name="pongcamera" type="Camera3D" parent="." unique_id=653099797]
 transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
 
 [node name="coinslot" type="Area3D" parent="." unique_id=1510952970 node_paths=PackedStringArray("camera", "credit_label", "gamemanager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.70710987, 0)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("3_umwyn")
 machine_name = "Pong"
 camera = NodePath("../pongcamera")
-credit_label = NodePath("../arcade-machine/Node2D/SubViewport/Camera2D/Control2/InsertCoinLabel")
-gamemanager = NodePath("../arcade-machine/Node2D/SubViewport/Camera2D/Control2/Node")
+credit_label = NodePath("../SubViewport/Node2D/Control2/InsertCoinLabel")
+gamemanager = NodePath("../SubViewport/Node2D/Control2/Node")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="coinslot" unique_id=922392250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42855787, 1.5347078, 1.1487615)
@@ -89,12 +41,23 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="startbutton" unique_id=459335488]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013187885, 2.6067834, 0.8411606)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12085581, 2.6067834, 0.8411606)
 shape = SubResource("BoxShape3D_umwyn")
+
+[node name="arcade-machine1" parent="." unique_id=324943654 instance=ExtResource("2_umwyn")]
+
+[node name="Cube_018" parent="arcade-machine1" index="1" unique_id=1770842861]
+surface_material_override/0 = SubResource("StandardMaterial3D_g6mdw")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=419205345]
+size = Vector2i(1920, 1080)
+
+[node name="Node2D" parent="SubViewport" unique_id=1777230661 instance=ExtResource("1_7wugm")]
 
 [connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
 [connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]
 [connection signal="area_entered" from="startbutton" to="coinslot" method="_on_start_button_body_entered"]
 [connection signal="area_exited" from="startbutton" to="coinslot" method="_on_start_button_body_exited"]
 
-[editable path="arcade-machine/Node2D"]
+[editable path="arcade-machine1"]
+[editable path="SubViewport/Node2D"]

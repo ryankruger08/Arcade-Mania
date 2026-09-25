@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dvhc0umu87dqm" path="res://scenes/games/space invaders/ufo.tscn" id="3_ct6yv"]
 [ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="5_tcyn2"]
 [ext_resource type="PackedScene" uid="uid://c5lnmelt4mv6" path="res://scenes/games/space invaders/shield.tscn" id="7_hp53i"]
+[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/screen_constraints.tscn" id="8_hp53i"]
 
 [sub_resource type="Animation" id="Animation_2fcm0"]
 length = 0.001
@@ -54,12 +55,12 @@ font_size = 123
 [sub_resource type="LabelSettings" id="LabelSettings_ct6yv"]
 line_spacing = 3.045
 font = ExtResource("5_tcyn2")
-font_size = 56
+font_size = 81
 
 [sub_resource type="LabelSettings" id="LabelSettings_2fcm0"]
 line_spacing = 3.045
 font = ExtResource("5_tcyn2")
-font_size = 44
+font_size = 57
 
 [sub_resource type="LabelSettings" id="LabelSettings_tcyn2"]
 line_spacing = 3.045
@@ -69,7 +70,7 @@ font_size = 172
 [sub_resource type="LabelSettings" id="LabelSettings_hp53i"]
 line_spacing = 3.045
 font = ExtResource("5_tcyn2")
-font_size = 73
+font_size = 104
 
 [sub_resource type="LabelSettings" id="LabelSettings_7j61p"]
 line_spacing = 3.045
@@ -128,8 +129,9 @@ position = Vector2(965, -1187)
 scale = Vector2(0.514, 0.44)
 texture = ExtResource("1_6dp20")
 
-[node name="spaceship" parent="." unique_id=1879831827 instance=ExtResource("3_6dp20")]
+[node name="spaceship" parent="." unique_id=1879831827 node_paths=PackedStringArray("bullet_container") instance=ExtResource("3_6dp20")]
 position = Vector2(960, 959)
+bullet_container = NodePath("../BulletContainer")
 
 [node name="in_game_ui" type="Control" parent="." unique_id=833412413]
 layout_mode = 3
@@ -157,10 +159,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 835.0
+offset_left = 422.0
 offset_top = 70.0
-offset_right = 948.0
-offset_bottom = 114.0
+offset_right = 535.0
+offset_bottom = 126.0
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_ct6yv")
@@ -200,6 +202,12 @@ text = "GAME OVER"
 label_settings = SubResource("LabelSettings_tcyn2")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="ColorRect" type="ColorRect" parent="in_game_ui" unique_id=1610387385]
+layout_mode = 0
+offset_top = 710.405
+offset_right = 1920.0
+offset_bottom = 719.18005
 
 [node name="attract_ui" type="Control" parent="." unique_id=2100748966]
 layout_mode = 3
@@ -277,9 +285,11 @@ shape = SubResource("RectangleShape2D_17rms")
 [node name="UFOCONTAINER" type="Node2D" parent="." unique_id=1582930819]
 
 [node name="Shield" parent="." unique_id=384424711 instance=ExtResource("7_hp53i")]
-position = Vector2(205.725, 780.745)
-scale = Vector2(0.24, 0.095)
+position = Vector2(506, 780.99994)
+scale = Vector2(0.17, 0.065)
 
-[node name="Shield2" parent="." unique_id=1335221360 instance=ExtResource("7_hp53i")]
-position = Vector2(1697.84, 780.745)
-scale = Vector2(0.24, 0.095)
+[node name="Shield2" parent="." unique_id=1890474640 instance=ExtResource("7_hp53i")]
+position = Vector2(1381, 781)
+scale = Vector2(0.17, 0.065)
+
+[node name="screen constraints" parent="." unique_id=1388318164 instance=ExtResource("8_hp53i")]

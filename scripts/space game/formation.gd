@@ -11,8 +11,9 @@ signal cleared()
 @export var row_spacing: float = 56.0
 @export var base_speed: float = 120.0
 @export var speed_per_kill: float = 4.0
-@export var step_down_amount: float = 20.0
-@export var edge_margin: float = 32.0
+@export var step_down_amount: float = 10.0
+@export var edge_margin: float = 370.0
+@export var sprite_overhang: float = 20.0
 @export var shoot_interval: float = 1.5
 @export var row_point_values: Array[int] = [3, 2, 2, 1, 1, 1]
 
@@ -55,10 +56,11 @@ func _physics_process(delta: float) -> void:
 	position.x += direction * speed * delta
 	var formation_width = columns * column_spacing
 	var screen_width = get_viewport_rect().size.x
-	if direction == 1 and position.x + formation_width >= screen_width - edge_margin:
+	var total_margin = edge_margin + sprite_overhang
+	if direction == 1 and position.x + formation_width >= screen_width - total_margin:
 		direction = -1
 		position.y += step_down_amount
-	elif direction == -1 and position.x <= edge_margin:
+	elif direction == -1 and position.x <= total_margin:
 		direction = 1
 		position.y += step_down_amount
 

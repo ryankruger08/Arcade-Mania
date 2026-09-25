@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var cell_size: int = 32
+@export var cell_size: int = 60
 var grid_position: Vector2i = Vector2i.ZERO
 
 func set_grid_position(pos: Vector2i) -> void:

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dxap73fcphytc"]
+
+[ext_resource type="PackedScene" uid="uid://ctob586p4h6yb" path="res://scenes/games/snake/snake_game.tscn" id="1_fxqrt"]
+[ext_resource type="PackedScene" uid="uid://bwbrsdx8omhhf" path="res://Models/Map/arcade-machine1.blend" id="3_fxqrt"]
+[ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/machine_manager.gd" id="3_x5676"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g6mdw"]
+size = Vector3(0.2782898, 0.35394096, 0.35832548)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
+size = Vector3(2.039547, 0.25509548, 0.8300599)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fxqrt"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6lcno"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_fxqrt")
+
+[node name="snake_arcade" type="Node3D" unique_id=424789420]
+
+[node name="pongcamera" type="Camera3D" parent="." unique_id=653099797]
+transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
+
+[node name="coinslot" type="Area3D" parent="." unique_id=1510952970 node_paths=PackedStringArray("camera", "credit_label", "gamemanager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59419155, 0)
+collision_layer = 64
+collision_mask = 64
+script = ExtResource("3_x5676")
+machine_name = "Snake"
+camera = NodePath("../pongcamera")
+credit_label = NodePath("../SubViewport/SnakeGame/Control/credit")
+gamemanager = NodePath("../SubViewport/SnakeGame")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="coinslot" unique_id=922392250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42855787, 1.5347078, 1.1487615)
+shape = SubResource("BoxShape3D_g6mdw")
+
+[node name="startbutton" type="Area3D" parent="." unique_id=1835900166]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="startbutton" unique_id=459335488]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12964487, 2.6067834, 0.8411606)
+shape = SubResource("BoxShape3D_umwyn")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=667048958]
+size = Vector2i(1920, 1080)
+
+[node name="SnakeGame" parent="SubViewport" unique_id=480509604 node_paths=PackedStringArray("snake", "food", "score_label", "gameover_label", "highscore_label", "countdown_label", "machine_manager") instance=ExtResource("1_fxqrt")]
+snake = NodePath("Snake")
+food = NodePath("food")
+score_label = NodePath("Control/Score")
+gameover_label = NodePath("Control/game_over")
+highscore_label = NodePath("Control/number_high_score")
+countdown_label = NodePath("Control/countdown")
+machine_manager = NodePath("../../coinslot")
+
+[node name="arcade-machine1" parent="." unique_id=2004248552 instance=ExtResource("3_fxqrt")]
+
+[node name="Cube_018" parent="arcade-machine1" index="1" unique_id=1770842861]
+surface_material_override/0 = SubResource("StandardMaterial3D_6lcno")
+
+[connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
+[connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]
+[connection signal="area_entered" from="startbutton" to="coinslot" method="_on_start_button_body_entered"]
+[connection signal="area_exited" from="startbutton" to="coinslot" method="_on_start_button_body_exited"]
+
+[editable path="SubViewport/SnakeGame"]
+[editable path="arcade-machine1"]

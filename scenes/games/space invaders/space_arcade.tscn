@@ -3,12 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://daldhtmev87ta" path="res://scenes/games/space invaders/space_game.tscn" id="1_lylwg"]
 [ext_resource type="PackedScene" uid="uid://hmr0574i2jy4" path="res://Models/Map/arcade-machine.blend" id="2_djlaq"]
 [ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/machine_manager.gd" id="3_0wfig"]
+[ext_resource type="PackedScene" uid="uid://bwbrsdx8omhhf" path="res://Models/Map/arcade-machine1.blend" id="4_djlaq"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_umwyn"]
-viewport_path = NodePath("arcade-machine/MeshInstance3D/SubViewport")
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_jcom0"]
-viewport_path = NodePath("arcade-machine/MeshInstance3D/SubViewport")
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wugm"]
 resource_local_to_scene = true
@@ -26,21 +27,28 @@ orientation = 2
 size = Vector3(0.2782898, 0.35394096, 0.35832548)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
-size = Vector3(1.806633, 0.25509548, 0.8300599)
+size = Vector3(2.0356407, 0.25509548, 0.8300599)
 
-[node name="Pong Arcade" type="Node3D" unique_id=424789420]
+[sub_resource type="ViewportTexture" id="ViewportTexture_0wfig"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_3pa81"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmkg3"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_0wfig")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_3pa81")
+
+[node name="space_arcade" type="Node3D" unique_id=424789420]
 
 [node name="arcade-machine" type="Node3D" parent="." unique_id=440034849]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="arcade-machine" unique_id=2041155398]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3237743, 0.36217296)
 mesh = SubResource("PlaneMesh_17rms")
-
-[node name="SubViewport" type="SubViewport" parent="arcade-machine/MeshInstance3D" unique_id=667048958]
-size = Vector2i(1920, 1080)
-
-[node name="space_game" parent="arcade-machine/MeshInstance3D/SubViewport" unique_id=958513414 node_paths=PackedStringArray("machine_manager") instance=ExtResource("1_lylwg")]
-machine_manager = NodePath("../../../../coinslot")
 
 [node name="arcade-machine" parent="arcade-machine" unique_id=332788749 instance=ExtResource("2_djlaq")]
 
@@ -48,13 +56,14 @@ machine_manager = NodePath("../../../../coinslot")
 transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
 
 [node name="coinslot" type="Area3D" parent="." unique_id=1510952970 node_paths=PackedStringArray("camera", "credit_label", "gamemanager")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5480776, 0)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("3_0wfig")
 machine_name = "Space Game"
 camera = NodePath("../pongcamera")
-credit_label = NodePath("../arcade-machine/MeshInstance3D/SubViewport/space_game/attract_ui/insert_credit")
-gamemanager = NodePath("../arcade-machine/MeshInstance3D/SubViewport/space_game")
+credit_label = NodePath("../SubViewport/space_game/attract_ui/insert_credit")
+gamemanager = NodePath("../SubViewport/space_game")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="coinslot" unique_id=922392250]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42855787, 1.5347078, 1.1487615)
@@ -65,12 +74,24 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="startbutton" unique_id=459335488]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013187885, 2.6067834, 0.8411606)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12769175, 2.6067834, 0.8411606)
 shape = SubResource("BoxShape3D_umwyn")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=667048958]
+size = Vector2i(1920, 1080)
+
+[node name="space_game" parent="SubViewport" unique_id=958513414 node_paths=PackedStringArray("machine_manager") instance=ExtResource("1_lylwg")]
+machine_manager = NodePath("../../coinslot")
+
+[node name="arcade-machine1" parent="." unique_id=324943654 instance=ExtResource("4_djlaq")]
+
+[node name="Cube_018" parent="arcade-machine1" index="1" unique_id=1770842861]
+surface_material_override/0 = SubResource("StandardMaterial3D_gmkg3")
 
 [connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
 [connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]
 [connection signal="area_entered" from="startbutton" to="coinslot" method="_on_start_button_body_entered"]
 [connection signal="area_exited" from="startbutton" to="coinslot" method="_on_start_button_body_exited"]
 
-[editable path="arcade-machine/MeshInstance3D/SubViewport/space_game"]
+[editable path="SubViewport/space_game"]
+[editable path="arcade-machine1"]
