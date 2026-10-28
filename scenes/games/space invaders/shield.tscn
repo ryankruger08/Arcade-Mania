@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5lnmelt4mv6"]
 
-[ext_resource type="Script" uid="uid://c5knt3p6c7x5" path="res://scripts/space game/shield.gd" id="1_irihk"]
+[ext_resource type="Script" uid="uid://c5knt3p6c7x5" path="res://scenes/games/space invaders/shield.gd" id="1_irihk"]
 [ext_resource type="Texture2D" uid="uid://c4th82i3ax71a" path="res://Resources/space game/spritesheet.png" id="2_8bmde"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_if6sb"]

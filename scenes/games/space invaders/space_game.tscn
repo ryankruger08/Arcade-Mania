@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dvhc0umu87dqm" path="res://scenes/games/space invaders/ufo.tscn" id="3_ct6yv"]
 [ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="5_tcyn2"]
 [ext_resource type="PackedScene" uid="uid://c5lnmelt4mv6" path="res://scenes/games/space invaders/shield.tscn" id="7_hp53i"]
-[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/screen_constraints.tscn" id="8_hp53i"]
 
 [sub_resource type="Animation" id="Animation_2fcm0"]
 length = 0.001
@@ -292,4 +291,16 @@ scale = Vector2(0.17, 0.065)
 position = Vector2(1381, 781)
 scale = Vector2(0.17, 0.065)
 
-[node name="screen constraints" parent="." unique_id=1388318164 instance=ExtResource("8_hp53i")]
+[node name="screen constraints" type="Node2D" parent="." unique_id=1388318164]
+
+[node name="ColorRect3" type="ColorRect" parent="screen constraints" unique_id=965323482]
+offset_left = 333.0
+offset_top = 1080.0
+offset_right = 338.2
+offset_bottom = 2160.0
+rotation = 3.1415927
+
+[node name="ColorRect2" type="ColorRect" parent="screen constraints" unique_id=1931870876]
+offset_left = 1550.385
+offset_right = 1554.885
+offset_bottom = 1080.0

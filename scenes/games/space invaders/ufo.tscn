@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dvhc0umu87dqm"]
 
-[ext_resource type="Script" uid="uid://66ifssglgclw" path="res://scripts/space game/UFO.gd" id="1_mowup"]
+[ext_resource type="Script" uid="uid://66ifssglgclw" path="res://scenes/games/space invaders/UFO.gd" id="1_mowup"]
 [ext_resource type="Texture2D" uid="uid://4iv8jmhgmxjs" path="res://Resources/space game/ufo.png" id="2_5hrue"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17rms"]

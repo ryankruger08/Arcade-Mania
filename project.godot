@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Wallet="*uid://ckv6iwvwf5lrp"
+Wallet="*res://scenes/player/wallet.gd"
 
 [display]
 
@@ -116,3 +116,4 @@ shoot={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+anti_aliasing/quality/msaa_3d=2

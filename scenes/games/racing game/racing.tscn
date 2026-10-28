@@ -1,84 +1,170 @@
 [gd_scene format=3 uid="uid://cklqr52ulvssq"]
 
-[ext_resource type="FontFile" uid="uid://dil6v3bygo78h" path="res://Resources/PixelatedEleganceRegular-ovawB.ttf" id="1_5p3jj"]
-[ext_resource type="PackedScene" uid="uid://dtws0386s2pmh" path="res://Models/Racing Game/track_1.blend" id="2_18cws"]
-[ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_pstbb"]
-[ext_resource type="PackedScene" uid="uid://f47vnd5nmak4" path="res://scenes/games/racing game/vehicle.tscn" id="4_18cws"]
-[ext_resource type="Script" uid="uid://it2jtrbdsxci" path="res://scenes/games/racing game/kart_ai.gd" id="5_pstbb"]
-[ext_resource type="PackedScene" uid="uid://uuixxka63kvi" path="res://scenes/games/racing game/car_ai.tscn" id="6_ai1ar"]
+[ext_resource type="Script" path="res://scenes/games/racing game/racing_game.gd" id="1"]
+[ext_resource type="PackedScene" path="res://Models/Racing Game/track_1.blend" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/games/racing game/vehicle.tscn" id="3"]
+[ext_resource type="FontFile" path="res://Resources/font.ttf" id="4"]
+[ext_resource type="Texture2D" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/games/shared/screen_constraints.tscn" id="6"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
-font = ExtResource("1_5p3jj")
-font_size = 50
+[sub_resource type="PanoramaSkyMaterial" id="SkyMaterial"]
+panorama = ExtResource("5")
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s80wa"]
-panorama = ExtResource("3_pstbb")
+[sub_resource type="Sky" id="Sky"]
+sky_material = SubResource("SkyMaterial")
 
-[sub_resource type="Sky" id="Sky_7wttu"]
-sky_material = SubResource("PanoramaSkyMaterial_s80wa")
-
-[sub_resource type="Environment" id="Environment_if6sb"]
+[sub_resource type="Environment" id="Environment"]
 background_mode = 2
-sky = SubResource("Sky_7wttu")
+sky = SubResource("Sky")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.6
 
-[sub_resource type="Curve3D" id="Curve3D_25o8u"]
+[sub_resource type="LabelSettings" id="ScoreFont"]
+font = ExtResource("4")
+font_size = 57
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LargeFont"]
+font = ExtResource("4")
+font_size = 115
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="CreditFont"]
+font = ExtResource("4")
+font_size = 70
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve3D" id="TrackCurve"]
+bake_interval = 0.5
 closed = true
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -0.80093384, 0, 0, 0, 0, 0, 0, 0, 0, 2.7565308, 0, 40.606598, 0, 0, 0, 0, 0, 0, 28.55632, 0.5201335, 69.098495, 0, 0, 0, 0, 0, 0, 64.89288, -0.4972477, 62.58612, 0, 0, 0, 0, 0, 0, 82.2, 0, 21.365, 0, 0, 0, 0, 0, 0, 77.92, 0, -28.105, 0, 0, 0, 0, 0, 0, 55.085, 0, -57.285, 0, 0, 0, 0, 0, 0, 20.645, 0, -57.475, 0, 0, 0, 0, 0, 0, 0, 0, -25.28),
+"points": PackedVector3Array(-0.54, 0, -11.88, 0.54, 0, 11.88, -40, 0, 10, -5.22, 0, -12.42, 5.22, 0, 12.42, -37, 0, 51, -11.16, 0, -3.96, 11.16, 0, 3.96, -11, 0, 79, -9.54, 0, 8.46, 9.54, 0, -8.46, 25, 0, 73, -2.34, 0, 16.2, 2.34, 0, -16.2, 42, 0, 32, 4.86, 0, 14.04, -4.86, 0, -14.04, 38, 0, -17, 10.26, 0, 5.22, -10.26, 0, -5.22, 15, 0, -46, 9.9, 0, -5.58, -9.9, 0, 5.58, -19, 0, -46, 3.78, 0, -10.08, -3.78, 0, 10.08, -40, 0, -15),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
 
-[node name="racing" type="Node3D" unique_id=2108779458]
+[node name="racing" type="Node3D" node_paths=PackedStringArray("player_kart", "karts", "track_path", "camera", "lap_label", "time_label", "position_label", "countdown_label", "gameover_label", "besttime_label")]
+script = ExtResource("1")
+player_kart = NodePath("Karts/Player")
+karts = NodePath("Karts")
+track_path = NodePath("TrackPath")
+camera = NodePath("Camera3D")
+lap_label = NodePath("UI/Control/Lap")
+time_label = NodePath("UI/Control/Time")
+position_label = NodePath("UI/Control/Position")
+countdown_label = NodePath("UI/Control/countdown")
+gameover_label = NodePath("UI/Control/game_over")
+besttime_label = NodePath("UI/Control/best_time")
 
-[node name="headsupdisplay" type="Control" parent="." unique_id=380074704]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 1
+[node name="track_1" parent="." instance=ExtResource("2")]
 
-[node name="Label" type="Label" parent="headsupdisplay" unique_id=1615295780]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Speed: 0"
-label_settings = SubResource("LabelSettings_17rms")
+[node name="TrackPath" type="Path3D" parent="."]
+curve = SubResource("TrackCurve")
 
-[node name="track_1" parent="." unique_id=2030895848 instance=ExtResource("2_18cws")]
+[node name="Karts" type="Node3D" parent="."]
 
-[node name="worldmanager" type="Node3D" parent="." unique_id=1515033167]
+[node name="Player" parent="Karts" instance=ExtResource("3")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="worldmanager" unique_id=1978892924]
-transform = Transform3D(1, 0, 0, 0, 0.39609188, 0.91821086, 0, -0.91821086, 0.39609188, 0, 69.1019, -28.385117)
+[node name="Opponent1" parent="Karts" instance=ExtResource("3")]
+max_speed = 25.0
+body_color = Color(0, 0.2, 1, 1)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="worldmanager" unique_id=651521749]
-environment = SubResource("Environment_if6sb")
+[node name="Opponent2" parent="Karts" instance=ExtResource("3")]
+max_speed = 24.0
+body_color = Color(1, 1, 0, 1)
 
-[node name="vehicle" parent="." unique_id=1949459313 instance=ExtResource("4_18cws")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.76498, 0.6465714, -7.0759764)
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+fov = 70.0
 
-[node name="RigidBody3D" parent="." unique_id=492716589 instance=ExtResource("6_ai1ar")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.192116, 0.92759514, 13.303371)
-ai_controlled = true
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment")
 
-[node name="KartAI" type="Node" parent="RigidBody3D" unique_id=1500137657 node_paths=PackedStringArray("kart", "waypoints_path")]
-script = ExtResource("5_pstbb")
-kart = NodePath("..")
-waypoints_path = NodePath("Path3D")
-waypoints_from_path_count = 9
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -30, 0)
+light_energy = 1.0
+shadow_enabled = true
 
-[node name="Path3D" type="Path3D" parent="RigidBody3D/KartAI" unique_id=781232177]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.061344, 0, 10.632906)
-curve = SubResource("Curve3D_25o8u")
+[node name="UI" type="CanvasLayer" parent="."]
 
-[editable path="track_1"]
-[editable path="RigidBody3D"]
+[node name="Control" type="Control" parent="UI"]
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Lap" type="Label" parent="UI/Control"]
+offset_left = 390.0
+offset_top = 20.0
+offset_right = 800.0
+offset_bottom = 100.0
+label_settings = SubResource("ScoreFont")
+text = "LAP 1/3"
+mouse_filter = 2
+
+[node name="Time" type="Label" parent="UI/Control"]
+offset_left = 1220.0
+offset_top = 20.0
+offset_right = 1530.0
+offset_bottom = 100.0
+label_settings = SubResource("ScoreFont")
+text = "00:00"
+horizontal_alignment = 2
+mouse_filter = 2
+
+[node name="Position" type="Label" parent="UI/Control"]
+offset_left = 820.0
+offset_top = 20.0
+offset_right = 1100.0
+offset_bottom = 100.0
+label_settings = SubResource("ScoreFont")
+text = "1/3"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="countdown" type="Label" parent="UI/Control"]
+visible = false
+offset_left = 610.0
+offset_top = 480.0
+offset_right = 1310.0
+offset_bottom = 600.0
+label_settings = SubResource("LargeFont")
+text = "3"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="game_over" type="Label" parent="UI/Control"]
+visible = false
+offset_left = 550.0
+offset_top = 480.0
+offset_right = 1370.0
+offset_bottom = 600.0
+label_settings = SubResource("LargeFont")
+text = "1ST PLACE"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="best_time" type="Label" parent="UI/Control"]
+offset_left = 390.0
+offset_top = 20.0
+offset_right = 1530.0
+offset_bottom = 100.0
+label_settings = SubResource("ScoreFont")
+text = "BEST --:--"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="credit" type="Label" parent="UI/Control"]
+offset_left = 610.0
+offset_top = 777.0
+offset_right = 1310.0
+offset_bottom = 883.0
+label_settings = SubResource("CreditFont")
+text = "INSERT COIN"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="screen constraints" parent="UI" instance=ExtResource("6")]

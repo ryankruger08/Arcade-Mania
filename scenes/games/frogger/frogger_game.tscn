@@ -1,0 +1,182 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scenes/games/frogger/frogger_game.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/games/frogger/frog.gd" id="2"]
+[ext_resource type="Script" path="res://scenes/games/frogger/lane.gd" id="3"]
+[ext_resource type="FontFile" path="res://Resources/font.ttf" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/games/shared/screen_constraints.tscn" id="5"]
+
+[sub_resource type="LabelSettings" id="ScoreFont"]
+font = ExtResource("4")
+font_size = 57
+
+[sub_resource type="LabelSettings" id="LargeFont"]
+font = ExtResource("4")
+font_size = 115
+
+[sub_resource type="LabelSettings" id="CreditFont"]
+font = ExtResource("4")
+font_size = 70
+
+[node name="FroggerGame" type="Node2D" node_paths=PackedStringArray("frog", "lanes", "score_label", "lives_label", "gameover_label", "highscore_label")]
+script = ExtResource("1")
+frog = NodePath("Board/Frog")
+lanes = NodePath("Board/Lanes")
+score_label = NodePath("Control/Score")
+lives_label = NodePath("Control/Lives")
+gameover_label = NodePath("Control/game_over")
+highscore_label = NodePath("Control/number_high_score")
+
+[node name="Board" type="Node2D" parent="."]
+position = Vector2(390, 120)
+
+[node name="Lanes" type="Node2D" parent="Board"]
+
+[node name="Log1" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 60)
+script = ExtResource("3")
+speed = 90.0
+water = true
+object_width = 250.0
+color = Color(0.5, 0.25, 0.05, 1)
+
+[node name="Log2" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 120)
+script = ExtResource("3")
+speed = -100.0
+water = true
+object_width = 230.0
+color = Color(0.5, 0.25, 0.05, 1)
+
+[node name="Log3" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 180)
+script = ExtResource("3")
+speed = 120.0
+water = true
+object_width = 260.0
+color = Color(0.5, 0.25, 0.05, 1)
+
+[node name="Log4" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 240)
+script = ExtResource("3")
+speed = -80.0
+water = true
+object_width = 240.0
+color = Color(0.5, 0.25, 0.05, 1)
+
+[node name="Log5" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 300)
+script = ExtResource("3")
+speed = 100.0
+water = true
+object_width = 250.0
+color = Color(0.5, 0.25, 0.05, 1)
+
+[node name="Car1" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 420)
+script = ExtResource("3")
+speed = -160.0
+color = Color(1, 0, 0, 1)
+
+[node name="Car2" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 480)
+script = ExtResource("3")
+speed = 120.0
+object_width = 140.0
+color = Color(1, 1, 0, 1)
+
+[node name="Car3" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 540)
+script = ExtResource("3")
+speed = -190.0
+object_width = 90.0
+color = Color(0, 0.6, 1, 1)
+
+[node name="Car4" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 600)
+script = ExtResource("3")
+speed = 110.0
+object_width = 160.0
+color = Color(1, 0.5, 0, 1)
+
+[node name="Car5" type="Node2D" parent="Board/Lanes"]
+position = Vector2(0, 660)
+script = ExtResource("3")
+speed = -140.0
+color = Color(1, 0, 1, 1)
+
+[node name="Frog" type="Node2D" parent="Board"]
+script = ExtResource("2")
+
+[node name="LeftMask" type="ColorRect" parent="."]
+z_index = 1
+offset_right = 390.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RightMask" type="ColorRect" parent="."]
+z_index = 1
+offset_left = 1530.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+z_index = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Score" type="Label" parent="Control"]
+offset_left = 410.0
+offset_top = 20.0
+offset_right = 800.0
+offset_bottom = 100.0
+label_settings = SubResource("ScoreFont")
+text = "0"
+mouse_filter = 2
+
+[node name="Lives" type="Label" parent="Control"]
+offset_left = 1210.0
+offset_top = 20.0
+offset_right = 1530.0
+offset_bottom = 100.0
+label_settings = SubResource("ScoreFont")
+text = "LIVES 3"
+mouse_filter = 2
+
+[node name="game_over" type="Label" parent="Control"]
+visible = false
+offset_left = 610.0
+offset_top = 480.0
+offset_right = 1310.0
+offset_bottom = 600.0
+label_settings = SubResource("LargeFont")
+text = "GAME OVER"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="number_high_score" type="Label" parent="Control"]
+offset_left = 390.0
+offset_top = 20.0
+offset_right = 1530.0
+offset_bottom = 100.0
+label_settings = SubResource("ScoreFont")
+text = "HIGH SCORE 0"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="credit" type="Label" parent="Control"]
+offset_left = 610.0
+offset_top = 900.0
+offset_right = 1310.0
+offset_bottom = 1010.0
+label_settings = SubResource("CreditFont")
+text = "INSERT COIN"
+horizontal_alignment = 1
+mouse_filter = 2
+
+[node name="screen constraints" parent="." instance=ExtResource("5")]
+z_index = 2

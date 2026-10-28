@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ctob586p4h6yb"]
 
-[ext_resource type="Script" uid="uid://cue1vtgmr6l8j" path="res://scripts/snake/snake_game.gd" id="1_6rmpm"]
+[ext_resource type="Script" uid="uid://cue1vtgmr6l8j" path="res://scenes/games/snake/snake_game.gd" id="1_6rmpm"]
 [ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="2_b4umo"]
 [ext_resource type="PackedScene" uid="uid://dfdbsyuygt2ds" path="res://scenes/games/snake/food.tscn" id="3_biucp"]
 [ext_resource type="PackedScene" uid="uid://dr3kxyy0ud0xv" path="res://scenes/games/snake/snake.tscn" id="4_u501u"]
-[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/screen_constraints.tscn" id="5_b4umo"]
+[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/shared/screen_constraints.tscn" id="5_b4umo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_17rms"]
 font = ExtResource("2_b4umo")
@@ -115,7 +115,9 @@ label_settings = SubResource("LabelSettings_jv6ht")
 horizontal_alignment = 1
 
 [node name="food" parent="." unique_id=1869567699 instance=ExtResource("3_biucp")]
+position = Vector2(390, 0)
 
 [node name="Snake" parent="." unique_id=1792048074 instance=ExtResource("4_u501u")]
+position = Vector2(390, 0)
 
 [node name="screen constraints" parent="." unique_id=1388318164 instance=ExtResource("5_b4umo")]

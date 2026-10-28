@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cwio65shtgmu4"]
+
+[ext_resource type="Script" uid="uid://b0r22o1ex7gc5" path="res://scenes/games/breakout/brick.gd" id="1_v4k53"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
+size = Vector2(100, 32)
+
+[node name="Brick" type="StaticBody2D" unique_id=240758509]
+script = ExtResource("1_v4k53")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2096009566]
+position = Vector2(50, 16)
+shape = SubResource("RectangleShape2D_17rms")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1938473274]
+offset_right = 100.0
+offset_bottom = 32.0
+color = Color(1, 0.27058825, 0.23529412, 1)

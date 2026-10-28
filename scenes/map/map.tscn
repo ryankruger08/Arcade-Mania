@@ -4,15 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://cggles3hks74w" path="res://scenes/player/player.tscn" id="2_tqkkf"]
 [ext_resource type="PackedScene" uid="uid://bb7r61pckv0go" path="res://scenes/games/space invaders/space_arcade.tscn" id="3_fcby6"]
 [ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="3_ph54e"]
-[ext_resource type="PackedScene" uid="uid://drk0w8e0smc7w" path="res://scenes/games/pong_arcade.tscn" id="4_ph54e"]
+[ext_resource type="PackedScene" uid="uid://drk0w8e0smc7w" path="res://scenes/games/pong/pong_arcade.tscn" id="4_ph54e"]
 [ext_resource type="PackedScene" uid="uid://dxap73fcphytc" path="res://scenes/games/snake/snake_arcade.tscn" id="6_jcaow"]
+[ext_resource type="PackedScene" uid="uid://2lg3gn5rdsma" path="res://scenes/games/breakout/breakout_arcade.tscn" id="7_04w0f"]
+[ext_resource type="PackedScene" path="res://scenes/games/asteroids/asteroids_arcade.tscn" id="8_asteroids"]
+[ext_resource type="PackedScene" path="res://scenes/games/frogger/frogger_arcade.tscn" id="9_frogger"]
+[ext_resource type="PackedScene" path="res://scenes/games/racing game/racing_arcade.tscn" id="10_racing"]
+[ext_resource type="Script" path="res://scenes/map/room_lighting.gd" id="11_lighting"]
+[ext_resource type="PackedScene" path="res://scenes/map/room_lights.tscn" id="12_lights"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ph54e"]
-auto_exposure_enabled = true
+auto_exposure_enabled = false
 dof_blur_far_distance = 509.28
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sqgf4"]
 panorama = ExtResource("3_ph54e")
+energy_multiplier = 0.55
 
 [sub_resource type="Sky" id="Sky_if6sb"]
 sky_material = SubResource("PanoramaSkyMaterial_sqgf4")
@@ -20,64 +27,84 @@ sky_material = SubResource("PanoramaSkyMaterial_sqgf4")
 [sub_resource type="Environment" id="Environment_17rms"]
 background_mode = 2
 sky = SubResource("Sky_if6sb")
-ssr_enabled = true
+ambient_light_source = 3
+ambient_light_color = Color(0.47, 0.55, 0.7, 1)
+ambient_light_energy = 0.35
+tonemap_mode = 4
+tonemap_exposure = 1.2
+ssr_enabled = false
 ssao_enabled = true
-ssao_intensity = 0.85
+ssao_radius = 1.2
+ssao_intensity = 1.2
 ssil_enabled = true
+ssil_radius = 4.0
+ssil_intensity = 0.7
+sdfgi_enabled = true
+sdfgi_cascades = 4
+sdfgi_min_cell_size = 0.3
 sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_energy = 0.7
+glow_enabled = true
+glow_intensity = 0.5
+glow_strength = 0.8
+glow_hdr_threshold = 1.4
 volumetric_fog_density = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jcaow"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_sqgf4"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04w0f"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_jcaow")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_sqgf4"]
-viewport_path = NodePath("arcade-machine/MeshInstance3D/SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_vvrx0"]
-viewport_path = NodePath("arcade-machine/MeshInstance3D/SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f17u5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vvrx0"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_sqgf4")
-emission_enabled = true
-emission_texture = SubResource("ViewportTexture_vvrx0")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_b56te"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_f17u5")
-size = Vector2(1.63, 1.08)
-orientation = 2
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_x2kg6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_f17u5"]
 viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_b56te"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x2kg6"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_f17u5")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_b56te")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_cumk7"]
 viewport_path = NodePath("../SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgs8m"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_x2kg6")
-emission_enabled = true
-emission_texture = SubResource("ViewportTexture_cumk7")
+albedo_texture = SubResource("ViewportTexture_cumk7")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mrjnl"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqo2c"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rqo2c"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e07uo"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_mrjnl")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_rqo2c")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_58ndj"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nykyp"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_58ndj")
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_58ndj")
 
 [node name="Map" type="Node3D" unique_id=1988102609]
 
 [node name="game-map" parent="." unique_id=1247707253 instance=ExtResource("1_sxf4j")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
+transform = Transform3D(0.715, 0, 0, 0, 0.715, 0, 0, 0, 0.715, 0, 0, 0)
 
 [node name="CharacterBody3D" parent="." unique_id=902792464 instance=ExtResource("2_tqkkf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16710877, 1.5118589, -9.305925)
+transform = Transform3D(0.81, 0, 0, 0, 0.81, 0, 0, 0, 0.81, 0.16710877, 1.5118589, 8.732275)
 
 [node name="Camera3D" parent="CharacterBody3D" index="2" unique_id=1439772051]
 attributes = SubResource("CameraAttributesPractical_ph54e")
@@ -85,51 +112,185 @@ attributes = SubResource("CameraAttributesPractical_ph54e")
 [node name="Label" parent="CharacterBody3D/Camera3D/Control" parent_id_path=PackedInt32Array(902792464, 1425920539) index="0" unique_id=925956764]
 visible = false
 
-[node name="world controller" type="Node3D" parent="." unique_id=206224952]
+[node name="world controller" type="Node3D" parent="." unique_id=206224952 node_paths=PackedStringArray("room")]
+script = ExtResource("11_lighting")
+room = NodePath("../game-map")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="world controller" unique_id=206058323]
 environment = SubResource("Environment_17rms")
+camera_attributes = SubResource("CameraAttributesPractical_ph54e")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=855013455]
-transform = Transform3D(1, 0, 0, 0, -0.06925565, 0.99759895, 0, -0.99759895, -0.06925565, 0, 28.930676, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="world controller" unique_id=1926495187]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.042963, 10.322124)
+rotation_degrees = Vector3(-40, -25, 0)
+light_color = Color(0.8, 0.87, 1, 1)
+light_energy = 0.6
+light_angular_distance = 0.5
 shadow_enabled = true
+directional_shadow_max_distance = 70.0
+
+[node name="RoomLights" parent="world controller" instance=ExtResource("12_lights")]
 
 [node name="Pong Arcade" parent="." unique_id=202857943 instance=ExtResource("4_ph54e")]
-transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 12.035, 0.955, -21.535)
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, -6.4751415, 0.44, -3.040211)
 
 [node name="coinslot" parent="Pong Arcade" index="1" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
 player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
-[node name="Cube_018" parent="Pong Arcade/arcade-machine1" parent_id_path=PackedInt32Array(202857943, 324943654) index="1" unique_id=1770842861]
-surface_material_override/0 = SubResource("StandardMaterial3D_04w0f")
+[node name="Cube_018" parent="Pong Arcade/arcade-machine1" parent_id_path=PackedInt32Array(202857943, 324943654) index="1" unique_id=463920139]
+surface_material_override/0 = SubResource("StandardMaterial3D_vvrx0")
 
 [node name="ball" parent="Pong Arcade/SubViewport/Node2D/Control2" parent_id_path=PackedInt32Array(202857943, 1777230661, 1609006891) index="4" unique_id=1414630960]
 paddle_half_height = 53.0
 
 [node name="Space Arcade" parent="." unique_id=424789420 instance=ExtResource("3_fcby6")]
-transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 14.065, 0.955, -21.535)
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, -2.9955838, 0.44, -3.040211)
 
-[node name="MeshInstance3D" parent="Space Arcade/arcade-machine" parent_id_path=PackedInt32Array(424789420, 440034849) index="0" unique_id=2041155398]
-mesh = SubResource("PlaneMesh_b56te")
-
-[node name="coinslot" parent="Space Arcade" index="2" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
+[node name="coinslot" parent="Space Arcade" index="1" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
 player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
-[node name="Cube_018" parent="Space Arcade/arcade-machine1" parent_id_path=PackedInt32Array(424789420, 324943654) index="1" unique_id=1770842861]
-surface_material_override/0 = SubResource("StandardMaterial3D_mgs8m")
+[node name="Cube_018" parent="Space Arcade/arcade-machine1" parent_id_path=PackedInt32Array(424789420, 324943654) index="1" unique_id=463920139]
+surface_material_override/0 = SubResource("StandardMaterial3D_x2kg6")
 
 [node name="snake_arcade" parent="." unique_id=480153694 instance=ExtResource("6_jcaow")]
-transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, 16.095, 0.955, -21.535)
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, -1.3363898, 0.44, -3.040211)
 
 [node name="coinslot" parent="snake_arcade" index="1" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
 player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
-[node name="Cube_018" parent="snake_arcade/arcade-machine1" parent_id_path=PackedInt32Array(480153694, 2004248552) index="1" unique_id=1770842861]
-surface_material_override/0 = SubResource("StandardMaterial3D_rqo2c")
+[node name="Cube_018" parent="snake_arcade/arcade-machine1" parent_id_path=PackedInt32Array(480153694, 2004248552) index="1" unique_id=463920139]
+surface_material_override/0 = SubResource("StandardMaterial3D_mgs8m")
 
+[node name="breakout_arcade" parent="." unique_id=1890297522 instance=ExtResource("7_04w0f")]
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 1.6762183, 0.44, -3.040211)
+
+[node name="coinslot" parent="breakout_arcade" index="1" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
+player = NodePath("../../CharacterBody3D")
+label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
+
+[node name="Cube_018" parent="breakout_arcade/arcade-machine1" parent_id_path=PackedInt32Array(1890297522, 2004248552) index="1" unique_id=463920139]
+surface_material_override/0 = SubResource("StandardMaterial3D_e07uo")
+
+[node name="Asteroids Arcade" parent="." unique_id=816930638 instance=ExtResource("8_asteroids")]
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 3.5858145, 0.44, -3.040211)
+
+[node name="coinslot" parent="Asteroids Arcade" index="1" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
+player = NodePath("../../CharacterBody3D")
+label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
+
+[node name="Cube_018" parent="Asteroids Arcade/arcade-machine1" parent_id_path=PackedInt32Array(816930638, 2004248552) index="1" unique_id=463920139]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Frogger Arcade" parent="." instance=ExtResource("9_frogger")]
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, -4.74, 0.44, -3.040211)
+
+[node name="coinslot" parent="Frogger Arcade" index="1" node_paths=PackedStringArray("player", "label")]
+player = NodePath("../../CharacterBody3D")
+label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
+
+[node name="Racing Arcade" parent="." instance=ExtResource("10_racing")]
+transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0.17, 0.44, -3.040211)
+
+[node name="coinslot" parent="Racing Arcade" index="1" node_paths=PackedStringArray("player", "label")]
+player = NodePath("../../CharacterBody3D")
+label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
+
+[node name="ScreenLight" type="SpotLight3D" parent="Pong Arcade"]
+position = Vector3(0, 3.15, 1)
+rotation_degrees = Vector3(0, 180, 0)
+light_color = Color(0.75, 0.86, 1, 1)
+light_energy = 0.2
+light_specular = 0.15
+light_size = 0.2
+shadow_enabled = true
+shadow_normal_bias = 0.15
+spot_range = 1.8
+spot_attenuation = 1.5
+spot_angle = 80.0
+
+[node name="ScreenLight" type="SpotLight3D" parent="Frogger Arcade"]
+position = Vector3(0, 3.15, 1)
+rotation_degrees = Vector3(0, 180, 0)
+light_color = Color(0.64, 1, 0.65, 1)
+light_energy = 0.2
+light_specular = 0.15
+light_size = 0.2
+shadow_enabled = true
+shadow_normal_bias = 0.15
+spot_range = 1.8
+spot_attenuation = 1.5
+spot_angle = 80.0
+
+[node name="ScreenLight" type="SpotLight3D" parent="Space Arcade"]
+position = Vector3(0, 3.15, 1)
+rotation_degrees = Vector3(0, 180, 0)
+light_color = Color(0.55, 0.7, 1, 1)
+light_energy = 0.2
+light_specular = 0.15
+light_size = 0.2
+shadow_enabled = true
+shadow_normal_bias = 0.15
+spot_range = 1.8
+spot_attenuation = 1.5
+spot_angle = 80.0
+
+[node name="ScreenLight" type="SpotLight3D" parent="snake_arcade"]
+position = Vector3(0, 3.15, 1)
+rotation_degrees = Vector3(0, 180, 0)
+light_color = Color(0.45, 1, 0.5, 1)
+light_energy = 0.2
+light_specular = 0.15
+light_size = 0.2
+shadow_enabled = true
+shadow_normal_bias = 0.15
+spot_range = 1.8
+spot_attenuation = 1.5
+spot_angle = 80.0
+
+[node name="ScreenLight" type="SpotLight3D" parent="Racing Arcade"]
+position = Vector3(0, 3.15, 1)
+rotation_degrees = Vector3(0, 180, 0)
+light_color = Color(0.8, 0.9, 1, 1)
+light_energy = 0.2
+light_specular = 0.15
+light_size = 0.2
+shadow_enabled = true
+shadow_normal_bias = 0.15
+spot_range = 1.8
+spot_attenuation = 1.5
+spot_angle = 80.0
+
+[node name="ScreenLight" type="SpotLight3D" parent="breakout_arcade"]
+position = Vector3(0, 3.15, 1)
+rotation_degrees = Vector3(0, 180, 0)
+light_color = Color(1, 0.72, 0.4, 1)
+light_energy = 0.2
+light_specular = 0.15
+light_size = 0.2
+shadow_enabled = true
+shadow_normal_bias = 0.15
+spot_range = 1.8
+spot_attenuation = 1.5
+spot_angle = 80.0
+
+[node name="ScreenLight" type="SpotLight3D" parent="Asteroids Arcade"]
+position = Vector3(0, 3.15, 1)
+rotation_degrees = Vector3(0, 180, 0)
+light_color = Color(0.72, 0.85, 1, 1)
+light_energy = 0.2
+light_specular = 0.15
+light_size = 0.2
+shadow_enabled = true
+shadow_normal_bias = 0.15
+spot_range = 1.8
+spot_attenuation = 1.5
+spot_angle = 80.0
+
+[editable path="Racing Arcade"]
+[editable path="Frogger Arcade"]
 [editable path="CharacterBody3D"]
 [editable path="Pong Arcade"]
 [editable path="Pong Arcade/arcade-machine1"]
@@ -140,3 +301,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_rqo2c")
 [editable path="snake_arcade"]
 [editable path="snake_arcade/SubViewport/SnakeGame"]
 [editable path="snake_arcade/arcade-machine1"]
+[editable path="breakout_arcade"]
+[editable path="breakout_arcade/SubViewport/Break_Game"]
+[editable path="breakout_arcade/arcade-machine1"]
+[editable path="Asteroids Arcade"]
+[editable path="Asteroids Arcade/SubViewport/Asteroids"]
+[editable path="Asteroids Arcade/arcade-machine1"]

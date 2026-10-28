@@ -1,0 +1,266 @@
+[gd_scene format=3 uid="uid://bxrbhdr5g5x4f"]
+
+[ext_resource type="Script" uid="uid://dro5i7ugso3k2" path="res://scenes/games/breakout/break_game.gd" id="1_draof"]
+[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/shared/screen_constraints.tscn" id="1_n5rmf"]
+[ext_resource type="Script" uid="uid://bq05dw8wccyph" path="res://scenes/games/breakout/ball.gd" id="2_8rrjg"]
+[ext_resource type="PackedScene" uid="uid://dmymrk8wcgvv3" path="res://scenes/games/breakout/ball.tscn" id="2_foics"]
+[ext_resource type="Script" uid="uid://byonmld4flo5b" path="res://scenes/games/breakout/paddle.gd" id="3_8rrjg"]
+[ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="5_pkcji"]
+[ext_resource type="PackedScene" uid="uid://dvxdvf8m3k2r" path="res://scenes/games/breakout/brick_grid.tscn" id="6_foics"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_17rms"]
+line_spacing = 3.045
+font = ExtResource("5_pkcji")
+font_size = 123
+
+[sub_resource type="LabelSettings" id="LabelSettings_ct6yv"]
+line_spacing = 3.045
+font = ExtResource("5_pkcji")
+font_size = 81
+
+[sub_resource type="LabelSettings" id="LabelSettings_2fcm0"]
+line_spacing = 3.045
+font = ExtResource("5_pkcji")
+font_size = 57
+
+[sub_resource type="LabelSettings" id="LabelSettings_tcyn2"]
+line_spacing = 3.045
+font = ExtResource("5_pkcji")
+font_size = 172
+
+[sub_resource type="LabelSettings" id="LabelSettings_ya3jr"]
+font = ExtResource("5_pkcji")
+font_size = 115
+
+[sub_resource type="LabelSettings" id="LabelSettings_pkcji"]
+font = ExtResource("5_pkcji")
+font_size = 70
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_draof"]
+radius = 20.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_draof"]
+size = Vector2(37, 106)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
+size = Vector2(18.535, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if6sb"]
+size = Vector2(1263.76, 20)
+
+[node name="Break_Game" type="Node2D" unique_id=1616597122 node_paths=PackedStringArray("ball", "paddle", "brick_grid", "balls_container", "powerups_container", "score_label", "lives_label", "gameover_label", "highscore_label", "combo_label")]
+script = ExtResource("1_draof")
+ball = NodePath("ball")
+ball_scene = ExtResource("2_foics")
+paddle = NodePath("paddle")
+brick_grid = NodePath("brick_grid")
+balls_container = NodePath("ball_container")
+powerups_container = NodePath("powerup_container")
+score_label = NodePath("in_game_ui/ScoreText")
+lives_label = NodePath("in_game_ui/LivesText2")
+gameover_label = NodePath("in_game_ui/Game Over")
+highscore_label = NodePath("in_game_ui/number_high_score")
+combo_label = NodePath("in_game_ui/combo")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1180117016]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 1)
+
+[node name="in_game_ui" type="Control" parent="." unique_id=422676118]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="ScoreText" type="Label" parent="in_game_ui" unique_id=887521937]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_top = 52.0
+offset_right = 35.0
+offset_bottom = 176.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_17rms")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LivesText2" type="Label" parent="in_game_ui" unique_id=1676049180]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 422.0
+offset_top = 70.0
+offset_right = 535.0
+offset_bottom = 126.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ct6yv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LivesText" type="Label" parent="in_game_ui/LivesText2" unique_id=1705908584]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_top = -61.0
+offset_right = 56.5
+offset_bottom = -17.0
+grow_horizontal = 2
+text = "Lives"
+label_settings = SubResource("LabelSettings_2fcm0")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="combo" type="Label" parent="in_game_ui" unique_id=517711738]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -565.0
+offset_top = 70.0
+offset_right = -452.0
+offset_bottom = 152.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ct6yv")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="combo" type="Label" parent="in_game_ui/combo" unique_id=2075004870]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.5
+offset_top = -61.0
+offset_right = 56.5
+offset_bottom = -17.0
+grow_horizontal = 2
+text = "Combos"
+label_settings = SubResource("LabelSettings_2fcm0")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Game Over" type="Label" parent="in_game_ui" unique_id=1225727340]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -521.5
+offset_top = -86.0
+offset_right = 521.5
+offset_bottom = 86.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_tcyn2")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="number_high_score" type="Label" parent="in_game_ui" unique_id=1774003761]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.0
+offset_top = -488.0
+offset_right = 349.0
+offset_bottom = -372.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ya3jr")
+horizontal_alignment = 1
+
+[node name="credit" type="Label" parent="in_game_ui" unique_id=1259813473]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -348.5
+offset_top = 237.23999
+offset_right = 348.5
+offset_bottom = 343.16003
+grow_horizontal = 2
+grow_vertical = 2
+text = "INSERT CREDIT"
+label_settings = SubResource("LabelSettings_pkcji")
+horizontal_alignment = 1
+
+[node name="screen constraints" parent="." unique_id=1388318164 instance=ExtResource("1_n5rmf")]
+
+[node name="ball" type="CharacterBody2D" parent="." unique_id=454305828]
+position = Vector2(960, 540)
+scale = Vector2(0.615, 0.615)
+script = ExtResource("2_8rrjg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball" unique_id=1855518332]
+shape = SubResource("CircleShape2D_draof")
+
+[node name="ColorRect" type="ColorRect" parent="ball" unique_id=1075805049]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="paddle" type="CharacterBody2D" parent="." unique_id=948369209 node_paths=PackedStringArray("ball")]
+position = Vector2(907.915, 1070.285)
+rotation = -1.5707964
+script = ExtResource("3_8rrjg")
+ball = NodePath("../ball")
+
+[node name="player1" type="ColorRect" parent="paddle" unique_id=1394504128]
+offset_right = 37.0
+offset_bottom = 106.000244
+mouse_filter = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="paddle" unique_id=1672664381]
+position = Vector2(18.5, 53)
+shape = SubResource("RectangleShape2D_draof")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1305335781]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=243088639]
+position = Vector2(325.185, 540)
+shape = SubResource("RectangleShape2D_17rms")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=207205205]
+position = Vector2(1238.09, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1475539941]
+position = Vector2(325.185, 540)
+shape = SubResource("RectangleShape2D_17rms")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="." unique_id=124360349]
+position = Vector2(960, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3" unique_id=91361711]
+shape = SubResource("RectangleShape2D_if6sb")
+
+[node name="brick_grid" parent="." unique_id=624676376 instance=ExtResource("6_foics")]
+
+[node name="ball_container" type="Node2D" parent="." unique_id=352080960]
+
+[node name="powerup_container" type="Node2D" parent="." unique_id=424471611]

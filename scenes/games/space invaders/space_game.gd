@@ -62,6 +62,7 @@ func _ready() -> void:
 	if player:
 		player_start_position = player.global_position
 		player.died.connect(_on_player_died)
+		player.lives_changed.connect(_on_lives_changed)
 		if bullet_container:
 			player.bullet_container = bullet_container
 	if game_over_zone:
@@ -124,8 +125,10 @@ func spawn_wave() -> void:
 
 func _on_alien_killed(points) -> void:
 	killed_alien(points)
-	if mode == "playing" and livestext and player:
-		livestext.text = str(player.lives)
+
+func _on_lives_changed(current_lives) -> void:
+	if mode == "playing" and livestext:
+		livestext.text = str(current_lives)
 
 func _on_player_died() -> void:
 	if mode == "playing":
@@ -181,9 +184,8 @@ func _continue_match() -> void:
 		player.global_position = player_start_position
 		player.reset(starting_lives)
 		player.set_demo_mode(false)
-	if livestext and player:
-		livestext.text = str(player.lives)
 	spawn_wave()
+	spawn_timer.start()
 
 func _on_game_over_timeout() -> void:
 	if pending_continue and machine_manager and machine_manager.spend_credit():
@@ -243,8 +245,6 @@ func start_match() -> void:
 		player.global_position = player_start_position
 		player.reset(starting_lives)
 		player.set_demo_mode(false)
-	if livestext:
-		livestext.text = str(player.lives)
 	get_tree().call_group("shield", "reset")
 	spawn_wave()
 	spawn_timer.start()
