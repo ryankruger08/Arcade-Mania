@@ -1,11 +1,20 @@
 [gd_scene format=3 uid="uid://cklqr52ulvssq"]
 
-[ext_resource type="Script" path="res://scenes/games/racing game/racing_game.gd" id="1"]
-[ext_resource type="PackedScene" path="res://Models/Racing Game/track_1.blend" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/games/racing game/vehicle.tscn" id="3"]
-[ext_resource type="FontFile" path="res://Resources/font.ttf" id="4"]
-[ext_resource type="Texture2D" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/games/shared/screen_constraints.tscn" id="6"]
+[ext_resource type="Script" uid="uid://c5mushcet6vpe" path="res://scenes/games/racing game/racing_game.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dtws0386s2pmh" path="res://Models/Racing Game/track_1.blend" id="2"]
+[ext_resource type="PackedScene" uid="uid://f47vnd5nmak4" path="res://scenes/games/racing game/vehicle.tscn" id="3"]
+[ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="4"]
+[ext_resource type="Texture2D" uid="uid://bjivoj2ok6xw8" path="res://Resources/citrus_orchard_road_puresky_2k.exr" id="5"]
+[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/shared/screen_constraints.tscn" id="6"]
+
+[sub_resource type="Curve3D" id="TrackCurve"]
+closed = true
+bake_interval = 0.5
+_data = {
+"points": PackedVector3Array(-0.54, 0, -11.88, 0.54, 0, 11.88, -40, 0, 10, -5.22, 0, -12.42, 5.22, 0, 12.42, -37, 0, 51, -11.16, 0, -3.96, 11.16, 0, 3.96, -11, 0, 79, -9.54, 0, 8.46, 9.54, 0, -8.46, 25, 0, 73, -2.34, 0, 16.2, 2.34, 0, -16.2, 42, 0, 32, 4.86, 0, 14.04, -4.86, 0, -14.04, 38, 0, -17, 10.26, 0, 5.22, -10.26, 0, -5.22, 15, 0, -46, 9.9, 0, -5.58, -9.9, 0, 5.58, -19, 0, -46, 3.78, 0, -10.08, -3.78, 0, 10.08, -40, 0, -15),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
 
 [sub_resource type="PanoramaSkyMaterial" id="SkyMaterial"]
 panorama = ExtResource("5")
@@ -38,16 +47,7 @@ font_size = 70
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Curve3D" id="TrackCurve"]
-bake_interval = 0.5
-closed = true
-_data = {
-"points": PackedVector3Array(-0.54, 0, -11.88, 0.54, 0, 11.88, -40, 0, 10, -5.22, 0, -12.42, 5.22, 0, 12.42, -37, 0, 51, -11.16, 0, -3.96, 11.16, 0, 3.96, -11, 0, 79, -9.54, 0, 8.46, 9.54, 0, -8.46, 25, 0, 73, -2.34, 0, 16.2, 2.34, 0, -16.2, 42, 0, 32, 4.86, 0, 14.04, -4.86, 0, -14.04, 38, 0, -17, 10.26, 0, 5.22, -10.26, 0, -5.22, 15, 0, -46, 9.9, 0, -5.58, -9.9, 0, 5.58, -19, 0, -46, 3.78, 0, -10.08, -3.78, 0, 10.08, -40, 0, -15),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 9
-
-[node name="racing" type="Node3D" node_paths=PackedStringArray("player_kart", "karts", "track_path", "camera", "lap_label", "time_label", "position_label", "countdown_label", "gameover_label", "besttime_label")]
+[node name="racing" type="Node3D" unique_id=97900320 node_paths=PackedStringArray("player_kart", "karts", "track_path", "camera", "lap_label", "time_label", "position_label", "countdown_label", "gameover_label", "besttime_label")]
 script = ExtResource("1")
 player_kart = NodePath("Karts/Player")
 karts = NodePath("Karts")
@@ -60,111 +60,137 @@ countdown_label = NodePath("UI/Control/countdown")
 gameover_label = NodePath("UI/Control/game_over")
 besttime_label = NodePath("UI/Control/best_time")
 
-[node name="track_1" parent="." instance=ExtResource("2")]
+[node name="track_1" parent="." unique_id=578484772 instance=ExtResource("2")]
 
-[node name="TrackPath" type="Path3D" parent="."]
+[node name="TrackPath" type="Path3D" parent="." unique_id=184831978]
 curve = SubResource("TrackCurve")
 
-[node name="Karts" type="Node3D" parent="."]
+[node name="Karts" type="Node3D" parent="." unique_id=334167074]
 
-[node name="Player" parent="Karts" instance=ExtResource("3")]
+[node name="Player" parent="Karts" unique_id=1908276618 instance=ExtResource("3")]
 
-[node name="Opponent1" parent="Karts" instance=ExtResource("3")]
+[node name="Opponent1" parent="Karts" unique_id=1853258326 instance=ExtResource("3")]
 max_speed = 25.0
 body_color = Color(0, 0.2, 1, 1)
 
-[node name="Opponent2" parent="Karts" instance=ExtResource("3")]
+[node name="Opponent2" parent="Karts" unique_id=200121771 instance=ExtResource("3")]
 max_speed = 24.0
 body_color = Color(1, 1, 0, 1)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1868044326]
 current = true
 fov = 70.0
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1900492541]
 environment = SubResource("Environment")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-rotation_degrees = Vector3(-55, -30, 0)
-light_energy = 1.0
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1003175715]
+transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
 shadow_enabled = true
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1734238215]
+follow_viewport_enabled = true
 
-[node name="Control" type="Control" parent="UI"]
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="screen constraints" parent="UI" unique_id=115583521 instance=ExtResource("6")]
+
+[node name="Control" type="Control" parent="UI" unique_id=508745834]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.1125
+offset_top = -540.0
+offset_right = 600.11255
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Lap" type="Label" parent="UI/Control"]
-offset_left = 390.0
-offset_top = 20.0
-offset_right = 800.0
-offset_bottom = 100.0
-label_settings = SubResource("ScoreFont")
+[node name="Lap" type="Label" parent="UI/Control" unique_id=1234819029]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "LAP 1/3"
-mouse_filter = 2
-
-[node name="Time" type="Label" parent="UI/Control"]
-offset_left = 1220.0
-offset_top = 20.0
-offset_right = 1530.0
-offset_bottom = 100.0
 label_settings = SubResource("ScoreFont")
+metadata/_edit_use_anchors_ = true
+
+[node name="Time" type="Label" parent="UI/Control" unique_id=297939491]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "00:00"
+label_settings = SubResource("ScoreFont")
 horizontal_alignment = 2
-mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Position" type="Label" parent="UI/Control"]
-offset_left = 820.0
-offset_top = 20.0
-offset_right = 1100.0
-offset_bottom = 100.0
-label_settings = SubResource("ScoreFont")
+[node name="Position" type="Label" parent="UI/Control" unique_id=343982093]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "1/3"
-horizontal_alignment = 1
-mouse_filter = 2
-
-[node name="countdown" type="Label" parent="UI/Control"]
-visible = false
-offset_left = 610.0
-offset_top = 480.0
-offset_right = 1310.0
-offset_bottom = 600.0
-label_settings = SubResource("LargeFont")
-text = "3"
-horizontal_alignment = 1
-mouse_filter = 2
-
-[node name="game_over" type="Label" parent="UI/Control"]
-visible = false
-offset_left = 550.0
-offset_top = 480.0
-offset_right = 1370.0
-offset_bottom = 600.0
-label_settings = SubResource("LargeFont")
-text = "1ST PLACE"
-horizontal_alignment = 1
-mouse_filter = 2
-
-[node name="best_time" type="Label" parent="UI/Control"]
-offset_left = 390.0
-offset_top = 20.0
-offset_right = 1530.0
-offset_bottom = 100.0
 label_settings = SubResource("ScoreFont")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="countdown" type="Label" parent="UI/Control" unique_id=1743540839]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "3"
+label_settings = SubResource("LargeFont")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="game_over" type="Label" parent="UI/Control" unique_id=640425684]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1ST PLACE"
+label_settings = SubResource("LargeFont")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="best_time" type="Label" parent="UI/Control" unique_id=1950254778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "BEST --:--"
+label_settings = SubResource("ScoreFont")
 horizontal_alignment = 1
-mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="credit" type="Label" parent="UI/Control"]
-offset_left = 610.0
-offset_top = 777.0
-offset_right = 1310.0
-offset_bottom = 883.0
-label_settings = SubResource("CreditFont")
+[node name="credit" type="Label" parent="UI/Control" unique_id=934311119]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "INSERT COIN"
+label_settings = SubResource("CreditFont")
 horizontal_alignment = 1
-mouse_filter = 2
-
-[node name="screen constraints" parent="UI" instance=ExtResource("6")]
+metadata/_edit_use_anchors_ = true
