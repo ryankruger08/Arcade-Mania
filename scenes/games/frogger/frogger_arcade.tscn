@@ -1,7 +1,7 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://7um6mt13fre5"]
 
 [ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/machine_manager.gd" id="1_pb2ki"]
-[ext_resource type="PackedScene" path="res://scenes/games/frogger/frogger_game.tscn" id="5_o28rj"]
+[ext_resource type="PackedScene" uid="uid://b7cmujgoq08ji" path="res://scenes/games/frogger/frogger_game.tscn" id="5_o28rj"]
 [ext_resource type="PackedScene" uid="uid://bwbrsdx8omhhf" path="res://Models/Map/arcade-machine1.blend" id="5_tt0bg"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6mdw"]
@@ -10,14 +10,12 @@ size = Vector3(0.2782898, 0.35394096, 0.35832548)
 [sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
 size = Vector3(2.039547, 0.25509548, 0.8300599)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2r4tv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_i8i6x"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4t4hu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3i80n"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_2r4tv")
-
-
+albedo_texture = SubResource("ViewportTexture_i8i6x")
 
 [node name="frogger_arcade" type="Node3D" unique_id=424789420]
 
@@ -31,7 +29,7 @@ collision_mask = 64
 script = ExtResource("1_pb2ki")
 machine_name = "Frogger"
 camera = NodePath("../pongcamera")
-credit_label = NodePath("../SubViewport/FroggerGame/Control/credit")
+credit_label = NodePath("../SubViewport/FroggerGame/credit")
 gamemanager = NodePath("../SubViewport/FroggerGame")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="coinslot" unique_id=922392250]
@@ -54,8 +52,8 @@ machine_manager = NodePath("../../coinslot")
 
 [node name="arcade-machine1" parent="." unique_id=2004248552 instance=ExtResource("5_tt0bg")]
 
-[node name="Cube_018" parent="arcade-machine1" index="1" unique_id=1770842861]
-surface_material_override/0 = SubResource("StandardMaterial3D_4t4hu")
+[node name="Cube_018" parent="arcade-machine1" index="1" unique_id=179301597]
+surface_material_override/0 = SubResource("StandardMaterial3D_3i80n")
 
 [connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
 [connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]
@@ -64,4 +62,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4t4hu")
 
 [editable path="SubViewport/FroggerGame"]
 [editable path="arcade-machine1"]
-

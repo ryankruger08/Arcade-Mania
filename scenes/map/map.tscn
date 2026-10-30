@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dxap73fcphytc" path="res://scenes/games/snake/snake_arcade.tscn" id="6_jcaow"]
 [ext_resource type="PackedScene" uid="uid://2lg3gn5rdsma" path="res://scenes/games/breakout/breakout_arcade.tscn" id="7_04w0f"]
 [ext_resource type="PackedScene" path="res://scenes/games/asteroids/asteroids_arcade.tscn" id="8_asteroids"]
-[ext_resource type="PackedScene" path="res://scenes/games/frogger/frogger_arcade.tscn" id="9_frogger"]
+[ext_resource type="PackedScene" uid="uid://7um6mt13fre5" path="res://scenes/games/frogger/frogger_arcade.tscn" id="9_frogger"]
 [ext_resource type="PackedScene" uid="uid://b3rcslmh1duw4" path="res://scenes/games/racing game/racing_arcade.tscn" id="10_racing"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_58ndj"]
@@ -70,37 +70,57 @@ glow_strength = 0.8
 glow_hdr_threshold = 1.4
 volumetric_fog_density = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_uclq6"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_cumk7"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30ska"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgs8m"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_uclq6")
+albedo_texture = SubResource("ViewportTexture_cumk7")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_tmgcv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mrjnl"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omedl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqo2c"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_tmgcv")
+albedo_texture = SubResource("ViewportTexture_mrjnl")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3xi6f"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_e07uo"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xks3a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uclq6"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_3xi6f")
+albedo_texture = SubResource("ViewportTexture_e07uo")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_78kcs"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_30ska"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2kc6l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tmgcv"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_78kcs")
+albedo_texture = SubResource("ViewportTexture_30ska")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_omedl"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xi6f"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_omedl")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xks3a"]
+viewport_path = NodePath("../SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_78kcs"]
+resource_local_to_scene = true
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_xks3a")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2kc6l"]
+resource_local_to_scene = true
+size = Vector3(2.039547, 0.5889735, 1.3227448)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_eix18"]
 viewport_path = NodePath("../SubViewport")
@@ -109,22 +129,6 @@ viewport_path = NodePath("../SubViewport")
 resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_eix18")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_etaqi"]
-viewport_path = NodePath("../SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hs4c0"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_etaqi")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_ah1fr"]
-viewport_path = NodePath("../SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4o0h"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_ah1fr")
 
 [node name="Map" type="Node3D" unique_id=1988102609]
 
@@ -655,6 +659,1346 @@ distance_fade_length = 8.0
 omni_range = 14.752
 omni_attenuation = 1.604
 
+[node name="Ceiling Light 81" parent="game-map" index="206" unique_id=29018040]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -23.39624, 3.5500002, 17.800001)
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 82" parent="game-map" index="207" unique_id=1336201084]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -23.39624, 3.5500002, 13.000001)
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 83" parent="game-map" index="208" unique_id=675480317]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -23.39624, 3.5500002, 8.2)
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 84" parent="game-map" index="209" unique_id=154788982]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 16.111477, 3.5500002, 17.4)
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 85" parent="game-map" index="210" unique_id=1242000735]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 16.111477, 3.5500002, 12.000001)
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 86" parent="game-map" index="211" unique_id=2062463784]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 16.111477, 3.5500002, 6.6000004)
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 87" parent="game-map" index="212" unique_id=1237542486]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 88" parent="game-map" index="213" unique_id=2075563492]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 89" parent="game-map" index="214" unique_id=1850462002]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 90" parent="game-map" index="215" unique_id=2045955864]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 91" parent="game-map" index="216" unique_id=2094199601]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 92" parent="game-map" index="217" unique_id=1325294280]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 93" parent="game-map" index="218" unique_id=200366601]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 94" parent="game-map" index="219" unique_id=1106336689]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 95" parent="game-map" index="220" unique_id=1903184122]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 96" parent="game-map" index="221" unique_id=805984991]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, 29.500002)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 97" parent="game-map" index="222" unique_id=1340259251]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, -29.500002)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 98" parent="game-map" index="223" unique_id=1552859787]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, 29.500002)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 99" parent="game-map" index="224" unique_id=1555596114]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, -29.500002)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 100" parent="game-map" index="225" unique_id=310911564]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, 29.500002)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 101" parent="game-map" index="226" unique_id=1044827950]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, -29.500002)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 102" parent="game-map" index="227" unique_id=1197376231]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -100.00001, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 103" parent="game-map" index="228" unique_id=483563542]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -100.00001, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 104" parent="game-map" index="229" unique_id=1304319302]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -76, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 105" parent="game-map" index="230" unique_id=109374412]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -76, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 106" parent="game-map" index="231" unique_id=1459017679]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -52.000004, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 107" parent="game-map" index="232" unique_id=139859940]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -52.000004, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 108" parent="game-map" index="233" unique_id=1204826683]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 109" parent="game-map" index="234" unique_id=1786980791]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 110" parent="game-map" index="235" unique_id=633927850]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 111" parent="game-map" index="236" unique_id=1759805087]
+light_energy = 7.295
+light_size = 0.15
+shadow_enabled = true
+shadow_normal_bias = 0.5
+distance_fade_enabled = true
+distance_fade_begin = 18.0
+distance_fade_length = 8.0
+omni_range = 9.773
+omni_attenuation = 1.604
+
+[node name="Ceiling Light 112" parent="game-map" index="237" unique_id=1401199510]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -24.000002, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 113" parent="game-map" index="238" unique_id=1492519052]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -24.000002, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 114" parent="game-map" index="239" unique_id=2008050824]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 0, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 115" parent="game-map" index="240" unique_id=1054126385]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 0, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 116" parent="game-map" index="241" unique_id=61150262]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 24.000002, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 117" parent="game-map" index="242" unique_id=1130185662]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 24.000002, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 118" parent="game-map" index="243" unique_id=179333544]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 119" parent="game-map" index="244" unique_id=161912322]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 120" parent="game-map" index="245" unique_id=163108362]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 121" parent="game-map" index="246" unique_id=582552100]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 122" parent="game-map" index="247" unique_id=691745199]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, -46.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Ceiling Light 123" parent="game-map" index="248" unique_id=430620848]
+transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, -105.5)
+visible = false
+light_color = Color(1, 0.90588236, 0.58431375, 1)
+light_energy = 16.0
+light_indirect_energy = 4.01
+light_specular = 0.658
+distance_fade_enabled = true
+distance_fade_begin = 121.11
+spot_range = 12.845
+spot_attenuation = 1.6
+spot_angle = 74.6
+spot_angle_attenuation = 0.30407894
+
+[node name="Checker Floor Tile 01" parent="game-map" index="252" unique_id=603288451]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 02" parent="game-map" index="253" unique_id=542598372]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 03" parent="game-map" index="254" unique_id=1075919058]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 04" parent="game-map" index="255" unique_id=725931368]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 05" parent="game-map" index="256" unique_id=1863778315]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 06" parent="game-map" index="257" unique_id=2003970227]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 07" parent="game-map" index="258" unique_id=101955273]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 08" parent="game-map" index="259" unique_id=970303186]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 09" parent="game-map" index="260" unique_id=1642232572]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 10" parent="game-map" index="261" unique_id=1607631939]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 11" parent="game-map" index="262" unique_id=1697669968]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 12" parent="game-map" index="263" unique_id=1696557492]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 13" parent="game-map" index="264" unique_id=1332884427]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 14" parent="game-map" index="265" unique_id=1779909810]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 15" parent="game-map" index="266" unique_id=1619214125]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 16" parent="game-map" index="267" unique_id=1362786550]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 17" parent="game-map" index="268" unique_id=1966353620]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 18" parent="game-map" index="269" unique_id=1530507074]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 19" parent="game-map" index="270" unique_id=95390885]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 20" parent="game-map" index="271" unique_id=681905020]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 21" parent="game-map" index="272" unique_id=970510537]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 22" parent="game-map" index="273" unique_id=152359048]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 23" parent="game-map" index="274" unique_id=1608653484]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 24" parent="game-map" index="275" unique_id=1499031662]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 25" parent="game-map" index="276" unique_id=104666140]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 26" parent="game-map" index="277" unique_id=198050557]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 27" parent="game-map" index="278" unique_id=1789725716]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 28" parent="game-map" index="279" unique_id=1530395162]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 29" parent="game-map" index="280" unique_id=2109928882]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 30" parent="game-map" index="281" unique_id=1633034881]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 31" parent="game-map" index="282" unique_id=761991206]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 32" parent="game-map" index="283" unique_id=517207837]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 33" parent="game-map" index="284" unique_id=249384874]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 34" parent="game-map" index="285" unique_id=1461169005]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 35" parent="game-map" index="286" unique_id=1824969546]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 36" parent="game-map" index="287" unique_id=1576601838]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 37" parent="game-map" index="288" unique_id=171697426]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 38" parent="game-map" index="289" unique_id=688302088]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 39" parent="game-map" index="290" unique_id=242277190]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 40" parent="game-map" index="291" unique_id=1632029954]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 41" parent="game-map" index="292" unique_id=697087324]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 42" parent="game-map" index="293" unique_id=1615634053]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 43" parent="game-map" index="294" unique_id=995778672]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 44" parent="game-map" index="295" unique_id=679189162]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 45" parent="game-map" index="296" unique_id=1396950351]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 46" parent="game-map" index="297" unique_id=984772049]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 47" parent="game-map" index="298" unique_id=330458255]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 48" parent="game-map" index="299" unique_id=2052011957]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 49" parent="game-map" index="300" unique_id=824703119]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 50" parent="game-map" index="301" unique_id=1771161573]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 51" parent="game-map" index="302" unique_id=1152660953]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 52" parent="game-map" index="303" unique_id=1117241639]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 53" parent="game-map" index="304" unique_id=1453656919]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 54" parent="game-map" index="305" unique_id=594274139]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 55" parent="game-map" index="306" unique_id=2088589161]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 56" parent="game-map" index="307" unique_id=205131108]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 57" parent="game-map" index="308" unique_id=1672080709]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 58" parent="game-map" index="309" unique_id=565296250]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 59" parent="game-map" index="310" unique_id=2109454657]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 60" parent="game-map" index="311" unique_id=487080568]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 61" parent="game-map" index="312" unique_id=2113178048]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 62" parent="game-map" index="313" unique_id=460278507]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 63" parent="game-map" index="314" unique_id=1371218559]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 64" parent="game-map" index="315" unique_id=798732044]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 65" parent="game-map" index="316" unique_id=2119157957]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 66" parent="game-map" index="317" unique_id=722229508]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 67" parent="game-map" index="318" unique_id=1990020423]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 68" parent="game-map" index="319" unique_id=1335543475]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 69" parent="game-map" index="320" unique_id=1211143362]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 70" parent="game-map" index="321" unique_id=561118528]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 71" parent="game-map" index="322" unique_id=219718167]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 72" parent="game-map" index="323" unique_id=1041253840]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 73" parent="game-map" index="324" unique_id=718230229]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 74" parent="game-map" index="325" unique_id=1010783734]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 75" parent="game-map" index="326" unique_id=945482001]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 76" parent="game-map" index="327" unique_id=674004597]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 77" parent="game-map" index="328" unique_id=773798243]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 78" parent="game-map" index="329" unique_id=849264657]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 79" parent="game-map" index="330" unique_id=1218639825]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 80" parent="game-map" index="331" unique_id=1616474749]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 81" parent="game-map" index="332" unique_id=397212957]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 82" parent="game-map" index="333" unique_id=1082074912]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 83" parent="game-map" index="334" unique_id=814341789]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 84" parent="game-map" index="335" unique_id=1724254755]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 85" parent="game-map" index="336" unique_id=1467600750]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 86" parent="game-map" index="337" unique_id=1050922976]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 87" parent="game-map" index="338" unique_id=2126282321]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 88" parent="game-map" index="339" unique_id=130683555]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 89" parent="game-map" index="340" unique_id=1917249665]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 90" parent="game-map" index="341" unique_id=1264021217]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 91" parent="game-map" index="342" unique_id=2003731069]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 92" parent="game-map" index="343" unique_id=680422924]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 93" parent="game-map" index="344" unique_id=1293415707]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 94" parent="game-map" index="345" unique_id=1570409771]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 95" parent="game-map" index="346" unique_id=1015664781]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 96" parent="game-map" index="347" unique_id=2101569725]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 97" parent="game-map" index="348" unique_id=2044422263]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 98" parent="game-map" index="349" unique_id=1966157814]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 99" parent="game-map" index="350" unique_id=992876254]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 100" parent="game-map" index="351" unique_id=1714514743]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 101" parent="game-map" index="352" unique_id=1717979024]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 102" parent="game-map" index="353" unique_id=1390515805]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 103" parent="game-map" index="354" unique_id=482907729]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 104" parent="game-map" index="355" unique_id=2048605232]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 105" parent="game-map" index="356" unique_id=1472600352]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 106" parent="game-map" index="357" unique_id=893572663]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 107" parent="game-map" index="358" unique_id=575547224]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 108" parent="game-map" index="359" unique_id=1521828860]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 109" parent="game-map" index="360" unique_id=1546631508]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 110" parent="game-map" index="361" unique_id=234682840]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 111" parent="game-map" index="362" unique_id=546327510]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 112" parent="game-map" index="363" unique_id=1048155694]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 113" parent="game-map" index="364" unique_id=1139882386]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 114" parent="game-map" index="365" unique_id=1243186822]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 115" parent="game-map" index="366" unique_id=211935894]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 116" parent="game-map" index="367" unique_id=1339598503]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 117" parent="game-map" index="368" unique_id=1628844949]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 118" parent="game-map" index="369" unique_id=1783351499]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 119" parent="game-map" index="370" unique_id=213961177]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 120" parent="game-map" index="371" unique_id=799090716]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 121" parent="game-map" index="372" unique_id=867764940]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 122" parent="game-map" index="373" unique_id=1727463252]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 123" parent="game-map" index="374" unique_id=1391862947]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 124" parent="game-map" index="375" unique_id=777908145]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 125" parent="game-map" index="376" unique_id=1679900166]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 126" parent="game-map" index="377" unique_id=1851201593]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 127" parent="game-map" index="378" unique_id=1088625799]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 128" parent="game-map" index="379" unique_id=1708237896]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 129" parent="game-map" index="380" unique_id=2084910157]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 130" parent="game-map" index="381" unique_id=1881359170]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 131" parent="game-map" index="382" unique_id=281374156]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 132" parent="game-map" index="383" unique_id=2049358483]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 133" parent="game-map" index="384" unique_id=408621344]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 134" parent="game-map" index="385" unique_id=72104683]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 135" parent="game-map" index="386" unique_id=1329100920]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 136" parent="game-map" index="387" unique_id=1378460504]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 137" parent="game-map" index="388" unique_id=1254238951]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 138" parent="game-map" index="389" unique_id=414181531]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 139" parent="game-map" index="390" unique_id=1833371595]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 140" parent="game-map" index="391" unique_id=101621119]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 141" parent="game-map" index="392" unique_id=803529256]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 142" parent="game-map" index="393" unique_id=961561113]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 143" parent="game-map" index="394" unique_id=365613253]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 144" parent="game-map" index="395" unique_id=1443626088]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 145" parent="game-map" index="396" unique_id=139275118]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 146" parent="game-map" index="397" unique_id=2011381605]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 147" parent="game-map" index="398" unique_id=865090973]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 148" parent="game-map" index="399" unique_id=1153611253]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 149" parent="game-map" index="400" unique_id=926067945]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 150" parent="game-map" index="401" unique_id=1999420613]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 151" parent="game-map" index="402" unique_id=1865532562]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 152" parent="game-map" index="403" unique_id=439027094]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 153" parent="game-map" index="404" unique_id=502725686]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 154" parent="game-map" index="405" unique_id=1086488279]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 155" parent="game-map" index="406" unique_id=2021175089]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 156" parent="game-map" index="407" unique_id=1083140617]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 157" parent="game-map" index="408" unique_id=477437614]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 158" parent="game-map" index="409" unique_id=1695205056]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 159" parent="game-map" index="410" unique_id=1702722721]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 160" parent="game-map" index="411" unique_id=1139560651]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 161" parent="game-map" index="412" unique_id=769719386]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 162" parent="game-map" index="413" unique_id=795242704]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 163" parent="game-map" index="414" unique_id=472057112]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 164" parent="game-map" index="415" unique_id=1603826075]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 165" parent="game-map" index="416" unique_id=1316463808]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 166" parent="game-map" index="417" unique_id=506182864]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 167" parent="game-map" index="418" unique_id=134009001]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 168" parent="game-map" index="419" unique_id=1690082446]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 169" parent="game-map" index="420" unique_id=152272113]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 170" parent="game-map" index="421" unique_id=461533148]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 171" parent="game-map" index="422" unique_id=1044996748]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 172" parent="game-map" index="423" unique_id=586311891]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 173" parent="game-map" index="424" unique_id=1728916230]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 174" parent="game-map" index="425" unique_id=639008853]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 175" parent="game-map" index="426" unique_id=2027374522]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 176" parent="game-map" index="427" unique_id=1500656639]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 177" parent="game-map" index="428" unique_id=1977635366]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 178" parent="game-map" index="429" unique_id=1789062870]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 179" parent="game-map" index="430" unique_id=1025727778]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 180" parent="game-map" index="431" unique_id=173484686]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 181" parent="game-map" index="432" unique_id=2024248180]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 182" parent="game-map" index="433" unique_id=1269110241]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 183" parent="game-map" index="434" unique_id=1260128087]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 184" parent="game-map" index="435" unique_id=1277642802]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 185" parent="game-map" index="436" unique_id=2041733497]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 186" parent="game-map" index="437" unique_id=1608851196]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 187" parent="game-map" index="438" unique_id=1783799019]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 188" parent="game-map" index="439" unique_id=467111206]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 189" parent="game-map" index="440" unique_id=1883373027]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 190" parent="game-map" index="441" unique_id=551773855]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 191" parent="game-map" index="442" unique_id=411569118]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 192" parent="game-map" index="443" unique_id=613785554]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 193" parent="game-map" index="444" unique_id=1501720829]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 194" parent="game-map" index="445" unique_id=817094921]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 195" parent="game-map" index="446" unique_id=326440809]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 196" parent="game-map" index="447" unique_id=1220408524]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 197" parent="game-map" index="448" unique_id=324176821]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 198" parent="game-map" index="449" unique_id=780579117]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 199" parent="game-map" index="450" unique_id=473187856]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 200" parent="game-map" index="451" unique_id=255319581]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 201" parent="game-map" index="452" unique_id=99846339]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 202" parent="game-map" index="453" unique_id=1585512716]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 203" parent="game-map" index="454" unique_id=640609678]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 204" parent="game-map" index="455" unique_id=2052584656]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 205" parent="game-map" index="456" unique_id=582184264]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 206" parent="game-map" index="457" unique_id=382218195]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 207" parent="game-map" index="458" unique_id=1647797405]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 208" parent="game-map" index="459" unique_id=469124792]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 209" parent="game-map" index="460" unique_id=1286192058]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 210" parent="game-map" index="461" unique_id=1406236872]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 211" parent="game-map" index="462" unique_id=1104180074]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 212" parent="game-map" index="463" unique_id=84456933]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 213" parent="game-map" index="464" unique_id=1192110155]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 214" parent="game-map" index="465" unique_id=763550471]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 215" parent="game-map" index="466" unique_id=1721837430]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 216" parent="game-map" index="467" unique_id=2077141672]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 217" parent="game-map" index="468" unique_id=654949972]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 218" parent="game-map" index="469" unique_id=1685392459]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 219" parent="game-map" index="470" unique_id=1548011962]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 220" parent="game-map" index="471" unique_id=1406054312]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 221" parent="game-map" index="472" unique_id=736693589]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 222" parent="game-map" index="473" unique_id=1052434073]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 223" parent="game-map" index="474" unique_id=1375600618]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 224" parent="game-map" index="475" unique_id=1632001979]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 225" parent="game-map" index="476" unique_id=1736125684]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 226" parent="game-map" index="477" unique_id=979838585]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 227" parent="game-map" index="478" unique_id=1154111821]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 228" parent="game-map" index="479" unique_id=346038640]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 229" parent="game-map" index="480" unique_id=458746495]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 230" parent="game-map" index="481" unique_id=343291459]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 231" parent="game-map" index="482" unique_id=1580485908]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 232" parent="game-map" index="483" unique_id=157822815]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 233" parent="game-map" index="484" unique_id=1748133000]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 234" parent="game-map" index="485" unique_id=1638837472]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 235" parent="game-map" index="486" unique_id=1531593313]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 236" parent="game-map" index="487" unique_id=192573813]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 237" parent="game-map" index="488" unique_id=798692702]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 238" parent="game-map" index="489" unique_id=1457794528]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 239" parent="game-map" index="490" unique_id=977901869]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 240" parent="game-map" index="491" unique_id=1175815384]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 241" parent="game-map" index="492" unique_id=803025181]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 242" parent="game-map" index="493" unique_id=1726783746]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 243" parent="game-map" index="494" unique_id=1012595310]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 244" parent="game-map" index="495" unique_id=1508985749]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 245" parent="game-map" index="496" unique_id=283104587]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 246" parent="game-map" index="497" unique_id=1256263799]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 247" parent="game-map" index="498" unique_id=995490805]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 248" parent="game-map" index="499" unique_id=1572048752]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 249" parent="game-map" index="500" unique_id=1787565197]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 250" parent="game-map" index="501" unique_id=1319882405]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 251" parent="game-map" index="502" unique_id=908301729]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 252" parent="game-map" index="503" unique_id=1561091645]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 253" parent="game-map" index="504" unique_id=396589864]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 254" parent="game-map" index="505" unique_id=706551273]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 255" parent="game-map" index="506" unique_id=156329153]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 256" parent="game-map" index="507" unique_id=364639847]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 257" parent="game-map" index="508" unique_id=686145726]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 258" parent="game-map" index="509" unique_id=1377167751]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 259" parent="game-map" index="510" unique_id=458763000]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 260" parent="game-map" index="511" unique_id=256250305]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 261" parent="game-map" index="512" unique_id=518484554]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 262" parent="game-map" index="513" unique_id=1124895001]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
+[node name="Checker Floor Tile 263" parent="game-map" index="514" unique_id=1330889413]
+surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
+
 [node name="Ceiling Light 130" type="OmniLight3D" parent="game-map" unique_id=724595372]
 transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -7.0522547, 3.77319, 16)
 light_color = Color(1, 1, 0.89411765, 1)
@@ -783,42 +2127,6 @@ metadata/extras = {
 "town_original_name": "CeilingLight.037"
 }
 
-[node name="Ceiling Light 81" parent="game-map" index="214" unique_id=29018040]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -23.39624, 3.5500002, 17.800001)
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 82" parent="game-map" index="215" unique_id=1336201084]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -23.39624, 3.5500002, 13.000001)
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 83" parent="game-map" index="216" unique_id=675480317]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -23.39624, 3.5500002, 8.2)
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
 [node name="Ceiling Light 124" type="OmniLight3D" parent="game-map" unique_id=1606085519]
 transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -16.580164, 3.5500002, 17.800001)
 light_color = Color(0.9452769, 0.9639762, 1, 1)
@@ -869,42 +2177,6 @@ metadata/extras = {
 "simple_town_name_done": true,
 "town_original_name": "CeilingLight.040"
 }
-
-[node name="Ceiling Light 84" parent="game-map" index="220" unique_id=154788982]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 16.111477, 3.5500002, 17.4)
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 85" parent="game-map" index="221" unique_id=1242000735]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 16.111477, 3.5500002, 12.000001)
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 86" parent="game-map" index="222" unique_id=2062463784]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 16.111477, 3.5500002, 6.6000004)
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
 
 [node name="Ceiling Light 127" type="OmniLight3D" parent="game-map" unique_id=1025839299]
 transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 23.997145, 3.5500002, 17.4)
@@ -957,1274 +2229,6 @@ metadata/extras = {
 "town_original_name": "CeilingLight.043"
 }
 
-[node name="Ceiling Light 87" parent="game-map" index="226" unique_id=1237542486]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 88" parent="game-map" index="227" unique_id=2075563492]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 89" parent="game-map" index="228" unique_id=1850462002]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 90" parent="game-map" index="229" unique_id=2045955864]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 91" parent="game-map" index="230" unique_id=2094199601]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 92" parent="game-map" index="231" unique_id=1325294280]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 93" parent="game-map" index="232" unique_id=200366601]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 94" parent="game-map" index="233" unique_id=1106336689]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 95" parent="game-map" index="234" unique_id=1903184122]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 96" parent="game-map" index="235" unique_id=805984991]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, 29.500002)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 97" parent="game-map" index="236" unique_id=1340259251]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, -29.500002)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 98" parent="game-map" index="237" unique_id=1552859787]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, 29.500002)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 99" parent="game-map" index="238" unique_id=1555596114]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, -29.500002)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 100" parent="game-map" index="239" unique_id=310911564]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, 29.500002)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 101" parent="game-map" index="240" unique_id=1044827950]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, -29.500002)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 102" parent="game-map" index="241" unique_id=1197376231]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -100.00001, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 103" parent="game-map" index="242" unique_id=483563542]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -100.00001, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 104" parent="game-map" index="243" unique_id=1304319302]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -76, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 105" parent="game-map" index="244" unique_id=109374412]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -76, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 106" parent="game-map" index="245" unique_id=1459017679]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -52.000004, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 107" parent="game-map" index="246" unique_id=139859940]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -52.000004, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 108" parent="game-map" index="247" unique_id=1204826683]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 109" parent="game-map" index="248" unique_id=1786980791]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 110" parent="game-map" index="249" unique_id=633927850]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 111" parent="game-map" index="250" unique_id=1759805087]
-light_energy = 7.295
-light_size = 0.15
-shadow_enabled = true
-shadow_normal_bias = 0.5
-distance_fade_enabled = true
-distance_fade_begin = 18.0
-distance_fade_length = 8.0
-omni_range = 9.773
-omni_attenuation = 1.604
-
-[node name="Ceiling Light 112" parent="game-map" index="251" unique_id=1401199510]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -24.000002, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 113" parent="game-map" index="252" unique_id=1492519052]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, -24.000002, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 114" parent="game-map" index="253" unique_id=2008050824]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 0, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 115" parent="game-map" index="254" unique_id=1054126385]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 0, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 116" parent="game-map" index="255" unique_id=61150262]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 24.000002, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 117" parent="game-map" index="256" unique_id=1130185662]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 24.000002, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 118" parent="game-map" index="257" unique_id=179333544]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 119" parent="game-map" index="258" unique_id=161912322]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 52.000004, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 120" parent="game-map" index="259" unique_id=163108362]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 121" parent="game-map" index="260" unique_id=582552100]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 76, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 122" parent="game-map" index="261" unique_id=691745199]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, -46.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Ceiling Light 123" parent="game-map" index="262" unique_id=430620848]
-transform = Transform3D(1.3986015, 0, 0, 0, 0, 1.3986015, 0, -1.3986015, 0, 100.00001, 4.451815, -105.5)
-visible = false
-light_color = Color(1, 0.90588236, 0.58431375, 1)
-light_energy = 16.0
-light_indirect_energy = 4.01
-light_specular = 0.658
-distance_fade_enabled = true
-distance_fade_begin = 121.11
-spot_range = 12.845
-spot_attenuation = 1.6
-spot_angle = 74.6
-spot_angle_attenuation = 0.30407894
-
-[node name="Checker Floor Tile 01" parent="game-map" index="266" unique_id=603288451]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 02" parent="game-map" index="267" unique_id=542598372]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 03" parent="game-map" index="268" unique_id=1075919058]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 04" parent="game-map" index="269" unique_id=725931368]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 05" parent="game-map" index="270" unique_id=1863778315]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 06" parent="game-map" index="271" unique_id=2003970227]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 07" parent="game-map" index="272" unique_id=101955273]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 08" parent="game-map" index="273" unique_id=970303186]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 09" parent="game-map" index="274" unique_id=1642232572]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 10" parent="game-map" index="275" unique_id=1607631939]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 11" parent="game-map" index="276" unique_id=1697669968]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 12" parent="game-map" index="277" unique_id=1696557492]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 13" parent="game-map" index="278" unique_id=1332884427]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 14" parent="game-map" index="279" unique_id=1779909810]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 15" parent="game-map" index="280" unique_id=1619214125]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 16" parent="game-map" index="281" unique_id=1362786550]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 17" parent="game-map" index="282" unique_id=1966353620]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 18" parent="game-map" index="283" unique_id=1530507074]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 19" parent="game-map" index="284" unique_id=95390885]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 20" parent="game-map" index="285" unique_id=681905020]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 21" parent="game-map" index="286" unique_id=970510537]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 22" parent="game-map" index="287" unique_id=152359048]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 23" parent="game-map" index="288" unique_id=1608653484]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 24" parent="game-map" index="289" unique_id=1499031662]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 25" parent="game-map" index="290" unique_id=104666140]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 26" parent="game-map" index="291" unique_id=198050557]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 27" parent="game-map" index="292" unique_id=1789725716]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 28" parent="game-map" index="293" unique_id=1530395162]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 29" parent="game-map" index="294" unique_id=2109928882]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 30" parent="game-map" index="295" unique_id=1633034881]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 31" parent="game-map" index="296" unique_id=761991206]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 32" parent="game-map" index="297" unique_id=517207837]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 33" parent="game-map" index="298" unique_id=249384874]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 34" parent="game-map" index="299" unique_id=1461169005]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 35" parent="game-map" index="300" unique_id=1824969546]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 36" parent="game-map" index="301" unique_id=1576601838]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 37" parent="game-map" index="302" unique_id=171697426]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 38" parent="game-map" index="303" unique_id=688302088]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 39" parent="game-map" index="304" unique_id=242277190]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 40" parent="game-map" index="305" unique_id=1632029954]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 41" parent="game-map" index="306" unique_id=697087324]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 42" parent="game-map" index="307" unique_id=1615634053]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 43" parent="game-map" index="308" unique_id=995778672]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 44" parent="game-map" index="309" unique_id=679189162]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 45" parent="game-map" index="310" unique_id=1396950351]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 46" parent="game-map" index="311" unique_id=984772049]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 47" parent="game-map" index="312" unique_id=330458255]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 48" parent="game-map" index="313" unique_id=2052011957]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 49" parent="game-map" index="314" unique_id=824703119]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 50" parent="game-map" index="315" unique_id=1771161573]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 51" parent="game-map" index="316" unique_id=1152660953]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 52" parent="game-map" index="317" unique_id=1117241639]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 53" parent="game-map" index="318" unique_id=1453656919]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 54" parent="game-map" index="319" unique_id=594274139]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 55" parent="game-map" index="320" unique_id=2088589161]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 56" parent="game-map" index="321" unique_id=205131108]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 57" parent="game-map" index="322" unique_id=1672080709]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 58" parent="game-map" index="323" unique_id=565296250]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 59" parent="game-map" index="324" unique_id=2109454657]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 60" parent="game-map" index="325" unique_id=487080568]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 61" parent="game-map" index="326" unique_id=2113178048]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 62" parent="game-map" index="327" unique_id=460278507]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 63" parent="game-map" index="328" unique_id=1371218559]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 64" parent="game-map" index="329" unique_id=798732044]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 65" parent="game-map" index="330" unique_id=2119157957]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 66" parent="game-map" index="331" unique_id=722229508]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 67" parent="game-map" index="332" unique_id=1990020423]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 68" parent="game-map" index="333" unique_id=1335543475]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 69" parent="game-map" index="334" unique_id=1211143362]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 70" parent="game-map" index="335" unique_id=561118528]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 71" parent="game-map" index="336" unique_id=219718167]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 72" parent="game-map" index="337" unique_id=1041253840]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 73" parent="game-map" index="338" unique_id=718230229]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 74" parent="game-map" index="339" unique_id=1010783734]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 75" parent="game-map" index="340" unique_id=945482001]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 76" parent="game-map" index="341" unique_id=674004597]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 77" parent="game-map" index="342" unique_id=773798243]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 78" parent="game-map" index="343" unique_id=849264657]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 79" parent="game-map" index="344" unique_id=1218639825]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 80" parent="game-map" index="345" unique_id=1616474749]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 81" parent="game-map" index="346" unique_id=397212957]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 82" parent="game-map" index="347" unique_id=1082074912]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 83" parent="game-map" index="348" unique_id=814341789]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 84" parent="game-map" index="349" unique_id=1724254755]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 85" parent="game-map" index="350" unique_id=1467600750]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 86" parent="game-map" index="351" unique_id=1050922976]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 87" parent="game-map" index="352" unique_id=2126282321]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 88" parent="game-map" index="353" unique_id=130683555]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 89" parent="game-map" index="354" unique_id=1917249665]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 90" parent="game-map" index="355" unique_id=1264021217]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 91" parent="game-map" index="356" unique_id=2003731069]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 92" parent="game-map" index="357" unique_id=680422924]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 93" parent="game-map" index="358" unique_id=1293415707]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 94" parent="game-map" index="359" unique_id=1570409771]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 95" parent="game-map" index="360" unique_id=1015664781]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 96" parent="game-map" index="361" unique_id=2101569725]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 97" parent="game-map" index="362" unique_id=2044422263]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 98" parent="game-map" index="363" unique_id=1966157814]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 99" parent="game-map" index="364" unique_id=992876254]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 100" parent="game-map" index="365" unique_id=1714514743]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 101" parent="game-map" index="366" unique_id=1717979024]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 102" parent="game-map" index="367" unique_id=1390515805]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 103" parent="game-map" index="368" unique_id=482907729]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 104" parent="game-map" index="369" unique_id=2048605232]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 105" parent="game-map" index="370" unique_id=1472600352]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 106" parent="game-map" index="371" unique_id=893572663]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 107" parent="game-map" index="372" unique_id=575547224]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 108" parent="game-map" index="373" unique_id=1521828860]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 109" parent="game-map" index="374" unique_id=1546631508]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 110" parent="game-map" index="375" unique_id=234682840]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 111" parent="game-map" index="376" unique_id=546327510]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 112" parent="game-map" index="377" unique_id=1048155694]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 113" parent="game-map" index="378" unique_id=1139882386]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 114" parent="game-map" index="379" unique_id=1243186822]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 115" parent="game-map" index="380" unique_id=211935894]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 116" parent="game-map" index="381" unique_id=1339598503]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 117" parent="game-map" index="382" unique_id=1628844949]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 118" parent="game-map" index="383" unique_id=1783351499]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 119" parent="game-map" index="384" unique_id=213961177]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 120" parent="game-map" index="385" unique_id=799090716]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 121" parent="game-map" index="386" unique_id=867764940]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 122" parent="game-map" index="387" unique_id=1727463252]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 123" parent="game-map" index="388" unique_id=1391862947]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 124" parent="game-map" index="389" unique_id=777908145]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 125" parent="game-map" index="390" unique_id=1679900166]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 126" parent="game-map" index="391" unique_id=1851201593]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 127" parent="game-map" index="392" unique_id=1088625799]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 128" parent="game-map" index="393" unique_id=1708237896]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 129" parent="game-map" index="394" unique_id=2084910157]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 130" parent="game-map" index="395" unique_id=1881359170]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 131" parent="game-map" index="396" unique_id=281374156]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 132" parent="game-map" index="397" unique_id=2049358483]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 133" parent="game-map" index="398" unique_id=408621344]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 134" parent="game-map" index="399" unique_id=72104683]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 135" parent="game-map" index="400" unique_id=1329100920]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 136" parent="game-map" index="401" unique_id=1378460504]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 137" parent="game-map" index="402" unique_id=1254238951]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 138" parent="game-map" index="403" unique_id=414181531]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 139" parent="game-map" index="404" unique_id=1833371595]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 140" parent="game-map" index="405" unique_id=101621119]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 141" parent="game-map" index="406" unique_id=803529256]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 142" parent="game-map" index="407" unique_id=961561113]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 143" parent="game-map" index="408" unique_id=365613253]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 144" parent="game-map" index="409" unique_id=1443626088]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 145" parent="game-map" index="410" unique_id=139275118]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 146" parent="game-map" index="411" unique_id=2011381605]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 147" parent="game-map" index="412" unique_id=865090973]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 148" parent="game-map" index="413" unique_id=1153611253]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 149" parent="game-map" index="414" unique_id=926067945]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 150" parent="game-map" index="415" unique_id=1999420613]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 151" parent="game-map" index="416" unique_id=1865532562]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 152" parent="game-map" index="417" unique_id=439027094]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 153" parent="game-map" index="418" unique_id=502725686]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 154" parent="game-map" index="419" unique_id=1086488279]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 155" parent="game-map" index="420" unique_id=2021175089]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 156" parent="game-map" index="421" unique_id=1083140617]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 157" parent="game-map" index="422" unique_id=477437614]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 158" parent="game-map" index="423" unique_id=1695205056]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 159" parent="game-map" index="424" unique_id=1702722721]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 160" parent="game-map" index="425" unique_id=1139560651]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 161" parent="game-map" index="426" unique_id=769719386]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 162" parent="game-map" index="427" unique_id=795242704]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 163" parent="game-map" index="428" unique_id=472057112]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 164" parent="game-map" index="429" unique_id=1603826075]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 165" parent="game-map" index="430" unique_id=1316463808]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 166" parent="game-map" index="431" unique_id=506182864]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 167" parent="game-map" index="432" unique_id=134009001]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 168" parent="game-map" index="433" unique_id=1690082446]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 169" parent="game-map" index="434" unique_id=152272113]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 170" parent="game-map" index="435" unique_id=461533148]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 171" parent="game-map" index="436" unique_id=1044996748]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 172" parent="game-map" index="437" unique_id=586311891]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 173" parent="game-map" index="438" unique_id=1728916230]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 174" parent="game-map" index="439" unique_id=639008853]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 175" parent="game-map" index="440" unique_id=2027374522]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 176" parent="game-map" index="441" unique_id=1500656639]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 177" parent="game-map" index="442" unique_id=1977635366]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 178" parent="game-map" index="443" unique_id=1789062870]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 179" parent="game-map" index="444" unique_id=1025727778]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 180" parent="game-map" index="445" unique_id=173484686]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 181" parent="game-map" index="446" unique_id=2024248180]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 182" parent="game-map" index="447" unique_id=1269110241]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 183" parent="game-map" index="448" unique_id=1260128087]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 184" parent="game-map" index="449" unique_id=1277642802]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 185" parent="game-map" index="450" unique_id=2041733497]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 186" parent="game-map" index="451" unique_id=1608851196]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 187" parent="game-map" index="452" unique_id=1783799019]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 188" parent="game-map" index="453" unique_id=467111206]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 189" parent="game-map" index="454" unique_id=1883373027]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 190" parent="game-map" index="455" unique_id=551773855]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 191" parent="game-map" index="456" unique_id=411569118]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 192" parent="game-map" index="457" unique_id=613785554]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 193" parent="game-map" index="458" unique_id=1501720829]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 194" parent="game-map" index="459" unique_id=817094921]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 195" parent="game-map" index="460" unique_id=326440809]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 196" parent="game-map" index="461" unique_id=1220408524]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 197" parent="game-map" index="462" unique_id=324176821]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 198" parent="game-map" index="463" unique_id=780579117]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 199" parent="game-map" index="464" unique_id=473187856]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 200" parent="game-map" index="465" unique_id=255319581]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 201" parent="game-map" index="466" unique_id=99846339]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 202" parent="game-map" index="467" unique_id=1585512716]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 203" parent="game-map" index="468" unique_id=640609678]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 204" parent="game-map" index="469" unique_id=2052584656]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 205" parent="game-map" index="470" unique_id=582184264]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 206" parent="game-map" index="471" unique_id=382218195]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 207" parent="game-map" index="472" unique_id=1647797405]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 208" parent="game-map" index="473" unique_id=469124792]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 209" parent="game-map" index="474" unique_id=1286192058]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 210" parent="game-map" index="475" unique_id=1406236872]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 211" parent="game-map" index="476" unique_id=1104180074]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 212" parent="game-map" index="477" unique_id=84456933]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 213" parent="game-map" index="478" unique_id=1192110155]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 214" parent="game-map" index="479" unique_id=763550471]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 215" parent="game-map" index="480" unique_id=1721837430]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 216" parent="game-map" index="481" unique_id=2077141672]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 217" parent="game-map" index="482" unique_id=654949972]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 218" parent="game-map" index="483" unique_id=1685392459]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 219" parent="game-map" index="484" unique_id=1548011962]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 220" parent="game-map" index="485" unique_id=1406054312]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 221" parent="game-map" index="486" unique_id=736693589]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 222" parent="game-map" index="487" unique_id=1052434073]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 223" parent="game-map" index="488" unique_id=1375600618]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 224" parent="game-map" index="489" unique_id=1632001979]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 225" parent="game-map" index="490" unique_id=1736125684]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 226" parent="game-map" index="491" unique_id=979838585]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 227" parent="game-map" index="492" unique_id=1154111821]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 228" parent="game-map" index="493" unique_id=346038640]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 229" parent="game-map" index="494" unique_id=458746495]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 230" parent="game-map" index="495" unique_id=343291459]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 231" parent="game-map" index="496" unique_id=1580485908]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 232" parent="game-map" index="497" unique_id=157822815]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 233" parent="game-map" index="498" unique_id=1748133000]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 234" parent="game-map" index="499" unique_id=1638837472]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 235" parent="game-map" index="500" unique_id=1531593313]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 236" parent="game-map" index="501" unique_id=192573813]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 237" parent="game-map" index="502" unique_id=798692702]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 238" parent="game-map" index="503" unique_id=1457794528]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 239" parent="game-map" index="504" unique_id=977901869]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 240" parent="game-map" index="505" unique_id=1175815384]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 241" parent="game-map" index="506" unique_id=803025181]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 242" parent="game-map" index="507" unique_id=1726783746]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 243" parent="game-map" index="508" unique_id=1012595310]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 244" parent="game-map" index="509" unique_id=1508985749]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 245" parent="game-map" index="510" unique_id=283104587]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 246" parent="game-map" index="511" unique_id=1256263799]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 247" parent="game-map" index="512" unique_id=995490805]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 248" parent="game-map" index="513" unique_id=1572048752]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 249" parent="game-map" index="514" unique_id=1787565197]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 250" parent="game-map" index="515" unique_id=1319882405]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 251" parent="game-map" index="516" unique_id=908301729]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 252" parent="game-map" index="517" unique_id=1561091645]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 253" parent="game-map" index="518" unique_id=396589864]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 254" parent="game-map" index="519" unique_id=706551273]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 255" parent="game-map" index="520" unique_id=156329153]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 256" parent="game-map" index="521" unique_id=364639847]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 257" parent="game-map" index="522" unique_id=686145726]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 258" parent="game-map" index="523" unique_id=1377167751]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 259" parent="game-map" index="524" unique_id=458763000]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 260" parent="game-map" index="525" unique_id=256250305]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 261" parent="game-map" index="526" unique_id=518484554]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 262" parent="game-map" index="527" unique_id=1124895001]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
-[node name="Checker Floor Tile 263" parent="game-map" index="528" unique_id=1330889413]
-surface_material_override/0 = SubResource("StandardMaterial3D_nykyp")
-
 [node name="CharacterBody3D" parent="." unique_id=902792464 instance=ExtResource("2_tqkkf")]
 transform = Transform3D(0.81, 0, 0, 0, 0.81, 0, 0, 0, 0.81, 0.16710877, 1.5118589, 8.732275)
 
@@ -2259,7 +2263,7 @@ player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
 [node name="Cube_018" parent="Pong Arcade/arcade-machine1" parent_id_path=PackedInt32Array(202857943, 324943654) index="1" unique_id=179301597]
-surface_material_override/0 = SubResource("StandardMaterial3D_30ska")
+surface_material_override/0 = SubResource("StandardMaterial3D_mgs8m")
 
 [node name="ball" parent="Pong Arcade/SubViewport/Node2D/Control2" parent_id_path=PackedInt32Array(202857943, 1777230661, 1609006891) index="4" unique_id=1414630960]
 paddle_half_height = 53.0
@@ -2284,7 +2288,7 @@ player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
 [node name="Cube_018" parent="Space Arcade/arcade-machine1" parent_id_path=PackedInt32Array(424789420, 324943654) index="1" unique_id=179301597]
-surface_material_override/0 = SubResource("StandardMaterial3D_omedl")
+surface_material_override/0 = SubResource("StandardMaterial3D_rqo2c")
 
 [node name="ScreenLight" type="SpotLight3D" parent="Space Arcade" unique_id=169378618]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.15, 1)
@@ -2306,7 +2310,7 @@ player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
 [node name="Cube_018" parent="snake_arcade/arcade-machine1" parent_id_path=PackedInt32Array(480153694, 2004248552) index="1" unique_id=179301597]
-surface_material_override/0 = SubResource("StandardMaterial3D_xks3a")
+surface_material_override/0 = SubResource("StandardMaterial3D_uclq6")
 
 [node name="ScreenLight" type="SpotLight3D" parent="snake_arcade" unique_id=1847499478]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.15, 1)
@@ -2328,7 +2332,7 @@ player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
 [node name="Cube_018" parent="breakout_arcade/arcade-machine1" parent_id_path=PackedInt32Array(1890297522, 2004248552) index="1" unique_id=179301597]
-surface_material_override/0 = SubResource("StandardMaterial3D_2kc6l")
+surface_material_override/0 = SubResource("StandardMaterial3D_tmgcv")
 
 [node name="ScreenLight" type="SpotLight3D" parent="breakout_arcade" unique_id=1274181819]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.15, 1)
@@ -2350,7 +2354,7 @@ player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
 [node name="Cube_018" parent="Asteroids Arcade/arcade-machine1" parent_id_path=PackedInt32Array(816930638, 2004248552) index="1" unique_id=179301597]
-surface_material_override/0 = SubResource("StandardMaterial3D_25aov")
+surface_material_override/0 = SubResource("StandardMaterial3D_3xi6f")
 
 [node name="ScreenLight" type="SpotLight3D" parent="Asteroids Arcade" unique_id=601064066]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.15, 1)
@@ -2371,27 +2375,8 @@ transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, -4.74, 0.44, -3.0402
 player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
-[node name="Control" parent="Frogger Arcade/SubViewport/FroggerGame" parent_id_path=PackedInt32Array(518293503, 1616597122) index="3"]
-layout_mode = 3
-anchors_preset = 0
-
-[node name="Score" parent="Frogger Arcade/SubViewport/FroggerGame/Control" index="0"]
-layout_mode = 0
-
-[node name="Lives" parent="Frogger Arcade/SubViewport/FroggerGame/Control" index="1"]
-layout_mode = 0
-
-[node name="game_over" parent="Frogger Arcade/SubViewport/FroggerGame/Control" index="2"]
-layout_mode = 0
-
-[node name="number_high_score" parent="Frogger Arcade/SubViewport/FroggerGame/Control" index="3"]
-layout_mode = 0
-
-[node name="credit" parent="Frogger Arcade/SubViewport/FroggerGame/Control" index="4"]
-layout_mode = 0
-
 [node name="Cube_018" parent="Frogger Arcade/arcade-machine1" parent_id_path=PackedInt32Array(518293503, 2004248552) index="1" unique_id=179301597]
-surface_material_override/0 = SubResource("StandardMaterial3D_hs4c0")
+surface_material_override/0 = SubResource("StandardMaterial3D_78kcs")
 
 [node name="ScreenLight" type="SpotLight3D" parent="Frogger Arcade" unique_id=1511244272]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.15, 1)
@@ -2406,45 +2391,29 @@ spot_attenuation = 1.5
 spot_angle = 80.0
 
 [node name="Racing Arcade" parent="." unique_id=1502261902 instance=ExtResource("10_racing")]
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0.17, 0.44, -3.040211)
+transform = Transform3D(0.365, 0, 0, 0, 0.365, 0, 0, 0, 0.365, 6.3631377, 0.44, -3.0042868)
 
 [node name="coinslot" parent="Racing Arcade" index="1" unique_id=1510952970 node_paths=PackedStringArray("player", "label")]
 player = NodePath("../../CharacterBody3D")
 label = NodePath("../../CharacterBody3D/Camera3D/Control/Label")
 
-[node name="track_1" parent="Racing Arcade/SubViewport/racing" parent_id_path=PackedInt32Array(1502261902, 1616597122) index="0"]
+[node name="CollisionShape3D" parent="Racing Arcade/startbutton" parent_id_path=PackedInt32Array(1502261902, 1835900166) index="0" unique_id=459335488]
+shape = SubResource("BoxShape3D_2kc6l")
+
+[node name="track_1" parent="Racing Arcade/SubViewport/racing" parent_id_path=PackedInt32Array(1502261902, 1616597122) index="0" unique_id=578484772]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.22975922, -0.22517776, 0.031707764)
 
-[node name="DirectionalLight3D" parent="Racing Arcade/SubViewport/racing" parent_id_path=PackedInt32Array(1502261902, 1616597122) index="5"]
-transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
-
-[node name="Control" parent="Racing Arcade/SubViewport/racing/UI" index="0"]
-layout_mode = 3
+[node name="Control" parent="Racing Arcade/SubViewport/racing/UI" parent_id_path=PackedInt32Array(1502261902, 1616597122, 1734238215) index="1" unique_id=508745834]
 anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1200.2251
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="Lap" parent="Racing Arcade/SubViewport/racing/UI/Control" index="0"]
-layout_mode = 0
-
-[node name="Time" parent="Racing Arcade/SubViewport/racing/UI/Control" index="1"]
-layout_mode = 0
-
-[node name="Position" parent="Racing Arcade/SubViewport/racing/UI/Control" index="2"]
-layout_mode = 0
-
-[node name="countdown" parent="Racing Arcade/SubViewport/racing/UI/Control" index="3"]
-layout_mode = 0
-
-[node name="game_over" parent="Racing Arcade/SubViewport/racing/UI/Control" index="4"]
-layout_mode = 0
-
-[node name="best_time" parent="Racing Arcade/SubViewport/racing/UI/Control" index="5"]
-layout_mode = 0
-
-[node name="credit" parent="Racing Arcade/SubViewport/racing/UI/Control" index="6"]
-layout_mode = 0
-
-[node name="Cube_018" parent="Racing Arcade/arcade-machine1" parent_id_path=PackedInt32Array(1502261902, 2004248552) index="1" unique_id=179301597]
-surface_material_override/0 = SubResource("StandardMaterial3D_j4o0h")
+[node name="Cube_034" parent="Racing Arcade/racing machine" parent_id_path=PackedInt32Array(1502261902, 1373447266) index="1" unique_id=7081876]
+surface_material_override/0 = SubResource("StandardMaterial3D_25aov")
 
 [node name="ScreenLight" type="SpotLight3D" parent="Racing Arcade" unique_id=1606875316]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 3.15, 1)
@@ -2480,4 +2449,4 @@ spot_angle = 80.0
 [editable path="Frogger Arcade/arcade-machine1"]
 [editable path="Racing Arcade"]
 [editable path="Racing Arcade/SubViewport/racing"]
-[editable path="Racing Arcade/arcade-machine1"]
+[editable path="Racing Arcade/racing machine"]

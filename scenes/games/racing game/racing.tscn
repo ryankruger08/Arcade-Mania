@@ -29,16 +29,16 @@ ambient_light_source = 3
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.6
 
-[sub_resource type="LabelSettings" id="ScoreFont"]
-font = ExtResource("4")
-font_size = 57
-outline_size = 6
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="LabelSettings" id="LargeFont"]
 font = ExtResource("4")
 font_size = 115
 outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="ScoreFont"]
+font = ExtResource("4")
+font_size = 57
+outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="CreditFont"]
@@ -53,12 +53,12 @@ player_kart = NodePath("Karts/Player")
 karts = NodePath("Karts")
 track_path = NodePath("TrackPath")
 camera = NodePath("Camera3D")
-lap_label = NodePath("UI/Control/Lap")
-time_label = NodePath("UI/Control/Time")
-position_label = NodePath("UI/Control/Position")
-countdown_label = NodePath("UI/Control/countdown")
-gameover_label = NodePath("UI/Control/game_over")
-besttime_label = NodePath("UI/Control/best_time")
+lap_label = NodePath("UI/Lap")
+time_label = NodePath("UI/Time")
+position_label = NodePath("UI/Position")
+countdown_label = NodePath("UI/countdown")
+gameover_label = NodePath("UI/game_over")
+besttime_label = NodePath("UI/best_time")
 
 [node name="track_1" parent="." unique_id=578484772 instance=ExtResource("2")]
 
@@ -89,68 +89,33 @@ transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.819
 shadow_enabled = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1734238215]
-follow_viewport_enabled = true
 
 [node name="screen constraints" parent="UI" unique_id=115583521 instance=ExtResource("6")]
 
 [node name="Control" type="Control" parent="UI" unique_id=508745834]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -600.1125
-offset_top = -540.0
-offset_right = 600.11255
-offset_bottom = 540.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 338.0
+offset_right = -370.09998
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 
-[node name="Lap" type="Label" parent="UI/Control" unique_id=1234819029]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "LAP 1/3"
-label_settings = SubResource("ScoreFont")
-metadata/_edit_use_anchors_ = true
-
-[node name="Time" type="Label" parent="UI/Control" unique_id=297939491]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "00:00"
-label_settings = SubResource("ScoreFont")
-horizontal_alignment = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Position" type="Label" parent="UI/Control" unique_id=343982093]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "1/3"
-label_settings = SubResource("ScoreFont")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="countdown" type="Label" parent="UI/Control" unique_id=1743540839]
+[node name="countdown" type="Label" parent="UI" unique_id=1743540839]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.549988
+offset_top = -58.0
+offset_right = 16.450012
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "3"
@@ -158,12 +123,17 @@ label_settings = SubResource("LargeFont")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="game_over" type="Label" parent="UI/Control" unique_id=640425684]
+[node name="game_over" type="Label" parent="UI" unique_id=640425684]
 visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.55005
+offset_top = -58.0
+offset_right = 296.44995
+offset_bottom = 58.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "1ST PLACE"
@@ -171,26 +141,69 @@ label_settings = SubResource("LargeFont")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="best_time" type="Label" parent="UI/Control" unique_id=1950254778]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Lap" type="Label" parent="UI" unique_id=1234819029]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 340.0
+offset_top = 48.0
+offset_right = 557.0
+offset_bottom = 106.0
 grow_horizontal = 2
-grow_vertical = 2
+text = "LAP 1/3"
+label_settings = SubResource("ScoreFont")
+
+[node name="Time" type="Label" parent="UI" unique_id=297939491]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -71.5
+offset_top = 48.0
+offset_right = 71.5
+offset_bottom = 106.0
+grow_horizontal = 2
+text = "00:00"
+label_settings = SubResource("ScoreFont")
+horizontal_alignment = 2
+
+[node name="Position" type="Label" parent="UI" unique_id=343982093]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -588.0
+offset_top = 48.0
+offset_right = -498.99988
+offset_bottom = 106.0
+grow_horizontal = 2
+text = "1/3"
+label_settings = SubResource("ScoreFont")
+horizontal_alignment = 1
+
+[node name="best_time" type="Label" parent="UI" unique_id=1950254778]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.5
+offset_top = 48.0
+offset_right = 135.5
+offset_bottom = 106.0
+grow_horizontal = 2
 text = "BEST --:--"
 label_settings = SubResource("ScoreFont")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
 
-[node name="credit" type="Label" parent="UI/Control" unique_id=934311119]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="credit" type="Label" parent="UI" unique_id=934311119]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.5495
+offset_top = 167.58002
+offset_right = 222.45044
+offset_bottom = 238.58008
 grow_horizontal = 2
 grow_vertical = 2
 text = "INSERT COIN"
 label_settings = SubResource("CreditFont")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true

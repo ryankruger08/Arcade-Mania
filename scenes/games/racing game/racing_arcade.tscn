@@ -1,42 +1,51 @@
 [gd_scene format=3 uid="uid://b3rcslmh1duw4"]
 
+[ext_resource type="Script" uid="uid://b30quxaytdsip" path="res://scenes/games/racing game/steering_wheel.gd" id="1_meb2m"]
 [ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/machine_manager.gd" id="1_pb2ki"]
-[ext_resource type="PackedScene" path="res://scenes/games/racing game/racing.tscn" id="5_o28rj"]
-[ext_resource type="PackedScene" uid="uid://bwbrsdx8omhhf" path="res://Models/Map/arcade-machine1.blend" id="5_tt0bg"]
+[ext_resource type="PackedScene" uid="uid://ckgjpw605eanh" path="res://Models/Map/racing machine.blend" id="3_6dnv1"]
+[ext_resource type="PackedScene" uid="uid://cklqr52ulvssq" path="res://scenes/games/racing game/racing.tscn" id="5_o28rj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6mdw"]
-size = Vector3(0.2782898, 0.35394096, 0.35832548)
+size = Vector3(0.625473, 0.59910536, 0.35832548)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
-size = Vector3(2.039547, 0.25509548, 0.8300599)
+resource_local_to_scene = true
+size = Vector3(2.039547, 0.5889735, 1.3227448)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2r4tv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_meb2m"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4t4hu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ssg1l"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_2r4tv")
+albedo_texture = SubResource("ViewportTexture_meb2m")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_etaqi"]
+albedo_color = Color(1, 0, 0, 1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_cbp14"]
+size = Vector3(7.738037, 1.8935547, 6.178467)
 
 [node name="racing_arcade" type="Node3D" unique_id=424789420]
+transform = Transform3D(1.085, 0, 0, 0, 1.085, 0, 0, 0, 1.085, 0, 0, 0)
+script = ExtResource("1_meb2m")
 
 [node name="pongcamera" type="Camera3D" parent="." unique_id=653099797]
-transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
+transform = Transform3D(1, 0, 0, 0, 0.98703825, 0.16048512, 0, -0.16048512, 0.98703825, 0, 3.397791, 3.389212)
+fov = 60.0
 
 [node name="coinslot" type="Area3D" parent="." unique_id=1510952970 node_paths=PackedStringArray("camera", "credit_label", "gamemanager")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.59419155, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4943684, -0.59419155, 0)
 collision_layer = 64
 collision_mask = 64
 script = ExtResource("1_pb2ki")
-machine_name = "Racing"
+machine_name = "Road Racer"
 camera = NodePath("../pongcamera")
-credit_label = NodePath("../SubViewport/racing/UI/Control/credit")
+credit_label = NodePath("../SubViewport/racing/UI/credit")
 gamemanager = NodePath("../SubViewport/racing")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="coinslot" unique_id=922392250]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42855787, 1.5347078, 1.1487615)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25496626, 1.5046706, 1.1487615)
 shape = SubResource("BoxShape3D_g6mdw")
 
 [node name="startbutton" type="Area3D" parent="." unique_id=1835900166]
@@ -44,7 +53,7 @@ collision_layer = 64
 collision_mask = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="startbutton" unique_id=459335488]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12964487, 2.6067834, 0.8411606)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12964487, 2.4398444, 1.0875031)
 shape = SubResource("BoxShape3D_umwyn")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=667048958]
@@ -54,10 +63,65 @@ size = Vector2i(1920, 1080)
 [node name="racing" parent="SubViewport" unique_id=1616597122 node_paths=PackedStringArray("machine_manager") instance=ExtResource("5_o28rj")]
 machine_manager = NodePath("../../coinslot")
 
-[node name="arcade-machine1" parent="." unique_id=2004248552 instance=ExtResource("5_tt0bg")]
+[node name="Control" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="1" unique_id=508745834]
+offset_left = 0.0
+offset_right = 0.0
 
-[node name="Cube_018" parent="arcade-machine1" index="1" unique_id=1770842861]
-surface_material_override/0 = SubResource("StandardMaterial3D_4t4hu")
+[node name="countdown" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="2" unique_id=1743540839]
+offset_left = -32.5
+offset_right = 32.5
+
+[node name="game_over" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="3" unique_id=640425684]
+offset_left = -312.5
+offset_right = 312.5
+
+[node name="Lap" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="4" unique_id=1234819029]
+offset_left = -108.5
+offset_top = 0.0
+offset_right = 108.5
+offset_bottom = 58.0
+
+[node name="Time" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="5" unique_id=297939491]
+offset_top = 0.0
+offset_bottom = 58.0
+
+[node name="Position" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="6" unique_id=343982093]
+offset_left = -44.50006
+offset_top = 0.0
+offset_right = 44.50006
+offset_bottom = 58.0
+
+[node name="best_time" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="7" unique_id=1950254778]
+offset_top = 0.0
+offset_bottom = 58.0
+
+[node name="credit" parent="SubViewport/racing/UI" parent_id_path=PackedInt32Array(1616597122, 1734238215) index="8" unique_id=934311119]
+offset_left = -238.5
+offset_top = -35.50003
+offset_right = 238.5
+offset_bottom = 35.50003
+
+[node name="racing machine" parent="." unique_id=1373447266 instance=ExtResource("3_6dnv1")]
+transform = Transform3D(-0.645, 0, -9.739229e-08, 0, 0.645, 0, 9.739229e-08, 0, -0.645, 9.621713, -1.3610281, 8.102343)
+
+[node name="Cube_034" parent="racing machine" index="1" unique_id=36980167]
+surface_material_override/0 = SubResource("StandardMaterial3D_ssg1l")
+
+[node name="Cube_050" parent="racing machine" index="10" unique_id=1521408755]
+surface_material_override/0 = SubResource("StandardMaterial3D_ssg1l")
+
+[node name="Torus_003" parent="racing machine" index="35" unique_id=985280181]
+surface_material_override/0 = SubResource("StandardMaterial3D_etaqi")
+
+[node name="Torus_005" parent="racing machine" index="36" unique_id=1843895795]
+transform = Transform3D(-1, 3.2561718e-07, -1.0701558e-07, 1.609517e-07, 0.17045231, -0.9853659, -3.02611e-07, -0.9853659, -0.17045231, 15.101995, 5.184504, 10.197289)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="racing machine" unique_id=1552787705]
+transform = Transform3D(0.9999999, 0, -4.2632564e-14, 0, 0.9999999, 0, 4.2632564e-14, 0, 0.9999999, 12.149526, 1.4135705, 9.084303)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="racing machine/StaticBody3D" unique_id=1110560194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.91565037, -0.4467774, -1.0135503)
+shape = SubResource("BoxShape3D_cbp14")
 
 [connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
 [connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]
@@ -65,5 +129,4 @@ surface_material_override/0 = SubResource("StandardMaterial3D_4t4hu")
 [connection signal="area_exited" from="startbutton" to="coinslot" method="_on_start_button_body_exited"]
 
 [editable path="SubViewport/racing"]
-[editable path="arcade-machine1"]
-
+[editable path="racing machine"]
