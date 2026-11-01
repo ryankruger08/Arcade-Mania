@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dvxdvf8m3k2r"]
+
+[ext_resource type="Script" uid="uid://dj63v4welwf4f" path="res://scenes/games/breakout/brick_grid.gd" id="1_k8eey"]
+[ext_resource type="PackedScene" uid="uid://cwio65shtgmu4" path="res://scenes/games/breakout/brick.tscn" id="2_271fv"]
+[ext_resource type="PackedScene" uid="uid://cvg1y7fodptbq" path="res://scenes/games/breakout/powerup.tscn" id="3_lwr2o"]
+
+[node name="brick_grid" type="Node2D" unique_id=624676376]
+script = ExtResource("1_k8eey")
+brick_scene = ExtResource("2_271fv")
+powerup_scene = ExtResource("3_lwr2o")

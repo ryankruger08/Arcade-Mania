@@ -1,27 +1,8 @@
 [gd_scene format=3 uid="uid://bb7r61pckv0go"]
 
 [ext_resource type="PackedScene" uid="uid://daldhtmev87ta" path="res://scenes/games/space invaders/space_game.tscn" id="1_lylwg"]
-[ext_resource type="PackedScene" uid="uid://hmr0574i2jy4" path="res://Models/Map/arcade-machine.blend" id="2_djlaq"]
 [ext_resource type="Script" uid="uid://b05qsfpljcgeb" path="res://scenes/map/machine_manager.gd" id="3_0wfig"]
 [ext_resource type="PackedScene" uid="uid://bwbrsdx8omhhf" path="res://Models/Map/arcade-machine1.blend" id="4_djlaq"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_umwyn"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jcom0"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wugm"]
-resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_umwyn")
-emission_enabled = true
-emission_texture = SubResource("ViewportTexture_jcom0")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_17rms"]
-resource_local_to_scene = true
-material = SubResource("StandardMaterial3D_7wugm")
-size = Vector2(1.63, 1.08)
-orientation = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g6mdw"]
 size = Vector3(0.2782898, 0.35394096, 0.35832548)
@@ -29,28 +10,19 @@ size = Vector3(0.2782898, 0.35394096, 0.35832548)
 [sub_resource type="BoxShape3D" id="BoxShape3D_umwyn"]
 size = Vector3(2.0356407, 0.25509548, 0.8300599)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_0wfig"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lylwg"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_3pa81"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_djlaq"]
 viewport_path = NodePath("../SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmkg3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0wfig"]
 resource_local_to_scene = true
-albedo_texture = SubResource("ViewportTexture_0wfig")
+albedo_texture = SubResource("ViewportTexture_lylwg")
 emission_enabled = true
-emission_texture = SubResource("ViewportTexture_3pa81")
+emission_texture = SubResource("ViewportTexture_djlaq")
 
 [node name="space_arcade" type="Node3D" unique_id=424789420]
-
-[node name="arcade-machine" type="Node3D" parent="." unique_id=440034849]
-visible = false
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="arcade-machine" unique_id=2041155398]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3237743, 0.36217296)
-mesh = SubResource("PlaneMesh_17rms")
-
-[node name="arcade-machine" parent="arcade-machine" unique_id=332788749 instance=ExtResource("2_djlaq")]
 
 [node name="pongcamera" type="Camera3D" parent="." unique_id=653099797]
 transform = Transform3D(2.3255813, 0, 0, 0, 2.3255813, 0, 0, 0, 2.3255813, 0, 3.397791, 2.2001534)
@@ -86,7 +58,7 @@ machine_manager = NodePath("../../coinslot")
 [node name="arcade-machine1" parent="." unique_id=324943654 instance=ExtResource("4_djlaq")]
 
 [node name="Cube_018" parent="arcade-machine1" index="1" unique_id=1770842861]
-surface_material_override/0 = SubResource("StandardMaterial3D_gmkg3")
+surface_material_override/0 = SubResource("StandardMaterial3D_0wfig")
 
 [connection signal="area_entered" from="coinslot" to="coinslot" method="_on_coin_slot_body_entered"]
 [connection signal="area_exited" from="coinslot" to="coinslot" method="_on_coin_slot_body_exited"]

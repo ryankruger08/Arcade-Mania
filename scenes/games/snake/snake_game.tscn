@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://ctob586p4h6yb"]
 
-[ext_resource type="Script" uid="uid://cue1vtgmr6l8j" path="res://scripts/snake/snake_game.gd" id="1_6rmpm"]
+[ext_resource type="Script" uid="uid://cue1vtgmr6l8j" path="res://scenes/games/snake/snake_game.gd" id="1_6rmpm"]
 [ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="2_b4umo"]
 [ext_resource type="PackedScene" uid="uid://dfdbsyuygt2ds" path="res://scenes/games/snake/food.tscn" id="3_biucp"]
 [ext_resource type="PackedScene" uid="uid://dr3kxyy0ud0xv" path="res://scenes/games/snake/snake.tscn" id="4_u501u"]
-[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/screen_constraints.tscn" id="5_b4umo"]
+[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/shared/screen_constraints.tscn" id="5_b4umo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_17rms"]
 font = ExtResource("2_b4umo")
@@ -17,6 +17,10 @@ font_size = 115
 [sub_resource type="LabelSettings" id="LabelSettings_gv0bn"]
 font = ExtResource("2_b4umo")
 font_size = 70
+
+[sub_resource type="LabelSettings" id="HighScoreFont"]
+font = ExtResource("2_b4umo")
+font_size = 104
 
 [node name="SnakeGame" type="Node2D" unique_id=480509604]
 script = ExtResource("1_6rmpm")
@@ -38,13 +42,14 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -102.0
+offset_left = -570.0
 offset_top = 19.0
-offset_right = 102.0
+offset_right = 570.0
 offset_bottom = 91.0
 grow_horizontal = 2
 text = "Score"
 label_settings = SubResource("LabelSettings_17rms")
+horizontal_alignment = 1
 
 [node name="game_over" type="Label" parent="Control" unique_id=1323691629]
 layout_mode = 1
@@ -99,23 +104,26 @@ horizontal_alignment = 1
 
 [node name="number_high_score" type="Label" parent="Control" unique_id=734240416]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -348.0
-offset_top = -404.99
-offset_right = 349.0
-offset_bottom = -288.99
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 390
+offset_top = 120
+offset_right = 1530
+offset_bottom = 260
 grow_horizontal = 2
 grow_vertical = 2
 text = "0"
-label_settings = SubResource("LabelSettings_jv6ht")
+label_settings = SubResource("HighScoreFont")
 horizontal_alignment = 1
+mouse_filter = 2
 
 [node name="food" parent="." unique_id=1869567699 instance=ExtResource("3_biucp")]
+position = Vector2(390, 0)
 
 [node name="Snake" parent="." unique_id=1792048074 instance=ExtResource("4_u501u")]
+position = Vector2(390, 0)
 
 [node name="screen constraints" parent="." unique_id=1388318164 instance=ExtResource("5_b4umo")]

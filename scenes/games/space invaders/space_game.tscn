@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dvhc0umu87dqm" path="res://scenes/games/space invaders/ufo.tscn" id="3_ct6yv"]
 [ext_resource type="FontFile" uid="uid://s2jgc20gwpx0" path="res://Resources/font.ttf" id="5_tcyn2"]
 [ext_resource type="PackedScene" uid="uid://c5lnmelt4mv6" path="res://scenes/games/space invaders/shield.tscn" id="7_hp53i"]
-[ext_resource type="PackedScene" uid="uid://l4kkhuu5nbhr" path="res://scenes/games/screen_constraints.tscn" id="8_hp53i"]
 
 [sub_resource type="Animation" id="Animation_2fcm0"]
 length = 0.001
@@ -141,18 +140,21 @@ offset_bottom = 1080.0
 
 [node name="ScoreText" type="Label" parent="in_game_ui" unique_id=2144077568]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -34.0
-offset_top = 70.0
-offset_right = 35.0
-offset_bottom = 194.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 650
+offset_top = 60
+offset_right = 1270
+offset_bottom = 200
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_17rms")
 horizontal_alignment = 1
 vertical_alignment = 2
+anchor_bottom = 0.0
+mouse_filter = 2
+anchor_top = 0.0
 
 [node name="LivesText2" type="Label" parent="in_game_ui" unique_id=1146942209]
 layout_mode = 1
@@ -217,57 +219,60 @@ offset_bottom = 1080.0
 
 [node name="insert_credit" type="Label" parent="attract_ui" unique_id=1451562089]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -128.557
-offset_top = -303.635
-offset_right = 128.55798
-offset_bottom = -248.73999
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 390
+offset_top = 775
+offset_right = 1530
+offset_bottom = 915
 grow_horizontal = 2
 grow_vertical = 0
 text = "Insert Credit"
 label_settings = SubResource("LabelSettings_hp53i")
 horizontal_alignment = 1
 vertical_alignment = 2
+mouse_filter = 2
 
 [node name="highscore_number" type="Label" parent="attract_ui" unique_id=622442942]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -470.0
-offset_right = 140.0
-offset_bottom = -356.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 390
+offset_top = 70
+offset_right = 1530
+offset_bottom = 210
 grow_horizontal = 2
 grow_vertical = 2
 text = "0"
 label_settings = SubResource("LabelSettings_7j61p")
 horizontal_alignment = 1
 vertical_alignment = 2
+mouse_filter = 2
 
 [node name="highscore_text" type="Label" parent="attract_ui/highscore_number" unique_id=417707461]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -140.0
-offset_top = -118.0
-offset_right = 140.0
-offset_bottom = -63.0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0
+offset_top = -65
+offset_right = 1140
+offset_bottom = 0
 grow_horizontal = 2
 grow_vertical = 2
 text = "High Score"
 label_settings = SubResource("LabelSettings_bxfro")
 horizontal_alignment = 1
 vertical_alignment = 2
+mouse_filter = 2
 
 [node name="aliens" type="Node2D" parent="." unique_id=923555427]
 
@@ -292,4 +297,16 @@ scale = Vector2(0.17, 0.065)
 position = Vector2(1381, 781)
 scale = Vector2(0.17, 0.065)
 
-[node name="screen constraints" parent="." unique_id=1388318164 instance=ExtResource("8_hp53i")]
+[node name="screen constraints" type="Node2D" parent="." unique_id=1388318164]
+
+[node name="ColorRect3" type="ColorRect" parent="screen constraints" unique_id=965323482]
+offset_left = 333.0
+offset_top = 0.0
+offset_right = 338.2
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="screen constraints" unique_id=1931870876]
+offset_left = 1550.385
+offset_right = 1554.885
+offset_bottom = 1080.0

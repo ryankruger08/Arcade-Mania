@@ -8,6 +8,7 @@ atlas = ExtResource("1_22cc1")
 region = Rect2(1024, 1024, 1024, 1024)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17rms"]
+size = Vector2(48.75, 33.75)
 
 [node name="alien" type="CharacterBody2D" unique_id=568486332]
 scale = Vector2(1.6, 1.6)
@@ -20,4 +21,6 @@ scale = Vector2(0.11, 0.11)
 texture = SubResource("AtlasTexture_ed4od")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1232132204]
+position = Vector2(-1.1920927e-06, -1.8750013)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_17rms")

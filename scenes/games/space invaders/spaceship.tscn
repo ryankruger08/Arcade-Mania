@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhrw2eusa1joy"]
 
-[ext_resource type="Script" uid="uid://b242fbifhp20r" path="res://scripts/space game/spaceship.gd" id="1_vb5g1"]
+[ext_resource type="Script" uid="uid://b242fbifhp20r" path="res://scenes/games/space invaders/spaceship.gd" id="1_vb5g1"]
 [ext_resource type="PackedScene" uid="uid://b8nx4u0gd1sw1" path="res://scenes/games/space invaders/bullet.tscn" id="2_1exfg"]
 [ext_resource type="Texture2D" uid="uid://c4th82i3ax71a" path="res://Resources/space game/spritesheet.png" id="2_dgsn6"]
 

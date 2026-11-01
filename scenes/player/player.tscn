@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cggles3hks74w"]
 
-[ext_resource type="Script" uid="uid://cdjsa38shkwah" path="res://scripts/player/controller/player_controller.gd" id="1_8afob"]
+[ext_resource type="Script" uid="uid://cdjsa38shkwah" path="res://scenes/player/player_controller.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://64cjeui4ncty" path="res://scenes/player/ui_manager.gd" id="2_gmlin"]
 [ext_resource type="FontFile" uid="uid://dil6v3bygo78h" path="res://Resources/PixelatedEleganceRegular-ovawB.ttf" id="3_lvxji"]
 

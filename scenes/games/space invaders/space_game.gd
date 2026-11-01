@@ -62,6 +62,7 @@ func _ready() -> void:
 	if player:
 		player_start_position = player.global_position
 		player.died.connect(_on_player_died)
+		player.lives_changed.connect(_on_lives_changed)
 		if bullet_container:
 			player.bullet_container = bullet_container
 	if game_over_zone:
@@ -85,13 +86,8 @@ func _ready() -> void:
 	start_attract()
 
 
-func _process(delta: float) -> void:
-	if mode != "playing":
-		return
-	if Input.is_action_just_pressed("remove_credit"):
-		spawn_wave()
-
 func killed_alien(amount):
+	ArcadeAudio.play(self, "hit")
 	if mode != "playing":
 		return
 	score += amount
@@ -124,8 +120,10 @@ func spawn_wave() -> void:
 
 func _on_alien_killed(points) -> void:
 	killed_alien(points)
-	if mode == "playing" and livestext and player:
-		livestext.text = str(player.lives)
+
+func _on_lives_changed(current_lives) -> void:
+	if mode == "playing" and livestext:
+		livestext.text = str(current_lives)
 
 func _on_player_died() -> void:
 	if mode == "playing":
@@ -143,6 +141,7 @@ func _on_game_over_zone_entered(body: Node2D) -> void:
 		start_attract()
 
 func _on_game_over() -> void:
+	ArcadeAudio.play(self, "game_over")
 	if mode == "game_over":
 		return
 	pending_continue = mode == "playing"
@@ -181,9 +180,8 @@ func _continue_match() -> void:
 		player.global_position = player_start_position
 		player.reset(starting_lives)
 		player.set_demo_mode(false)
-	if livestext and player:
-		livestext.text = str(player.lives)
 	spawn_wave()
+	spawn_timer.start()
 
 func _on_game_over_timeout() -> void:
 	if pending_continue and machine_manager and machine_manager.spend_credit():
@@ -218,12 +216,14 @@ func start_attract() -> void:
 		player.set_demo_mode(true)
 	if livestext:
 		livestext.text = ""
+		livestext.visible = false
 	get_tree().call_group("shield", "reset")
 	spawn_wave()
 	spawn_timer.start()
 
 func start_match() -> void:
 	mode = "playing"
+	if livestext: livestext.visible = true
 	score = 0
 	wave_number = 0
 	current_rows = 1
@@ -243,8 +243,6 @@ func start_match() -> void:
 		player.global_position = player_start_position
 		player.reset(starting_lives)
 		player.set_demo_mode(false)
-	if livestext:
-		livestext.text = str(player.lives)
 	get_tree().call_group("shield", "reset")
 	spawn_wave()
 	spawn_timer.start()
